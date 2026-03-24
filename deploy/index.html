@@ -77,36 +77,6 @@
             line-height: 1.6;
         }
         
-        /* 场景插图样式 */
-        .scene-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .scene-image:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-        }
-        
-        .scene-image-placeholder {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            border-radius: 12px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #667eea;
-            font-size: 1.2em;
-            border: 2px dashed rgba(102, 126, 234, 0.3);
-        }
-        
         .choices {
             display: flex;
             flex-direction: column;
@@ -1004,111 +974,20 @@
     
     <script>
         // ============ 音乐系统 ============
-        // 使用本地音频文件路径，需要先下载音乐放到 audio 文件夹
         const musicTracks = [
-            { name: "赛博朋克", url: "audio/cyberpunk.mp3" },
-            { name: "太空探索", url: "audio/space.mp3" },
-            { name: "神秘魔法", url: "audio/magic.mp3" },
-            { name: "时间旅行", url: "audio/time.mp3" },
-            { name: "生物科技", url: "audio/bio.mp3" },
-            { name: "史诗冒险", url: "audio/epic.mp3" }
+            { name: "赛博朋克", url: "https://cdn.pixabay.com/download/audio/2022/03/10/audio_c80a92896f.mp3?filename=cyberpunk-city-112247.mp3" },
+            { name: "太空探索", url: "https://cdn.pixabay.com/download/audio/2022/03/24/audio_c617521644.mp3?filename=space-atmosphere-112896.mp3" },
+            { name: "神秘魔法", url: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69c2.mp3?filename=fantasy-magic-110295.mp3" },
+            { name: "未来科技", url: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_6389620a5d.mp3?filename=futuristic-technology-112467.mp3" },
+            { name: "生命科学", url: "https://cdn.pixabay.com/download/audio/2021/11/25/audio_0f9a9f5b62.mp3?filename=ambient-science-109384.mp3" }
         ];
         
-        // 使用 Web Audio API 生成音效，避免外部链接问题
-        const soundEffects = {};
-        
-        // 简单的音效生成器
-        function generateBeep(frequency, duration, type = 'sine') {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.value = frequency;
-            oscillator.type = type;
-            
-            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-            
-            oscillator.start(audioContext.currentTime);
-            oscillator.stop(audioContext.currentTime + duration);
-        }
-        
-        function playCollectSound() {
-            generateBeep(880, 0.1); // A5
-            setTimeout(() => generateBeep(1100, 0.15), 50); // C#6
-        }
-        
-        // ============ 场景插图系统 ============
-        const sceneImages = {
-            // 赛博朋克宇宙
-            'cyber_intro': 'images/cyber_city.png',
-            'cyber_clinic': 'images/cyber_clinic.png',
-            'cyber_corp': 'images/cyber_lab.png',
-            'cyber_market': 'images/cyber_market.png',
-            'cyber_chase': 'images/cyber_chase.png',
-            'cyber_showdown': 'images/cyber_final.png',
-            
-            // 太空歌剧宇宙
-            'space_intro': 'images/space_station.png',
-            'space_warp': 'images/space_engine.png',
-            'space_planet': 'images/space_planet.png',
-            'space_contact': 'images/space_contact.png',
-            'space_blackhole': 'images/space_blackhole.png',
-            'space_dyson': 'images/space_dyson.png',
-            
-            // 时间旅行宇宙
-            'time_intro': 'images/time_bureau.png',
-            'time_machine': 'images/time_machine.png',
-            'time_parallel': 'images/time_parallel.png',
-            'time_repair': 'images/time_repair.png',
-            'time_history': 'images/time_history.png',
-            'time_paradox': 'images/time_paradox.png',
-            
-            // 生物朋克宇宙
-            'bio_intro': 'images/bio_temple.png',
-            'bio_lab': 'images/bio_lab.png',
-            'bio_synthetic': 'images/bio_synthetic.png',
-            'bio_computer': 'images/bio_computer.png',
-            'bio_evolution': 'images/bio_evolution.png',
-            'bio_plague': 'images/bio_plague.png',
-            
-            // 魔法科技宇宙
-            'magic_intro': 'images/magic_academy.png',
-            'magic_rune_lab': 'images/magic_rune.png',
-            'magic_psi_engine': 'images/magic_psi.png',
-            'magic_crystal_power': 'images/magic_crystal.png',
-            'magic_duel': 'images/magic_duel.png',
-            'magic_artifact': 'images/magic_forge.png',
-            
-            // 主宇宙和结局
-            'start': 'images/main_portals.png',
-            'ending_50': 'images/main_collapse.png',
-            'ending_80': 'images/main_collapse.png',
-            'ending_100': 'images/main_ending.png'
+        const soundEffects = {
+            collect: "https://cdn.pixabay.com/download/audio/2021/08/04/audio_06d5c5c8f7.mp3?filename=success-1-112247.mp3",
+            achievement: "https://cdn.pixabay.com/download/audio/2021/08/04/audio_7f4f10f7a6.mp3?filename=achievement-1-112248.mp3",
+            sceneChange: "https://cdn.pixabay.com/download/audio/2021/08/04/audio_9a2f10e8b5.mp3?filename=transition-1-112249.mp3",
+            save: "https://cdn.pixabay.com/download/audio/2021/08/04/audio_8b3f10d9c4.mp3?filename=save-1-112250.mp3"
         };
-        
-        function getSceneImage(sceneId) {
-            return sceneImages[sceneId] || null;
-        }
-        
-        function playAchievementSound() {
-            generateBeep(523, 0.1); // C5
-            setTimeout(() => generateBeep(659, 0.1), 100); // E5
-            setTimeout(() => generateBeep(784, 0.1), 200); // G5
-            setTimeout(() => generateBeep(1047, 0.3), 300); // C6
-        }
-        
-        function playSceneChangeSound() {
-            generateBeep(440, 0.05); // A4
-        }
-        
-        function playSaveSound() {
-            generateBeep(600, 0.1);
-            setTimeout(() => generateBeep(800, 0.2), 100);
-        }
         
         let currentAudio = null;
         let isMusicPlaying = true;
@@ -1117,8 +996,12 @@
         const audioPool = {};
         
         function initAudio() {
-            // 音效现在使用 Web Audio API 实时生成，无需预加载
-            // 背景音乐仍从 Free Music Archive 加载
+            for (const [name, url] of Object.entries(soundEffects)) {
+                const audio = new Audio(url);
+                audio.preload = 'auto';
+                audio.volume = 0.3;
+                audioPool[name] = audio;
+            }
             loadTrack(0);
             updateMusicStatus();
         }
@@ -1146,25 +1029,11 @@
             currentAudio = new Audio(track.url);
             currentAudio.loop = true;
             currentAudio.volume = isMusicPlaying ? currentVolume : 0;
-            
-            // 添加错误处理
-            currentAudio.addEventListener('error', (e) => {
-                console.log('音频加载失败:', track.name, '- 尝试下一首');
-                // 自动尝试下一首
-                setTimeout(() => {
-                    const nextIndex = (index + 1) % musicTracks.length;
-                    if (nextIndex !== index) {
-                        loadTrack(nextIndex);
-                    }
-                }, 1000);
-            });
-            
             currentAudio.addEventListener('canplaythrough', () => {
                 if (isMusicPlaying) {
                     currentAudio.play().catch(e => console.log('Audio autoplay blocked:', e));
                 }
             });
-            
             currentAudio.load();
             currentTrackIndex = index;
             updateMusicStatus();
@@ -1203,20 +1072,10 @@
         }
         
         function playSound(name) {
-            // 使用 Web Audio API 生成音效
-            switch(name) {
-                case 'collect':
-                    playCollectSound();
-                    break;
-                case 'achievement':
-                    playAchievementSound();
-                    break;
-                case 'sceneChange':
-                    playSceneChangeSound();
-                    break;
-                case 'save':
-                    playSaveSound();
-                    break;
+            if (audioPool[name]) {
+                const sound = audioPool[name].cloneNode();
+                sound.volume = 0.3;
+                sound.play().catch(e => console.log('Sound effect blocked:', e));
             }
         }
         
@@ -5279,15 +5138,9 @@
             let text = typeof scene.text === 'function' ? scene.text() : scene.text;
             text = text.replace(/\${gameData\.concepts\.length}/g, gameData.concepts.length);
             
-            // 获取场景插图路径
-            const sceneImage = getSceneImage(sceneId);
-            const imageHtml = sceneImage ? 
-                `<img src="${sceneImage}" class="scene-image" alt="${scene.title}" onerror="this.style.display='none'">` : '';
-            
             container.innerHTML = `
                 <div class="scene fade-in ${sceneId.startsWith('ending') ? 'ending-scene' : ''}">
                     <h2 class="scene-title ${sceneId.startsWith('ending') ? 'ending-title' : ''}">${scene.title}</h2>
-                    ${imageHtml}
                     <div class="scene-text ${sceneId.startsWith('ending') ? 'ending-text' : ''}">${text.replace(/\n/g, '<br>')}</div>
                     <div class="choices">
                         ${scene.choices.map((choice, index) => {
