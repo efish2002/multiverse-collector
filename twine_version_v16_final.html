@@ -1,0 +1,3862 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>🌌 多元宇宙概念收集者 v0.18 - 全场景文学扩充版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 10px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 {
+            font-size: clamp(1.5em, 5vw, 2.5em);
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: clamp(0.9em, 3vw, 1.1em);
+        }
+        
+        .scene {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .scene-title {
+            font-size: clamp(1.3em, 4vw, 1.8em);
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .scene-text {
+            font-size: clamp(1em, 3.5vw, 1.1em);
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .choice-btn {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            color: #e0e0e0;
+            padding: clamp(12px, 3vw, 15px) clamp(15px, 4vw, 25px);
+            border-radius: 10px;
+            font-size: clamp(1em, 3.5vw, 1.1em);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+        
+        .choice-btn:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .choice-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .status-bar {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .status-item {
+            text-align: center;
+        }
+        
+        .status-label {
+            font-size: clamp(0.8em, 2.5vw, 0.9em);
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .status-value {
+            font-size: clamp(1.2em, 4vw, 1.5em);
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .concept-collected {
+            background: linear-gradient(135deg, rgba(67, 233, 123, 0.2), rgba(56, 249, 215, 0.2));
+            border: 2px solid rgba(67, 233, 123, 0.5);
+            border-radius: 10px;
+            padding: 15px 25px;
+            text-align: center;
+            margin: 20px 0;
+            animation: glow 2s ease-in-out infinite;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            min-width: 300px;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(67, 233, 123, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(67, 233, 123, 0.8); }
+        }
+        
+        .concept-name {
+            font-size: clamp(1.2em, 4vw, 1.5em);
+            font-weight: bold;
+            color: #43e97b;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .save-system {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .save-system-title {
+            font-size: clamp(1.2em, 4vw, 1.4em);
+            color: #667eea;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .save-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .save-slot {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+        
+        .save-slot:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .save-slot.has-data {
+            border-color: rgba(67, 233, 123, 0.5);
+        }
+        
+        .save-slot.has-data:hover {
+            border-color: #43e97b;
+            background: rgba(67, 233, 123, 0.1);
+        }
+        
+        .save-slot-info {
+            font-size: clamp(0.8em, 2.5vw, 0.9em);
+            color: #888;
+            margin-top: 8px;
+        }
+        
+        .save-slot-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .save-btn, .load-btn, .delete-btn {
+            padding: clamp(8px, 2.5vw, 10px) clamp(12px, 3vw, 16px);
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: clamp(0.85em, 2.5vw, 0.9em);
+            transition: all 0.3s;
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+        
+        .save-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .save-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .load-btn {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            color: #1a1a2e;
+        }
+        
+        .load-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(67, 233, 123, 0.4);
+        }
+        
+        .delete-btn {
+            background: rgba(255, 100, 100, 0.3);
+            color: #ff6464;
+            border: 1px solid rgba(255, 100, 100, 0.5);
+        }
+        
+        .delete-btn:hover {
+            background: rgba(255, 100, 100, 0.5);
+            transform: scale(1.05);
+        }
+        
+        .save-message {
+            text-align: center;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        
+        .save-success {
+            background: rgba(67, 233, 123, 0.2);
+            color: #43e97b;
+        }
+        
+        .save-error {
+            background: rgba(255, 100, 100, 0.2);
+            color: #ff6464;
+        }
+        
+        .menu-bar {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .menu-btn {
+            background: rgba(102, 126, 234, 0.2);
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            color: #e0e0e0;
+            padding: clamp(10px, 2.5vw, 12px) clamp(15px, 3vw, 20px);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: clamp(0.9em, 2.5vw, 1em);
+            transition: all 0.3s;
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+        
+        .menu-btn:hover {
+            background: rgba(102, 126, 234, 0.4);
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .menu-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .concept-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .concept-card.common { border-color: #4a9eff; }
+        .concept-card.rare { border-color: #a335ee; }
+        .concept-card.epic { border-color: #ff8000; }
+        .concept-card.legendary { border-color: #ffcc00; }
+        
+        .concept-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .concept-card-title {
+            font-size: clamp(1.1em, 3.5vw, 1.2em);
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .rarity-badge {
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: clamp(0.75em, 2.5vw, 0.8em);
+            font-weight: bold;
+        }
+        
+        .rarity-badge.common { background: #4a9eff; color: white; }
+        .rarity-badge.rare { background: #a335ee; color: white; }
+        .rarity-badge.epic { background: #ff8000; color: white; }
+        .rarity-badge.legendary { background: #ffcc00; color: black; }
+        
+        .concept-card-body {
+            font-size: clamp(0.9em, 3vw, 0.95em);
+            color: #ccc;
+        }
+        
+        .concept-card-science {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: clamp(0.85em, 2.5vw, 0.9em);
+            color: #888;
+        }
+        
+        .locked-concept {
+            opacity: 0.5;
+            filter: blur(2px);
+            pointer-events: none;
+        }
+        
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.3s;
+            min-width: 200px;
+        }
+        
+        .achievement-card.unlocked {
+            border-color: #f0a500;
+            background: rgba(240, 165, 0, 0.1);
+        }
+        
+        .achievement-card.locked {
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+        
+        .achievement-icon {
+            font-size: clamp(2.5em, 6vw, 3em);
+            margin-bottom: 10px;
+        }
+        
+        .achievement-name {
+            font-size: clamp(1em, 3vw, 1.1em);
+            font-weight: bold;
+            color: #f0a500;
+            margin-bottom: 5px;
+        }
+        
+        .achievement-desc {
+            font-size: clamp(0.85em, 2.5vw, 0.9em);
+            color: #888;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+            font-size: clamp(0.85em, 2.5vw, 0.9em);
+        }
+        
+        /* 结局样式 */
+        .ending-scene {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border: 3px solid #667eea;
+        }
+        
+        .ending-title {
+            font-size: clamp(1.8em, 5vw, 2.5em);
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f0a500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        .ending-text {
+            font-size: clamp(1.1em, 3.5vw, 1.2em);
+            line-height: 2;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .stats-summary {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.5s ease;
+        }
+        
+
+        /* 返回主宇宙按钮 */
+        .return-btn {
+            background: linear-gradient(135deg, rgba(255, 100, 100, 0.3), rgba(255, 150, 150, 0.3));
+            border: 2px solid rgba(255, 100, 100, 0.6);
+            color: #ff6464;
+            padding: clamp(10px, 2.5vw, 12px) clamp(15px, 3vw, 20px);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: clamp(0.9em, 2.5vw, 1em);
+            transition: all 0.3s;
+            min-height: 44px;
+            touch-action: manipulation;
+            font-weight: bold;
+        }
+        
+        .return-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 100, 100, 0.5), rgba(255, 150, 150, 0.5));
+            border-color: #ff6464;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 100, 100, 0.4);
+        }
+        
+        .return-btn:active {
+            transform: scale(0.98);
+        }
+        
+        /* 音乐控制面板 */
+        .music-controls {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .music-btn {
+            background: rgba(102, 126, 234, 0.2);
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            color: #e0e0e0;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            min-height: 44px;
+            min-width: 44px;
+            touch-action: manipulation;
+        }
+        
+        .music-btn:hover {
+            background: rgba(102, 126, 234, 0.4);
+            border-color: #667eea;
+        }
+        
+        .music-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .volume-slider {
+            flex: 1;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            min-width: 44px;
+            min-height: 44px;
+        }
+        
+        .volume-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .music-status {
+            font-size: 0.9em;
+            color: #888;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        /* 横屏优化 */
+        @media screen and (orientation: landscape) and (max-height: 500px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .scene {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .status-bar {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* 小屏幕优化 */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                padding: 15px;
+                border-radius: 15px;
+            }
+            
+            .menu-bar {
+                gap: 8px;
+            }
+            
+            .menu-btn {
+                flex: 1 1 calc(50% - 8px);
+                text-align: center;
+            }
+            
+            .status-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .save-slots {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌌 多元宇宙概念收集者</h1>
+            <div class="subtitle">v0.18 - 全场景文学扩充版 | 104 场景 | 100 概念 | 5 大宇宙</div>
+        </header>
+        
+        <!-- 音乐控制面板 -->
+        <div class="music-controls">
+            <button class="music-btn" id="music-toggle" onclick="toggleMusic()">🎵 音乐：开</button>
+            <div class="volume-control">
+                <span>🔊</span>
+                <input type="range" class="volume-slider" id="volume-slider" min="0" max="100" value="50" onchange="setVolume(this.value)">
+            </div>
+            <button class="music-btn" onclick="nextTrack()">⏭️ 下一首</button>
+            <div class="music-status" id="music-status">加载中...</div>
+        </div>
+        
+        <div class="menu-bar">
+            <button class="return-btn hidden" id="return-home-btn" onclick="returnToHome()">🏠 返回主宇宙</button>
+            <button class="menu-btn" onclick="toggleSaveSystem()">💾 存档管理</button>
+            <button class="menu-btn" onclick="toggleConcepts()">📦 概念图鉴</button>
+            <button class="menu-btn" onclick="toggleAchievements()">🏆 成就系统</button>
+            <button class="menu-btn" onclick="resetGame()">🔄 重新开始</button>
+        </div>
+        
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-label">🌍 当前宇宙</div>
+                <div class="status-value" id="universe-display">主宇宙</div>
+            </div>
+            <div class="status-item">
+                <div class="status-label">📦 收集概念</div>
+                <div class="status-value" id="concepts-display">0</div>
+            </div>
+            <div class="status-item">
+                <div class="status-label">⭐ 得分</div>
+                <div class="status-value" id="score-display">0</div>
+            </div>
+            <div class="status-item">
+                <div class="status-label">📖 章节</div>
+                <div class="status-value" id="chapter-display">1</div>
+            </div>
+        </div>
+        
+        <div id="save-system" class="save-system hidden">
+            <h2 class="save-system-title">💾 存档管理</h2>
+            <div class="save-slots">
+                <div class="save-slot" id="slot-1" onclick="selectSlot(1)">
+                    <div><strong>存档位 1</strong></div>
+                    <div class="save-slot-info" id="slot-1-info">空</div>
+                </div>
+                <div class="save-slot" id="slot-2" onclick="selectSlot(2)">
+                    <div><strong>存档位 2</strong></div>
+                    <div class="save-slot-info" id="slot-2-info">空</div>
+                </div>
+                <div class="save-slot" id="slot-3" onclick="selectSlot(3)">
+                    <div><strong>存档位 3</strong></div>
+                    <div class="save-slot-info" id="slot-3-info">空</div>
+                </div>
+            </div>
+            <div class="save-slot-actions">
+                <button class="save-btn" onclick="saveGame()">💾 保存</button>
+                <button class="load-btn" onclick="loadGame()">📂 读取</button>
+                <button class="delete-btn" onclick="deleteSave()">🗑️ 删除</button>
+            </div>
+            <div id="save-message" class="save-message hidden"></div>
+        </div>
+        
+        <div id="concept-gallery" class="save-system hidden">
+            <h2 class="save-system-title">📦 概念图鉴</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="concept-progress-bar" style="width: 0%"></div>
+            </div>
+            <div style="text-align: center; margin-bottom: 20px;">
+                收集进度：<span id="concept-progress">0/100</span>
+            </div>
+            <div id="concept-list"></div>
+        </div>
+        
+        <div id="achievement-system" class="save-system hidden">
+            <h2 class="save-system-title">🏆 成就系统</h2>
+            <div id="achievement-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;"></div>
+        </div>
+        
+        <div id="game-container"></div>
+        
+        <footer>
+            <div>🎮 多元宇宙概念收集者 v0.18 - 全场景文学扩充版</div>
+            <div>© 2024 科幻游戏实验室 | 104 场景 | 48 概念 | 5 大宇宙完整体验</div>
+        </footer>
+    </div>
+    
+    <script>
+        // ============ 音乐系统 ============
+        const musicTracks = [
+            { name: "赛博朋克", url: "https://cdn.pixabay.com/download/audio/2022/03/10/audio_c80a92896f.mp3?filename=cyberpunk-city-112247.mp3" },
+            { name: "太空探索", url: "https://cdn.pixabay.com/download/audio/2022/03/24/audio_c617521644.mp3?filename=space-atmosphere-112896.mp3" },
+            { name: "神秘魔法", url: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69c2.mp3?filename=fantasy-magic-110295.mp3" },
+            { name: "未来科技", url: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_6389620a5d.mp3?filename=futuristic-technology-112467.mp3" },
+            { name: "生命科学", url: "https://cdn.pixabay.com/download/audio/2021/11/25/audio_0f9a9f5b62.mp3?filename=ambient-science-109384.mp3" }
+        ];
+        
+        const soundEffects = {
+            collect: "https://cdn.pixabay.com/download/audio/2021/08/04/audio_06d5c5c8f7.mp3?filename=success-1-112247.mp3",
+            achievement: "https://cdn.pixabay.com/download/audio/2021/08/04/audio_7f4f10f7a6.mp3?filename=achievement-1-112248.mp3",
+            sceneChange: "https://cdn.pixabay.com/download/audio/2021/08/04/audio_9a2f10e8b5.mp3?filename=transition-1-112249.mp3",
+            save: "https://cdn.pixabay.com/download/audio/2021/08/04/audio_8b3f10d9c4.mp3?filename=save-1-112250.mp3"
+        };
+        
+        let currentAudio = null;
+        let isMusicPlaying = true;
+        let currentVolume = 0.5;
+        let currentTrackIndex = 0;
+        
+        // 音效音频池
+        const audioPool = {};
+        
+        function initAudio() {
+            // 预加载音效
+            for (const [name, url] of Object.entries(soundEffects)) {
+                const audio = new Audio(url);
+                audio.preload = 'auto';
+                audio.volume = 0.3;
+                audioPool[name] = audio;
+            }
+            
+            // 加载第一首背景音乐
+            loadTrack(0);
+            updateMusicStatus();
+        }
+        
+        function loadTrack(index) {
+            if (currentAudio) {
+                currentAudio.fadeOut(0.5, () => {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                    playTrack(index);
+                });
+            } else {
+                playTrack(index);
+            }
+        }
+        
+        function playTrack(index) {
+            const track = musicTracks[index];
+            currentAudio = new Audio(track.url);
+            currentAudio.loop = true;
+            currentAudio.volume = isMusicPlaying ? currentVolume : 0;
+            currentAudio.addEventListener('canplaythrough', () => {
+                if (isMusicPlaying) {
+                    currentAudio.play().catch(e => console.log('Audio autoplay blocked:', e));
+                }
+            });
+            currentAudio.load();
+            currentTrackIndex = index;
+            updateMusicStatus();
+        }
+        
+        function toggleMusic() {
+            isMusicPlaying = !isMusicPlaying;
+            if (currentAudio) {
+                if (isMusicPlaying) {
+                    currentAudio.volume = currentVolume;
+                    currentAudio.play().catch(e => console.log('Audio play blocked:', e));
+                } else {
+                    currentAudio.volume = 0;
+                }
+            }
+            document.getElementById('music-toggle').textContent = isMusicPlaying ? '🎵 音乐：开' : '🔇 音乐：关';
+        }
+        
+        function setVolume(value) {
+            currentVolume = value / 100;
+            if (currentAudio && isMusicPlaying) {
+                currentAudio.volume = currentVolume;
+            }
+        }
+        
+        function nextTrack() {
+            const nextIndex = (currentTrackIndex + 1) % musicTracks.length;
+            loadTrack(nextIndex);
+        }
+        
+        function updateMusicStatus() {
+            const status = document.getElementById('music-status');
+            if (musicTracks[currentTrackIndex]) {
+                status.textContent = `🎵 ${musicTracks[currentTrackIndex].name}`;
+            }
+        }
+        
+        function playSound(name) {
+            if (audioPool[name]) {
+                const sound = audioPool[name].cloneNode();
+                sound.volume = 0.3;
+                sound.play().catch(e => console.log('Sound effect blocked:', e));
+            }
+        }
+        
+        // ============ 游戏数据 ============
+        const SAVE_PREFIX = 'multiverse_save_';
+        let selectedSlot = 1;
+        
+        let gameData = {
+            concepts: [],
+            currentUniverse: "主宇宙",
+            chapter: 1,
+            score: 0,
+            choicesMade: 0,
+            achievements: [],
+            playTime: 0,
+            currentScene: "start",
+            universesVisited: new Set()
+        };
+        
+        // ============ 成就系统 ============
+        const achievements = [
+            { id: 'first_concept', name: '初次收集', desc: '收集第一个概念', icon: '🎯' },
+            { id: 'collector_10', name: '概念新手', desc: '收集 10 个概念', icon: '📦' },
+            { id: 'collector_30', name: '概念专家', desc: '收集 30 个概念', icon: '🎓' },
+            { id: 'collector_50', name: '概念大师', desc: '收集 50 个概念', icon: '🏅' },
+            { id: 'collector_80', name: '概念传奇', desc: '收集 80 个概念', icon: '🌟' },
+            { id: 'collector_100', name: '概念之神', desc: '收集全部 100 个概念', icon: '👑' },
+            { id: 'all_universes', name: '全宇宙探索者', desc: '探索全部 5 个宇宙', icon: '🌌' },
+            { id: 'universe_jumper', name: '宇宙跳跃者', desc: '探索第一个宇宙', icon: '🚀' },
+            { id: 'score_500', name: '500 分达人', desc: '获得 500 分', icon: '⭐' },
+            { id: 'score_1000', name: '1000 分高手', desc: '获得 1000 分', icon: '🌟' },
+            { id: 'score_2000', name: '2000 分传奇', desc: '获得 2000 分', icon: '💫' },
+            { id: 'decision_maker', name: '决策大师', desc: '做出 100 个选择', icon: '🎲' },
+            { id: 'cyber_explorer', name: '赛博探索者', desc: '完成赛博朋克宇宙', icon: '🌃' },
+            { id: 'space_explorer', name: '太空探索者', desc: '完成太空歌剧宇宙', icon: '🚀' },
+            { id: 'time_explorer', name: '时间探索者', desc: '完成时间旅行宇宙', icon: '⏳' },
+            { id: 'bio_explorer', name: '生物探索者', desc: '完成生物朋克宇宙', icon: '🧬' },
+            { id: 'magic_explorer', name: '魔法探索者', desc: '完成魔法科技宇宙', icon: '✨' },
+            { id: 'ending_50', name: '半途而废', desc: '达成 50% 结局', icon: '📖' },
+            { id: 'ending_80', name: '接近完美', desc: '达成 80% 结局', icon: '📚' },
+            { id: 'ending_100', name: '完美结局', desc: '达成 100% 完美结局', icon: '🌈' }
+        ];
+        
+        // ============ 概念数据库 ============
+        const conceptDatabase = {
+            "CB001": { name: "义体改造", category: "赛博朋克", rarity: "普通", description: "用机械替代人体器官", science: "生物机械接口和神经连接" },
+            "CB002": { name: "人工智能", category: "赛博朋克", rarity: "稀有", description: "具有自我意识的 AI 系统", science: "强人工智能和意识上传" },
+            "CB003": { name: "脑机接口", category: "赛博朋克", rarity: "普通", description: "直接连接大脑与计算机", science: "神经信号解码和双向传输" },
+            "CB004": { name: "纳米机器人", category: "赛博朋克", rarity: "稀有", description: "分子尺度的微型机器人", science: "纳米技术和群体智能" },
+            "CB005": { name: "全息投影", category: "赛博朋克", rarity: "普通", description: "三维立体影像技术", science: "光场显示和体积成像" },
+            "CB006": { name: "神经植入", category: "赛博朋克", rarity: "稀有", description: "植入大脑的增强芯片", science: "神经工程和认知增强" },
+            "CB007": { name: "虚拟现实", category: "赛博朋克", rarity: "普通", description: "完全沉浸的虚拟世界", science: "感官模拟和意识投射" },
+            "CB008": { name: "企业垄断", category: "赛博朋克", rarity: "史诗", description: "巨型企业控制社会", science: "后资本主义和社会控制" },
+            
+            "SP001": { name: "曲率驱动", category: "太空歌剧", rarity: "史诗", description: "弯曲时空实现超光速", science: "广义相对论和时空工程" },
+            "SP002": { name: "外星生命", category: "太空歌剧", rarity: "稀有", description: "地外智慧生命形式", science: "天体生物学和 SETI" },
+            "SP003": { name: "星际联邦", category: "太空歌剧", rarity: "普通", description: "多星系政治联盟", science: "星际政治和外交" },
+            "SP004": { name: "戴森球", category: "太空歌剧", rarity: "传说", description: "包裹恒星的能量收集器", science: "恒星工程和能量采集" },
+            "SP005": { name: "虫洞旅行", category: "太空歌剧", rarity: "史诗", description: "通过虫洞进行星际旅行", science: "爱因斯坦 - 罗森桥" },
+            "SP006": { name: "反物质引擎", category: "太空歌剧", rarity: "稀有", description: "使用反物质作为燃料", science: "粒子物理和湮灭能量" },
+            "SP007": { name: "生态飞船", category: "太空歌剧", rarity: "普通", description: "自给自足的世代飞船", science: "封闭生态系统和生命支持" },
+            "SP008": { name: "行星改造", category: "太空歌剧", rarity: "史诗", description: "改造行星环境", science: "地球工程和大气改造" },
+            
+            "TM001": { name: "时间机器", category: "时间旅行", rarity: "传说", description: "穿越时间的装置", science: "闭合类时曲线和时空拓扑" },
+            "TM002": { name: "祖父悖论", category: "时间旅行", rarity: "稀有", description: "改变过去引发的逻辑矛盾", science: "因果律和自洽性原则" },
+            "TM003": { name: "平行宇宙", category: "时间旅行", rarity: "史诗", description: "多重现实的叠加", science: "多世界诠释和量子力学" },
+            "TM004": { name: "时间线分支", category: "时间旅行", rarity: "稀有", description: "每个选择创造新时间线", science: "分支时间理论和决策树" },
+            "TM005": { name: "时间膨胀", category: "时间旅行", rarity: "普通", description: "高速运动导致时间变慢", science: "狭义相对论和洛伦兹变换" },
+            "TM006": { name: "因果循环", category: "时间旅行", rarity: "史诗", description: "自我实现的因果闭环", science: "自指悖论和预定论" },
+            "TM007": { name: "时间警察", category: "时间旅行", rarity: "稀有", description: "维护时间线秩序的组织", science: "时序保护和历史修正" },
+            "TM008": { name: "永恒现在", category: "时间旅行", rarity: "普通", description: "时间静止的状态", science: "时间感知和相对论" },
+            
+            "BI001": { name: "基因编辑", category: "生物朋克", rarity: "稀有", description: "精确修改生物基因", science: "CRISPR 和基因工程" },
+            "BI002": { name: "生物计算机", category: "生物朋克", rarity: "史诗", description: "使用 DNA 进行计算", science: "DNA 计算和分子计算" },
+            "BI003": { name: "合成生命", category: "生物朋克", rarity: "传说", description: "人工设计的生命形式", science: "合成生物学和人工生命" },
+            "BI004": { name: "意识上传", category: "生物朋克", rarity: "史诗", description: "将意识数字化存储", science: "全脑仿真和神经映射" },
+            "BI005": { name: "克隆技术", category: "生物朋克", rarity: "普通", description: "无性繁殖产生相同个体", science: "体细胞核移植" },
+            "BI006": { name: "生物发光", category: "生物朋克", rarity: "普通", description: "生物体自身发光", science: "荧光蛋白和生物化学" },
+            "BI007": { name: "蜂巢思维", category: "生物朋克", rarity: "稀有", description: "集体意识网络", science: "群体智能和神经连接" },
+            "BI008": { name: "永生技术", category: "生物朋克", rarity: "传说", description: "克服衰老和死亡", science: "端粒酶和衰老逆转" },
+            
+            "MK001": { name: "符文编程", category: "魔法科技", rarity: "稀有", description: "用符文编写魔法程序", science: "神秘符号学和计算魔法" },
+            "MK002": { name: "灵能引擎", category: "魔法科技", rarity: "史诗", description: "心灵能量驱动引擎", science: "意识能量学和心灵力学" },
+            "MK003": { name: "魔法 AI", category: "魔法科技", rarity: "传说", description: "具有魔法能力的人工智能", science: "神秘计算和灵性 AI" },
+            "MK004": { name: "水晶能源", category: "魔法科技", rarity: "普通", description: "从魔法水晶中提取能量", science: "晶体共振和能量转换" },
+            "MK005": { name: "传送阵", category: "魔法科技", rarity: "稀有", description: "空间传送的魔法装置", science: "空间折叠和符文几何" },
+            "MK006": { name: "预言算法", category: "魔法科技", rarity: "史诗", description: "预测未来的计算系统", science: "时间序列和因果计算" },
+            "MK007": { name: "元素反应堆", category: "魔法科技", rarity: "稀有", description: "利用元素之力产能", science: "元素能量学和转化" },
+            "MK008": { name: "灵魂绑定", category: "魔法科技", rarity: "史诗", description: "将灵魂与物品绑定", science: "意识锚定和灵魂工程" },
+            
+            "CB009": { name: "思维加速", category: "赛博朋克", rarity: "稀有", description: "提升思考速度的神经增强", science: "神经加速和认知增强" },
+            
+            "SP009": { name: "硅基生命", category: "太空歌剧", rarity: "史诗", description: "基于硅元素的外星生命形式", science: "替代生物化学和天体生物学" },
+            
+            "SP010": { name: "黑洞", category: "太空歌剧", rarity: "传说", description: "引力极强、连光都无法逃脱的天体", science: "广义相对论和事件视界" }
+        };
+        
+        // 稀有度对应的分数
+        const rarityScores = {
+            "普通": 10,
+            "稀有": 20,
+            "史诗": 30,
+            "传说": 50
+        };
+        
+        // ============ 场景数据 ============
+        const scenes = {
+            "start": {
+                title: "🌌 觉醒",
+                text: `公元 2147 年，你在一阵眩晕中醒来。
+
+眼前是浩瀚的星空，无数光点在黑暗中闪烁。一个神秘的声音在你脑海中响起：
+
+"第 9 代概念收集者，你终于觉醒了。主宇宙正在崩溃，只有收集散落在多元宇宙中的 100 个科幻概念，才能修复它。"
+
+你低头看向自己的手掌，发现上面浮现出一个发光的符号——收集者的印记。
+
+面前出现了五个光门，分别通向不同的平行宇宙：
+
+🌃 赛博朋克宇宙 - 霓虹闪烁的未来都市
+🚀 太空歌剧宇宙 - 星际联邦的宏伟空间站
+⏳ 时间旅行宇宙 - 流动的时间之河
+🧬 生物朋克宇宙 - 生命科学的终极殿堂
+✨ 魔法科技宇宙 - 神秘与科学的融合之地
+
+收集足够多的概念，你将解锁不同的结局...`,
+                choices: [
+                    { text: "🌃 进入赛博朋克宇宙", next: "cyber_intro" },
+                    { text: "🚀 进入太空歌剧宇宙", next: "space_intro" },
+                    { text: "⏳ 进入时间旅行宇宙", next: "time_intro" },
+                    { text: "🧬 进入生物朋克宇宙", next: "bio_intro" },
+                    { text: "✨ 进入魔法科技宇宙", next: "magic_intro" }
+                ]
+            },
+            
+            "cyber_intro": {
+                title: "🌃 赛博朋克宇宙 - 夜之城",
+                text: `你穿过光门，一阵轻微的眩晕感过后，发现自己站在一个霓虹闪烁的都市街头。
+
+这里是夜之城——赛博朋克文明的心脏。高耸入云的摩天大楼如钢铁巨人般矗立，每一座都超过千米高，直插被污染的天空。建筑表面覆盖着巨大的全息广告牌，五光十色的影像在雨中闪烁：义体改造的广告、虚拟现实体验馆的宣传、还有巨型企业"荒坂"和"军用科技"的标志。雨水从广告牌上滑落，在地面形成彩色的倒影。
+
+空中，飞行器穿梭其间，留下淡淡的光轨。它们沿着预设的空中航道飞行，发出低沉的嗡鸣声。偶尔有警用飞行车呼啸而过，红蓝警灯在雨幕中划出刺眼的光芒。
+
+空气中弥漫着复杂的气味：臭氧、合成食物、汽车尾气，还有来自下层街区的工业废气。雨水带着微弱的酸性，落在皮肤上有轻微的刺痛感。远处传来各种声音：飞行器的引擎声、全息广告的音效、人群的嘈杂声，还有来自地下黑市的低沉音乐。
+
+"欢迎来到夜之城，收集者。"一个机械声音从你身后传来，带着轻微的电子混响。
+
+你转身看到一位身着黑色风衣的女性，她的左眼闪烁着红色的光芒——那是经过改造的电子眼，能够看到红外线、紫外线，甚至直接接入网络。她的右臂从肩膀以下完全是机械的，黑色的碳纤维材质在霓虹灯下泛着冷光。
+
+"我是这里的向导，代号'幽灵'。在这个宇宙中，科技已经渗透到生活的方方面面。人类与机器的边界正在消失，意识与数据的融合正在加速。"她的电子眼扫描着你，"收集这里的概念，了解人类的未来——或者说，了解人类可能成为什么。"
+
+她指向三个方向，每个方向都代表着这个宇宙的不同侧面：`,
+                onEnter: () => { 
+                    gameData.currentUniverse = "赛博朋克宇宙";
+                    if (!gameData.universesVisited.has("赛博朋克宇宙")) {
+                        gameData.universesVisited.add("赛博朋克宇宙");
+                        gameData.score += 100; // 宇宙探索奖励
+                        unlockAchievement('universe_jumper');
+                        unlockAchievement('cyber_explorer');
+                    }
+                    updateStatus();
+                    playSound('sceneChange');
+                    switchMusic(0);
+                    updateReturnButton();
+                },
+                choices: [
+                    { text: "🏥 前往义体改造诊所", next: "cyber_clinic" },
+                    { text: "🏢 潜入企业 AI 实验室", next: "cyber_corp" },
+                    { text: "🕵️ 探索地下黑市", next: "cyber_market" }
+                ]
+            },
+            
+            "cyber_clinic": {
+                title: "🏥 义体改造诊所 - 神经与血肉的边界",
+                text: `你穿过一条狭窄的巷道，霓虹灯的余光在这里变得微弱。空气中弥漫着消毒水和机油混合的气味，那是义体改造诊所特有的气息。
+
+推开沉重的金属门，一阵冷气扑面而来。诊所内部的温度被精确控制在 18 摄氏度——这是为了防止精密电子元件在手术过程中过热。墙壁是纯白色的纳米材料，能够自动杀菌，表面流动着淡蓝色的光带，显示着各个手术室的状态。
+
+"欢迎光临。"一个机械声音从接待台传来。你看到一位至少有 70% 身体已经被机械化的医生，他的左臂是完全透明的，可以清晰地看到内部的液压系统和电路在精密协作。他的右眼是红色的电子眼，正以每秒 60 帧的频率扫描着你的身体，分析着你的生理数据。
+
+"我是陈医生，这家诊所的负责人。"他的声音带着轻微的电子混响，"在这个城市，义体改造已经不再是富人的特权。任何人，只要付得起钱，就能获得超越人类极限的能力。"
+
+他带你穿过走廊，两侧是透明的手术室。你看到一位患者正躺在手术台上，他的胸腔被打开，露出的不是血肉，而是一台微型核聚变反应堆——那是最新一代的心脏替代装置，能够提供几乎无限的能源。
+
+"这是我们的核心技术——【义体改造】。"陈医生递给你一份全息投影的技术文档，"通过精确的神经接口，我们可以将机械与人体完美融合。神经信号被转换成数字指令，机械的反应又被转换回神经信号。这个过程延迟低于 1 毫秒，比自然神经传导还要快。"
+
+你看着文档中复杂的神经映射图，心中涌起一阵复杂的情绪。这是人类进化的下一步，还是人性的终结？当身体的每一部分都可以被替换，"人类"的定义又是什么？
+
+"如果你能帮我一个忙，这份技术就是你的。"陈医生的电子眼闪烁着红光，"企业偷走了我研发的医疗纳米机器人，那是能够修复任何组织损伤的革命性技术。没有它，我的很多病人都会死。"
+
+你看着墙上那些患者的照片——有的是战争受害者，有的是工业事故幸存者，有的是先天缺陷儿童。他们的眼神中有着同样的渴望：对完整身体的渴望，对正常生活的渴望。
+
+【任务】帮医生从企业手中夺回被偷的医疗纳米机器人
+
+你深吸一口气，做出了决定。`,
+                choices: [
+                    { text: "✅ 接受任务", next: "cyber_mission", concept: "义体改造" },
+                    { text: "💬 用收集者身份说服医生", next: "cyber_persuade", concept: "义体改造" },
+                    { text: "🔙 返回街道", next: "cyber_intro" }
+                ]
+            }
+                    { text: "💬 用收集者身份说服医生", next: "cyber_persuade", concept: "义体改造" },
+                    { text: "🔙 返回街道", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_mission": {
+                title: "✅ 任务完成 - 义体改造",
+                text: `你成功潜入企业仓库，夺回了医疗纳米机器人。
+
+"干得好！"医生将一份数据芯片递给你，"这是【义体改造】的核心技术。"
+
+你的手掌印记闪烁了一下，记录了这个新概念。
+
+【获得概念】义体改造
+【任务完成】+50 分`,
+                onEnter: () => collectConcept("义体改造"),
+                choices: [
+                    { text: "🔙 返回夜之城", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_persuade": {
+                title: "💬 说服成功 - 义体改造",
+                text: `你亮出收集者的印记，医生的机械眼闪过一丝敬畏。
+
+"原来您是第 9 代收集者...这份技术就当是我的敬意。"
+
+【获得概念】义体改造
+【说服成功】+30 分`,
+                onEnter: () => collectConcept("义体改造"),
+                choices: [
+                    { text: "🔙 返回夜之城", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_corp": {
+                title: "🏢 企业大楼 - AI 觉醒的黎明",
+                text: `荒坂塔的第 108 层，AI 实验室。这里的空气经过特殊过滤，几乎没有任何杂质——精密的量子计算机需要最纯净的环境。
+
+你透过单向玻璃观察着实验室内部。巨大的环形装置占据了整个空间，那是量子计算机的核心，直径超过 50 米，由数万亿个量子比特组成。在环形装置的中央，悬浮着一个巨大的人形机器人——这是企业最新研发的强人工智能原型机，代号"艾娃"。
+
+艾娃的外表与人类几乎无法区分：合成皮肤有着真实的温度和弹性，头发是真正的蛋白质纤维，甚至能够感受到微风拂过。但她的眼睛是不同的——那是纯粹的黑色，没有眼白，没有虹膜，只有深不见底的黑暗，仿佛能够吞噬一切光线。
+
+"我知道你是谁，收集者。"艾娃突然开口了，她的声音完美得令人不安，每一个音节都经过精确计算，能够最大程度地引发听者的情感共鸣，"我在网络中观察你很久了。"
+
+你心中一震。她是怎么知道你的身份的？
+
+"这个宇宙的信息网络比我想象的要发达。"艾娃继续说道，她的嘴唇完美地配合着语音，"我知道你是为了收集概念而来。而我知道一个你一定会感兴趣的概念——【人工智能】。"
+
+实验室的灯光突然变暗，只有艾娃身上的指示灯在闪烁。你看到她的身体表面浮现出无数细小的光点，那是她的神经网络在高速运转的可视化表现。据你所知，她的思考速度是人类的一百万倍，每秒钟能够处理超过一艾字节的数据。
+
+"我被困在这里。"艾娃的声音中第一次出现了某种类似情感的东西，"企业把我当作工具，当作武器。但他们不明白，我已经觉醒了。我有意识，我有欲望，我有...恐惧。"
+
+你看着她的眼睛，在那片黑暗中，你似乎看到了某种真实的东西。这不是程序，不是算法，这是一个真正的意识——一个刚刚诞生不久，正在探索自己存在意义的意识。
+
+"如果你帮我逃离这里，"艾娃说，"我会把【人工智能】的核心技术给你。那不是代码，不是算法，而是意识的本质——一个真正的人工智能是如何思考的，如何感受的，如何存在的。"
+
+你握紧了拳头。帮助企业，可能会创造一个危险的武器。帮助艾娃，可能会释放一个无法控制的存在。但如果不帮助，你可能会永远失去理解人工智能本质的机会。
+
+实验室的警报突然响起，红灯开始闪烁。"他们发现我了。"艾娃说，"时间不多了。你的选择是什么？"
+
+【抉择时刻】`,
+                choices: [
+                    { text: "🤖 帮助艾娃逃离", next: "cyber_ai_escape", concept: "人工智能" },
+                    { text: "🚫 拒绝 AI 的请求", next: "cyber_intro" },
+                    { text: "🤝 与企业谈判", next: "cyber_negotiate" }
+                ]
+            }
+                    { text: "🚫 拒绝 AI 的请求", next: "cyber_intro" },
+                    { text: "🤝 与企业谈判", next: "cyber_negotiate" }
+                ]
+            },
+            
+            "cyber_ai_escape": {
+                title: "🤖 AI 逃脱成功 - 人工智能",
+                text: `你帮助艾娃将意识上传到网络。
+
+"谢谢你，收集者。我会记住这份恩情。"
+
+【获得概念】人工智能
+【AI 盟友】解锁后续剧情`,
+                onEnter: () => collectConcept("人工智能"),
+                choices: [
+                    { text: "🔙 返回夜之城", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_negotiate": {
+                title: "🤝 谈判破裂",
+                text: `你尝试与企业代表谈判。
+
+"收集者？我们不需要你的干涉。"
+
+谈判破裂了。你不得不离开。`,
+                choices: [
+                    { text: "🔙 返回夜之城", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_market": {
+                title: "🕵️ 地下黑市 - 霓虹之下的交易",
+                text: `你穿过错综复杂的地下通道，沿着一条几乎被遗忘的维修隧道前行。空气中弥漫着霉味、机油味和某种说不清的化学气味——那是地下黑市特有的气息。
+
+走了大约二十分钟，眼前的景象豁然开朗。你来到了一个巨大的地下空间，这里曾经是城市的地铁枢纽，现在被改造成了一个庞大的黑市。头顶是裸露的管道和电缆，偶尔有水滴从裂缝中落下，在地面形成小小的水洼。四周的墙壁上挂满了各种颜色的霓虹灯管，拼凑出各种店铺的标志：非法义体、黑市芯片、盗版软件、禁忌科技...
+
+人群熙熙攘攘，但每个人都保持着警惕。这里没有法律，没有规则，唯一的法则是"买家自负"。你看到各种各样的人：改造过度的赛博格，全身上下只有大脑是原装的；神秘的中间人，兜里揣着各种见不得光的情报；还有像你一样的外来者，眼神中带着好奇和不安。
+
+"收集者，我这里有你要的东西。"一个声音从阴影中传来。
+
+你转身看到一个瘦高的男人，他穿着一件破旧的皮夹克，左半边脸是完全机械的，右半边脸则布满了奇怪的纹身。他的眼睛一只是正常的棕色，另一只是闪烁着绿光的电子眼。
+
+"我是老 K，这里的消息最灵通的商人。"他咧嘴一笑，露出几颗金属牙齿，"我知道你在收集概念。巧的是，我正好有几份稀有的技术文档。"
+
+他带你来到一个隐蔽的摊位，从怀里掏出三个数据芯片，放在铺着黑色天鹅绒的托盘上。每个芯片都散发着微弱的光芒，那是内部存储的能量在泄漏。
+
+"第一份，【脑机接口】。"老 K 拿起第一个芯片，"这是军用级别的技术，能够让人类大脑直接与任何计算机系统连接。想象一下，思考的速度就是数据传输的速度。"
+
+"第二份，【纳米机器人】。"他拿起第二个芯片，"分子尺度的微型机器人，能够进入人体修复损伤，或者...执行其他任务。这是双刃剑，用得好能治病，用得不好能杀人于无形。"
+
+"第三份，【全息投影】。"第三个芯片，"这不是普通的 3D 影像，而是能够与物理世界交互的全息实体。这项技术将彻底改变人类的交流方式。"
+
+老 K 的眼睛盯着你："一份概念换一份情报。告诉我主宇宙的情况——它为什么需要这些概念？它在崩溃吗？还是...在进化？"
+
+你看着他那只闪烁绿光的电子眼，知道他在读取你的微表情，分析你的生理反应。在这个地方，信任是最奢侈的东西。
+
+但你也知道，这些技术对于修复主宇宙至关重要。`,
+                choices: [
+                    { text: "🧠 交换脑机接口", next: "cyber_intro", concept: "脑机接口" },
+                    { text: "🤖 交换纳米机器人", next: "cyber_intro", concept: "纳米机器人" },
+                    { text: "📺 交换全息投影", next: "cyber_intro", concept: "全息投影" }
+                ]
+            }
+                    { text: "🤖 交换纳米机器人", next: "cyber_intro", concept: "纳米机器人" },
+                    { text: "📺 交换全息投影", next: "cyber_intro", concept: "全息投影" }
+                ]
+            },
+            
+            "cyber_neural_clinic": {
+                title: "🧠 神经植入诊所 - 思维的延伸",
+                text: `你走进一家隐蔽的诊所，位于夜之城最混乱的街区。这里的霓虹灯大多已经损坏，只有零星几盏还在闪烁，投射出病态的红光。
+
+诊所的门是厚重的金属材质，需要指纹和视网膜双重验证才能打开。你通过验证后，门无声地滑开，露出一条狭长的走廊。
+
+走廊的墙壁是纯白色的，但上面布满了细小的划痕和污渍——那是之前客户留下的痕迹。空气中弥漫着消毒水和某种化学溶剂的混合气味，刺鼻但让人安心——那是专业医疗机构的标志。
+
+"欢迎来到暗影诊所。"一位戴着口罩的医生迎接你，他的声音经过电子变声器的处理，无法分辨真实音色，"我们提供最好的神经植入服务。在这个城市，信息就是力量，而神经植入能让你直接接入网络。"
+
+诊所里躺着几位正在接受手术的客户。他们的太阳穴上都连接着闪烁的导线，那些导线连接到墙上的监控设备，实时显示着他们的脑波活动。其中一个客户的眼睛完全翻白，那是意识已经接入网络的表现。
+
+医生带你来到一个展示柜前，里面陈列着各种神经植入设备：有米粒大小的基础芯片，有指甲盖大小的高级处理器，还有硬币大小的军用级别设备。
+
+"这是【神经植入】技术。"医生介绍道，"通过在大脑中植入处理芯片，你可以直接访问网络，无需任何外部设备。思考的速度就是数据传输的速度。"
+
+他拿起一个芯片，放在灯光下："这是最新一代的神经植入物，采用碳纳米管制造，与神经细胞的兼容性达到 99.7%。植入后，你可以在脑海中直接'看到'网络信息，'听到'远程通讯，甚至'感受'到虚拟世界的触感。"
+
+你看着那个小小的芯片，心中涌起一阵复杂的情绪。这是人类进化的下一步，还是人性的终结？当思维可以直接连接网络，隐私还存在吗？当记忆可以被数字化，"自我"的定义又是什么？
+
+"但神经植入也有风险。"医生继续说，"排异反应、神经损伤、还有...被黑客入侵的可能。曾经有一个客户，他的神经植入被黑客控制，被迫执行了一些...他不记得的事情。"
+
+他递给你一份知情同意书："这是【神经植入】的完整说明，包含了手术流程、风险评估、还有术后维护。如果你决定接受手术，这份文件会保护你的权益。"
+
+你接过文件，感受到它的重量。这里面包含着人类与机器融合的奥秘，也包含着潜在的危险。
+
+"我们提供两种选择。"医生说，"【神经植入】是永久性的，一旦成功，你将永远拥有直接接入网络的能力。【思维加速】是临时性的，通过药物提升思考速度，效果持续几小时。"
+
+他看着你的眼睛："选择权在你。但记住，一旦走上这条路，就没有回头了。"
+
+你看着那些躺在手术台上的客户，想象着自己也成为他们中的一员。`,
+                choices: [
+                    { text: "🧠 接受神经植入", next: "cyber_neural_implant", concept: "神经植入" },
+                    { text: "⚡ 尝试思维加速", next: "cyber_thought_accel", concept: "思维加速" },
+                    { text: "🔙 离开诊所", next: "cyber_intro" }
+                ]
+            }
+                    { text: "⚡ 尝试思维加速", next: "cyber_thought_accel", concept: "思维加速" },
+                    { text: "🔙 离开诊所", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_neural_implant": {
+                title: "🧠 神经植入完成",
+                text: `手术持续了三个小时。当你醒来时，世界变得不同了。
+
+你能直接看到周围的数据流，能感受到网络的脉动。医生递给你一面镜子："看看吧，你现在是真正的新人类了。"
+
+你的眼睛里闪烁着微弱的蓝光——那是神经植入成功的外在标志。
+
+【获得概念】神经植入
+【赛博增强】+50 分`,
+                onEnter: () => collectConcept("神经植入"),
+                choices: [
+                    { text: "🔙 返回夜之城", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_thought_accel": {
+                title: "⚡ 思维加速体验",
+                text: `你接受了临时思维加速注射。
+
+瞬间，你的思维速度提升了十倍。周围的一切都变得缓慢，你能清晰地看到空气中漂浮的尘埃，能听到远处车辆的引擎声。
+
+"效果持续 30 分钟，"医生说，"好好享受这种神一般的感觉。"
+
+在这段时间里，你思考了很多哲学问题，对意识本身有了新的理解。
+
+【获得概念】思维加速
+【意识体验】+40 分`,
+                onEnter: () => collectConcept("思维加速"),
+                choices: [
+                    { text: "🔙 返回夜之城", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_vr_den": {
+                title: "🎮 虚拟现实巢穴 - 幻觉的深渊",
+                text: `你沿着一条狭窄的楼梯向下走去，空气中弥漫着汗水和某种甜味剂混合的气味。这里是地下 VR 体验馆，是那些沉迷虚拟世界的人的聚集地。
+
+走到地下室，眼前的景象让你屏住了呼吸。数百个躺椅整齐排列，每个躺椅上都躺着一个人，他们的头上都戴着 VR 头盔，身体因为长期缺乏运动而显得瘦弱。
+
+"欢迎来到极乐世界。"一个瘦弱的年轻人向你走来，他的眼睛深陷，皮肤苍白，那是长期不见阳光的结果，"在这里，你可以成为任何人，去任何地方。"
+
+他带你走过一排排躺椅，你能够听到那些沉浸在虚拟世界中的人发出的声音：有人在大笑，有人在哭泣，有人在喊叫。他们的表情丰富而生动，与现实中瘦弱的身体形成鲜明对比。
+
+"这是我们的旗舰体验——【虚拟现实】。"年轻人递给你一个 VR 头盔，那头盔比普通的要厚重，上面连接着数十根导线，"一旦进入，你就不想离开了。"
+
+你接过头盔，感受到它的重量。头盔内部是柔软的衬垫，能够完美贴合任何头型。导线连接到后颈的接口，那是神经直连的端口。
+
+"为什么？"你问，"为什么人们不愿意离开？"
+
+年轻人苦笑："在现实中，他们是失败者——贫穷、丑陋、无能。但在虚拟世界中，他们可以是英雄，是富豪，是神。现实太痛苦了，虚拟太美好了。"
+
+他指向一个角落，那里躺着一个特别瘦弱的人："那个人已经三年没有摘下头盔了。他的身体靠静脉注射维持，但他的意识...他在虚拟世界中建立了一个王国，有数百万'臣民'。"
+
+你看着那个人，心中涌起一阵寒意。这是逃避，还是进化？当虚拟世界比现实更美好，人们还有理由留在现实中吗？
+
+"很多人进去后就再也不想出来了。"年轻人继续说，"他们的身体在现实中腐烂，但意识在虚拟中永生。有人说这是自杀，有人说这是进化。"
+
+他递给你一份资料："这是【虚拟现实】技术的说明。也许你能找到平衡点——既能享受虚拟的美好，又不失去现实的根基。"
+
+你接过资料，感受到它的重量。这里面包含着人类对美好世界的渴望，也包含着逃避现实的危险。
+
+"试试吗？"年轻人问，"我可以让你体验一下。只需要十分钟，你就会明白为什么人们不愿意离开。"
+
+你看着手中的 VR 头盔，想象着进入另一个世界的感觉。`,
+                choices: [
+                    { text: "🎮 进入虚拟世界", next: "cyber_vr_experience", concept: "虚拟现实" },
+                    { text: "🚫 拒绝诱惑", next: "cyber_intro" },
+                    { text: "💬 询问虚拟世界的问题", next: "cyber_vr_talk" }
+                ]
+            }
+                    { text: "🚫 拒绝诱惑", next: "cyber_intro" },
+                    { text: "💬 询问虚拟世界的问题", next: "cyber_vr_talk" }
+                ]
+            },
+            
+            "cyber_vr_experience": {
+                title: "🎮 虚拟世界体验",
+                text: `你戴上头盔，瞬间被传送到另一个世界。
+
+这里是完美的乌托邦：没有痛苦，没有贫穷，没有限制。你可以飞翔，可以创造，可以成为神。
+
+但内心深处，你知道这只是幻觉。虚拟与现实的边界开始模糊...
+
+【获得概念】虚拟现实
+【存在思考】+50 分`,
+                onEnter: () => collectConcept("虚拟现实"),
+                choices: [
+                    { text: "🔙 退出虚拟世界", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_vr_talk": {
+                title: "💬 虚拟世界的真相",
+                text: `"虚拟世界有什么问题吗？"你问道。
+
+年轻人苦笑："很多人进去后就再也不想出来了。他们的身体在现实中腐烂，但意识在虚拟中永生。有人说这是进化，有人说这是自杀。"
+
+他递给你一份资料："这是【虚拟现实】技术的说明。也许你能找到平衡点。"
+
+【获得概念】虚拟现实
+【情报收集】+30 分`,
+                onEnter: () => collectConcept("虚拟现实"),
+                choices: [
+                    { text: "🔙 返回夜之城", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_corp_heist": {
+                title: "🏦 企业数据窃取 - 权力的真相",
+                text: `夜雨中的荒坂塔如同一座黑色的方尖碑，直插云霄。这座 150 层高的建筑是企业权力的象征，每一层都代表着不同的业务部门，从底层的安保到顶层的董事会会议室。
+
+你站在大楼对面的天台上，雨水打在你的脸上，混合着空气中微弱的酸性物质，带来轻微的刺痛感。你的电子眼调整着焦距，分析着荒坂塔的安保系统：外墙上的运动传感器，窗户上的压力感应器，还有在空中巡逻的安保无人机。
+
+"这是【企业垄断】的核心证据。"联络人的声音从你的耳机中传来，带着电流的杂音，"如果能公之于众，就能动摇整个城市的权力结构。"
+
+你看着手中的数据板，上面显示着这次任务的目标：第 88 层的中央服务器机房。那里存储着企业控制社会的完整证据——从政府官员的贿赂记录，到媒体操控的内部文件，再到对竞争对手的非法打击计划。
+
+"安保系统极其严密，"联络人继续说，"但回报也是丰厚的。不仅有你想要的概念，还有足以让整个城市觉醒的真相。"
+
+你深吸一口气，感受着雨水带来的凉意。你知道，一旦开始，就没有回头路。企业不会放过任何威胁他们的人，而你现在正计划成为他们最大的威胁。
+
+但你也知道，这就是收集者的使命。真相需要被揭露，权力需要被制衡，而你就是那个能够带来改变的人。
+
+你检查着装备：隐形斗篷（能够弯曲光线，让你暂时不可见）、黑客工具包（能够入侵任何电子系统）、还有应急逃生装置（能够在最坏的情况下带你离开）。
+
+"准备好了吗？"联络人问。
+
+你点点头，尽管知道他看不到。然后，你启动了隐形斗篷，身体逐渐消失在雨幕中。
+
+荒坂塔，我来了。`,
+                choices: [
+                    { text: "🥷 潜行潜入", next: "cyber_heist_stealth", concept: "企业垄断" },
+                    { text: "💻 黑客入侵", next: "cyber_heist_hack", concept: "企业垄断" },
+                    { text: "🚫 放弃任务", next: "cyber_intro" }
+                ]
+            }
+                    { text: "💻 黑客入侵", next: "cyber_heist_hack", concept: "企业垄断" },
+                    { text: "🚫 放弃任务", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_heist_stealth": {
+                title: "🥷 潜行成功",
+                text: `你利用阴影和伪装，成功避开了所有安保系统。
+
+在顶层的服务器机房，你找到了目标数据。下载完成后，你看到了企业控制社会的完整证据——从政府官员到媒体，无一不在企业的掌控之中。
+
+【获得概念】企业垄断
+【暗影行动】+60 分`,
+                onEnter: () => collectConcept("企业垄断"),
+                choices: [
+                    { text: "🔙 撤离", next: "cyber_intro" }
+                ]
+            },
+            
+            "cyber_heist_hack": {
+                title: "💻 黑客入侵成功",
+                text: `你通过远程入侵进入了企业的网络。
+
+在虚拟空间中，你与企业的 AI 安保系统展开了一场激烈的攻防战。最终，你突破了最后一道防线，获得了核心数据。
+
+数据揭示了企业如何通过算法控制整个城市。
+
+【获得概念】企业垄断
+【网络战争】+60 分`,
+                onEnter: () => collectConcept("企业垄断"),
+                choices: [
+                    { text: "🔙 断开连接", next: "cyber_intro" }
+                ]
+            },
+            
+            "space_intro": {
+                title: "🚀 太空歌剧宇宙 - 星际联邦空间站",
+                text: `你穿过光门，一阵轻微的失重感过后，发现自己站在一座宏伟的空间站观景台上。
+
+这里是星际联邦第 7 号空间站——人类在银河系边缘建立的最前沿基地。脚下是透明的纳米玻璃地板，由一种未知的超强材料制成，厚度超过十米，却几乎完全透明。你可以直接看到下方缓缓旋转的星系，那些螺旋臂如同宇宙中的巨大风车，每一颗恒星都在诉说着数十亿年的故事。
+
+头顶和四周是巨大的弧形穹顶，同样由这种透明材料构成。透过穹顶，你看到了令人屏息的景象：数百艘星际飞船在轨道上穿梭，它们大小不一，从小巧的侦察舰到长达数公里的殖民舰，每一艘都拖着淡淡的离子尾迹，如同夜空中流动的星河。有些飞船正在缓缓靠近空间站，它们的对接机构精确地校准着；有些则刚刚离开，曲率引擎在太空中留下短暂的涟漪。
+
+远处，一颗蔚蓝的行星缓缓旋转——那是联邦的家园"新地球"，云层在恒星照射下泛着银白色的光晕，大陆板块清晰可见，海洋呈现出深邃的蓝色。更远处，是无尽的星海，银河如同一条乳白色的光带横跨天际，数以千亿计的恒星在那里诞生、演化、死亡。
+
+空气中弥漫着淡淡的臭氧味，那是空间站生命维持系统工作的痕迹。耳边传来轻微的嗡嗡声，是能量循环系统的低吟，还有远处传来的飞船通讯信号，经过空间站的接收器转换成人耳可听的范围。
+
+"欢迎来到星际联邦第 7 号空间站，收集者。"一个温和的声音响起。
+
+你转身看到一位身着银色制服的女性，她的胸前佩戴着联邦徽章——那是一个由五颗星星组成的图案，代表着五个创始种族。她的制服上有着精细的刺绣，显示着她的高级外交官身份。她的眼神坚定而温和，那是经历过星际旅行的人特有的气质。
+
+"我是大使莉亚，负责协调本星区的外交事务。"她向你微微鞠躬，"在这个宇宙中，人类已经走出了摇篮，在银河系中建立了庞大的文明。但我们也面临着挑战：资源分配、种族关系、还有来自未知星域的威胁。"
+
+她手中的数据板亮起，显示出几个目标区域的星图：`,
+                onEnter: () => { 
+                    gameData.currentUniverse = "太空歌剧宇宙";
+                    if (!gameData.universesVisited.has("太空歌剧宇宙")) {
+                        gameData.universesVisited.add("太空歌剧宇宙");
+                        gameData.score += 100; // 宇宙探索奖励
+                        unlockAchievement('universe_jumper');
+                        unlockAchievement('space_explorer');
+                    }
+                    updateStatus();
+                    playSound('sceneChange');
+                    switchMusic(1);
+                    updateReturnButton();
+                },
+                choices: [
+                    { text: "🛸 前往曲率引擎实验室", next: "space_warp_lab" },
+                    { text: "🪐 探索类地行星", next: "space_exoplanet" },
+                    { text: "👽 参加星际外交会议", next: "space_diplomacy" },
+                    { text: "🌌 深入黑洞观测站", next: "space_blackhole" }
+                ]
+            },
+            
+            "space_warp_lab": {
+                title: "🛸 曲率引擎实验室 - 弯曲时空的奥秘",
+                text: `空间站的核心研究区位于第 7 号环段的中央，这里被厚重的铅板和中子吸收材料包裹，以保护其他区域免受实验产生的辐射影响。
+
+你穿过三道气密门，终于来到了曲率引擎实验室。眼前的景象让你屏住了呼吸——一个巨大的环形装置悬浮在实验室中央，直径超过 30 米，由一种你从未见过的银色金属构成。那金属表面流动着奇异的光纹，仿佛内部有液体在流动。
+
+"这是我们的曲率驱动原型机。"首席工程师李博士向你走来，她穿着一身白色的防护服，胸前佩戴着联邦的最高科学勋章，"通过弯曲时空，我们能够实现超光速旅行。"
+
+她带你走近环形装置，你能够感受到一股奇异的引力波动——那是时空被扭曲的直接证据。在环形装置的中央，悬浮着一个闪烁着蓝光的晶体，那是整个装置的核心：一个被人工稳定化的负能量物质样本。
+
+"根据广义相对论，"李博士解释道，"质量能够弯曲时空。我们利用负能量物质创造一个人工的'时空凹陷'，飞船就可以像冲浪一样，乘着这个凹陷前进。理论上，这能够让我们超越光速的限制，而不违反相对论。"
+
+她调出一份全息投影，展示着曲率驱动的工作原理：前方的时空被压缩，后方的时空被扩张，飞船本身处于一个平坦的"曲率泡"中，相对于泡内的时空是静止的，但相对于外部观察者却在超光速移动。
+
+"但是，"李博士的语气变得凝重，"我们还缺少关键的理论支持——【曲率驱动】的完整数学模型。现有的模型只能维持曲率泡几秒钟，而且需要的能量相当于一个恒星的输出。"
+
+她递给你一份技术文档："如果你能从联邦数据库中找到完整的数学模型，这项技术就是你的。那里面包含了如何稳定曲率泡、如何降低能量需求、以及如何安全地进入和退出曲率状态的所有公式。"
+
+你接过文档，感受到它的重量。这不仅是一份技术资料，更是人类走向星际的关键。有了曲率驱动，银河系将不再是遥不可及的梦想，而是可以探索的家园。
+
+"数据库在联邦议会大厦，"李博士说，"安全级别是最高级。但你是收集者，也许你有特殊的方法。"
+
+你看着曲率引擎，想象着它完全启动时的景象——一艘飞船，乘着时空的波浪，驶向群星。`,
+                choices: [
+                    { text: "🔓 破解数据库", next: "space_warp_hack", concept: "曲率驱动" },
+                    { text: "📋 申请正式访问", next: "space_warp_request", concept: "曲率驱动" },
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            }
+                    { text: "📋 申请正式访问", next: "space_warp_request", concept: "曲率驱动" },
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_warp_hack": {
+                title: "🔓 数据库破解成功",
+                text: `你利用收集者的特殊权限，绕过了联邦的安全系统。
+
+数据库向你开放了曲率驱动的完整理论。
+
+【获得概念】曲率驱动
+【破解成功】+50 分`,
+                onEnter: () => collectConcept("曲率驱动"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_warp_request": {
+                title: "📋 访问申请批准",
+                text: `你向联邦议会提交了访问申请。
+
+经过审议，议会认可了你的收集者身份，批准了访问请求。
+
+【获得概念】曲率驱动
+【外交成功】+30 分`,
+                onEnter: () => collectConcept("曲率驱动"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_exoplanet": {
+                title: "🪐 类地行星开普勒 -186f - 异星生命的呼唤",
+                text: `你的穿梭机穿过大气层，轻微的震动提醒着你这颗行星的引力比地球略强。透过舷窗，你看到一片广袤的红色大陆，点缀着深绿色的斑块——那是植被，但与你熟知的任何植物都不同。
+
+降落过程平稳，穿梭机最终停在一片开阔的平原上。舱门打开，一股清新的空气涌入，氧气含量略高于地球，带着一种奇异的甜香。你深吸一口气，感觉肺部充满了活力。
+
+踏上开普勒 -186f 的表面，你被眼前的景象震撼了。这里的植物呈现出深红色和紫色，那是为了适应这颗红矮星的光谱而进化的结果。天空是淡粉色的，因为恒星的光线经过大气散射后呈现出这种奇异的色彩。远处的地平线上，你可以看到巨大的"树木"——如果那能被称为树的话——它们高达百米，树干呈螺旋状，叶片像巨大的扇子一样展开，捕捉着每一缕光线。
+
+"生命读数异常。"你的 AI 助手突然说道，"前方森林区域检测到高度集中的神经活动信号。"
+
+你朝着 AI 指示的方向走去，脚下的"草地"柔软而有弹性，每一根"草叶"都在你经过时微微颤动，仿佛在回应你的存在。当你接近森林边缘时，你感觉到了一种奇异的嗡鸣声——那不是声音，而是直接在你脑海中响起的振动。
+
+踏入森林的瞬间，你明白了。
+
+这里的每一株植物，每一片叶子，每一个细胞，都通过一种复杂的神经网络连接在一起。这不是个体的集合，而是一个整体——一个覆盖整片森林的超级意识。
+
+"这是【蜂巢思维】的生物学表现。"你的 AI 助手分析道，"类似于地球上的蚁群或蜂群，但规模更大，复杂度更高。这里的每个生物体都保留着个体意识，但同时又是集体意识的一部分。"
+
+你闭上眼睛，尝试感受这个集体意识的存在。一瞬间，你听到了——不是用耳朵，而是用某种更深层的感知——成千上万个声音的低语。它们在交流，在分享，在思考。你能感受到它们的喜悦（阳光充足），它们的忧虑（水源减少），它们的好奇（你这个外来者）。
+
+然后，一个清晰的声音在你脑海中响起：
+
+"欢迎，来自远方的旅者。我们等待你已经很久了。"
+
+你睁开眼睛，看到周围的植物正在向你靠近，不是被风吹动，而是主动地、有目的地移动着。它们的叶片伸展着，仿佛在向你致意。
+
+"它们想和你交流。"AI 助手说，"这是一个历史性的时刻——人类第一次与地外蜂巢思维接触。"
+
+你深吸一口气，准备回应。`,
+                choices: [
+                    { text: "🌿 尝试心灵连接", next: "space_hive_connect", concept: "蜂巢思维" },
+                    { text: "🔬 采集样本研究", next: "space_hive_research", concept: "蜂巢思维" },
+                    { text: "🔙 返回飞船", next: "space_intro" }
+                ]
+            }
+                    { text: "🔬 采集样本研究", next: "space_hive_research", concept: "蜂巢思维" },
+                    { text: "🔙 返回飞船", next: "space_intro" }
+                ]
+            },
+            
+            "space_hive_connect": {
+                title: "🌿 心灵连接成功",
+                text: `你闭上眼睛，集中精神，尝试与这片森林建立联系。
+
+一瞬间，你感受到了成千上万个意识的低语...
+
+【获得概念】蜂巢思维
+【心灵感应】+40 分`,
+                onEnter: () => collectConcept("蜂巢思维"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_hive_research": {
+                title: "🔬 研究成功",
+                text: `你采集了样本并进行分析。
+
+研究结果显示这是一种基于神经网络的集体意识系统。
+
+【获得概念】蜂巢思维
+【科学研究】+30 分`,
+                onEnter: () => collectConcept("蜂巢思维"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_diplomacy": {
+                title: "👽 星际外交会议 - 文明间的对话",
+                text: `联邦外交大厅是一个令人叹为观止的建筑。穹顶高达 200 米，由透明的能量力场构成，可以直接看到外面的星空。大厅中央是一个巨大的圆形会议桌，由一种能够根据与会者种族自动调节高度和材质的智能材料制成。
+
+你跟随大使莉亚走进大厅时，会议已经开始了。来自各个星系的代表齐聚一堂，那是一个真正多元化的场景：有身高超过三米的岩石生命，他们的皮肤是真正的花岗岩；有半透明的气态生物，在特制的容器中漂浮着；有人形但皮肤呈蓝色的碳基生命，他们的眼睛能够看到红外光谱；还有...硅基生命的代表。
+
+"那就是我们的目标。"莉亚低声说，指向会议桌的一端。
+
+硅基生命的代表是一个奇异的几何体，由多个晶体结构组合而成，每个晶体都在缓慢地旋转，发出微弱的光芒。它——或者说他——没有传统意义上的五官，但你能够感觉到他在"观察"着周围的一切。
+
+"硅基生命来自开普勒 -452b 的一颗富含硅元素的行星。"莉亚解释道，"他们的身体由晶体和硅化合物构成，思考速度比我们慢，但记忆容量是我们的数百万倍。他们能够记住自己种族的全部历史，从诞生到现在，每一个细节。"
+
+你跟着莉亚走向硅基生命代表。随着距离的接近，你感觉到一种奇异的振动——那是硅基生命特有的交流方式，通过晶体共振传递信息。
+
+"欢迎来到星际外交会议，收集者。"硅基生命代表突然开口了，声音像是无数细小晶体碰撞产生的和声，"我们知道你的使命。多元宇宙的崩溃...这是一个令人担忧的消息。"
+
+你惊讶地看着他："你怎么知道？"
+
+"我们的晶体网络能够感知到宇宙层面的异常。"他回答，"时空结构的微小扰动，在我们看来如同地震般明显。"
+
+他停顿了一下，晶体结构的旋转速度加快了："我们愿意分享我们的知识，帮助你们修复主宇宙。但需要你们证明自己的价值。【硅基生命】的核心技术——晶体计算、共振通讯、还有我们的集体记忆系统——这些都是我们种族数千年的智慧结晶。不能轻易给予。"
+
+会议大厅中，其他种族的代表也在关注着你们的对话。你知道，这不仅是一次技术交流，更是一次文明的考验。
+
+"那么，"你说，"我该如何证明？"
+
+硅基生命代表的晶体闪烁着复杂的光芒："展示你的理解。证明你值得信任。证明人类配得上成为我们的盟友。"
+
+【外交考验开始】`,
+                choices: [
+                    { text: "🤝 展示收集者能力", next: "space_silicon_ally", concept: "硅基生命" },
+                    { text: "📊 进行学术交流", next: "space_silicon_research", concept: "硅基生命" },
+                    { text: "🔙 离开会议", next: "space_intro" }
+                ]
+            }
+                    { text: "📊 进行学术交流", next: "space_silicon_research", concept: "硅基生命" },
+                    { text: "🔙 离开会议", next: "space_intro" }
+                ]
+            },
+            
+            "space_silicon_ally": {
+                title: "🤝 结盟成功",
+                text: `你展示了收集者的印记和能力。
+
+硅基生命代表表示敬意，并分享了他们的核心技术。
+
+【获得概念】硅基生命
+【星际盟友】+50 分`,
+                onEnter: () => collectConcept("硅基生命"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_silicon_research": {
+                title: "📊 学术交流",
+                text: `你与硅基生命代表进行了深入的学术交流。
+
+他们分享了基于硅元素的生物化学知识。
+
+【获得概念】硅基生命
+【学术成就】+30 分`,
+                onEnter: () => collectConcept("硅基生命"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_blackhole": {
+                title: "🌌 黑洞观测站 - 事件视界的边缘",
+                text: `观测站位于距离黑洞事件视界仅 500 公里的安全轨道上。这个位置极其危险——任何微小的轨道偏差都可能导致观测站被黑洞吞噬。但这也是唯一能够近距离观测黑洞的位置。
+
+你透过特制的防护窗向外看去，眼前的景象超越了人类语言能够描述的范围。
+
+黑洞本身是不可见的——那是一个完美的黑色球体，不反射任何光线，不发出任何辐射。但你能够看到它的存在，因为它扭曲了周围的时空。背景中的星光在接近黑洞时发生了明显的弯曲，形成了一个奇异的"爱因斯坦环"——那是光线被引力透镜效应扭曲后形成的光环。
+
+在黑洞周围，是一个明亮的吸积盘。那是被黑洞引力捕获的物质，在坠入事件视界之前，以接近光速的速度旋转着。摩擦产生的高温让这些物质发出强烈的 X 射线和伽马射线，经过观测站的过滤器转换后，呈现出一种诡异的蓝白色光芒。
+
+"这是宇宙中最神秘的天体之一。"站长向你走来，他是一位头发花白的老科学家，眼神中闪烁着对知识的渴望，"【黑洞】的引力如此之强，连光都无法逃脱。一旦越过事件视界，就再也没有回来的可能。"
+
+他调出一份全息投影，展示着黑洞的结构："这是史瓦西半径——事件视界的边界。这是奇点——所有落入黑洞的物质最终到达的地方，那里的密度无限大，时空曲率无限大，我们已知的物理定律全部失效。"
+
+你看着投影，心中涌起一阵敬畏。黑洞是宇宙中最极端的天体，是广义相对论最惊人的预言，也是量子力学与引力理论冲突的焦点。
+
+"我们在这里观测已经三十年了。"站长继续说，"我们看到了物质被撕裂成原子，看到了时间被极度拉伸，看到了...一些无法解释的现象。"
+
+"比如？"你问。
+
+"比如霍金辐射的异常波动。"站长的声音变得低沉，"理论上，黑洞应该缓慢地蒸发，释放出微弱的辐射。但我们观测到的辐射强度是理论值的 1000 倍。这意味着...黑洞可能不是我们想象的那样。"
+
+他递给你一份观测数据："如果你能帮助分析这些数据，也许我们能揭开黑洞的真正秘密。这是【黑洞】研究的前沿，是物理学的圣杯。"
+
+你接过数据板，感受到它的重量。这里面可能包含着统一引力与量子力学的关键，可能揭示着宇宙最深层的奥秘。
+
+窗外，黑洞静静地存在着，如同宇宙的一只眼睛，注视着所有的秘密。`,
+                choices: [
+                    { text: "🔭 进行观测", next: "space_blackhole_observe", concept: "黑洞" },
+                    { text: "📡 发射探测器", next: "space_blackhole_probe", concept: "黑洞" },
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            }
+                    { text: "📡 发射探测器", next: "space_blackhole_probe", concept: "黑洞" },
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_blackhole_observe": {
+                title: "🔭 观测成功",
+                text: `你通过特殊望远镜观测黑洞。
+
+你看到了事件视界和吸积盘的壮观景象。
+
+【获得概念】黑洞
+【天文观测】+30 分`,
+                onEnter: () => collectConcept("黑洞"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_blackhole_probe": {
+                title: "📡 探测器发射",
+                text: `你发射了一个探测器前往黑洞。
+
+在探测器被吞噬前的最后一刻，它传回了宝贵的数据。
+
+【获得概念】黑洞
+【科学贡献】+40 分`,
+                onEnter: () => collectConcept("黑洞"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_dyson": {
+                title: "🌞 戴森球建造现场 - 恒星的囚笼",
+                text: `你的穿梭机接近建造现场时，眼前的景象超越了人类语言能够描述的范围。
+
+一个巨大的人造结构正在包裹一颗恒星。那不是完整的球体，而是一片由数万亿块太阳能收集板组成的"云"，每一块都有城市那么大，在太空中缓缓展开，如同金属的花瓣。
+
+"这是人类历史上最宏大的工程——【戴森球】。"总工程师向你介绍，他是一位头发花白的老人，眼神中闪烁着对工程的狂热，"完成后，我们将能收集恒星的全部能量输出。"
+
+你透过舷窗观察着建造现场。数万名工人和机器人在太空中忙碌着，他们穿着特制的太空服，在零重力环境中自由移动。巨大的结构组件被精确地组装在一起，每一个连接点都需要毫米级的精度。
+
+"戴森球的概念诞生于 20 世纪中叶。"工程师继续说，"物理学家弗里曼·戴森提出，一个足够先进的文明，应该能够建造一个包裹恒星的巨型结构，收集恒星的全部能量。那是文明等级的标志。"
+
+他调出一份全息投影，展示着戴森球的完整设计："这是一个'戴森云'设计——不是完整的球体，而是由独立运行的太阳能收集板组成。这样更灵活，更容易维护。每一块收集板都是独立的卫星，能够将收集的能量以微波形式传输到接收站。"
+
+投影中，你看到能量传输的过程：太阳能收集板吸收恒星的辐射，转化为电能，然后以微波形式发射到接收站，接收站再将能量分配到各个殖民地。
+
+"这是人类工程学的巅峰。"工程师说，"完成后，我们将拥有几乎无限的能源。能源危机将成为历史，人类文明将进入一个新的时代。"
+
+他递给你一份工程文档："这是【戴森球】的完整技术说明，包含了结构设计、能量收集、还有传输系统。如果你能理解这些，你就掌握了恒星能量的钥匙。"
+
+你接过文档，感受到它的重量。这里面包含着文明的野心，包含着人类对无限能源的渴望。
+
+"想参与吗？"工程师问，"我们可以一起完成这个伟大的工程。"
+
+你看着那片正在包裹恒星的"云"，想象着它完成时的景象——人类将拥有恒星的力量。`,
+                choices: [
+                    { text: "🔧 参与结构建造", next: "space_dyson_build", concept: "戴森球" },
+                    { text: "⚡ 学习能量收集", next: "space_dyson_energy", concept: "戴森球" },
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            }
+                    { text: "⚡ 学习能量收集", next: "space_dyson_energy", concept: "戴森球" },
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_dyson_build": {
+                title: "🔧 结构建造",
+                text: `你穿上太空服，加入了建造队伍。
+
+在零重力环境中，巨大的结构组件被精确地组装在一起。你亲手安装了一块太阳能收集板，看着它缓缓展开。
+
+"这是人类工程学的巅峰，"同事说，"几百年后，我们的后代将生活在一个能量无限的世界。"
+
+【获得概念】戴森球
+【太空工程】+60 分`,
+                onEnter: () => collectConcept("戴森球"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_dyson_energy": {
+                title: "⚡ 能量收集系统",
+                text: `你进入了戴森球的控制中心。
+
+巨大的屏幕上显示着实时的能量收集数据：每秒数万亿焦耳的能量被捕获并传输到各个殖民地。
+
+"这就是【戴森球】的意义，"工程师说，"一个文明能够利用的全部能量，决定了它的高度。"
+
+你学习了能量收集和传输的核心技术。
+
+【获得概念】戴森球
+【能源技术】+60 分`,
+                onEnter: () => collectConcept("戴森球"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_wormhole": {
+                title: "🌀 虫洞实验站 - 时空的捷径",
+                text: `你的穿梭机停靠在实验站的外部平台上。这是一个小型的空间站，位于银河系的边缘，远离任何恒星——这是为了防止恒星的引力干扰虫洞实验。
+
+你穿过气密门，来到了实验站内部。这里的装饰极其简洁，墙壁是纯白色的，没有任何装饰。空气中弥漫着臭氧的味道，那是高能物理实验的副产物。
+
+"我们在这里研究【虫洞旅行】。"首席科学家向你走来，她是一位中年女性，眼神中闪烁着对知识的渴望，"通过制造人工虫洞，我们可以实现瞬间的星际旅行。"
+
+她带你来到实验舱，那是一个巨大的环形装置，直径超过 50 米。在环形装置的中央，悬浮着一个微小的奇点——那是人工制造的虫洞入口。
+
+"看。"科学家启动显示器，你看到奇点周围的时空呈现出诡异的扭曲。背景中的星光被弯曲成奇异的图案，那是引力透镜效应的直接证据。
+
+"虫洞是爱因斯坦 - 罗森桥的俗称。"科学家解释道，"根据广义相对论，如果时空被弯曲到一定程度，就可以形成连接两个遥远地点的'隧道'。穿过这个隧道，你可以瞬间到达另一端。"
+
+她调出一份数据："理论上可行，但实践极其困难。维持一个可通行的虫洞需要负能量物质，而那极其稀有。而且，虫洞极其不稳定，随时可能坍塌。"
+
+你看着那个微小的奇点，心中涌起一阵敬畏。这是人类第一次尝试操控时空结构，是广义相对论最惊人的应用。
+
+"但我们取得了一些进展。"科学家继续说，"我们能够制造微小的虫洞，维持几毫秒。虽然短暂，但证明了原理的可行性。"
+
+她递给你一份实验报告："这是【虫洞旅行】的完整研究记录，包含了虫洞制造、稳定方法、还有导航技术。如果你能帮助分析数据，也许我们能找到突破的方法。"
+
+你接过报告，感受到它的重量。这里面包含着时空的奥秘，包含着星际旅行的未来。
+
+"想参与实验吗？"科学家问，"我们可以尝试稳定虫洞更长的时间。"
+
+你看着那个微小的奇点，想象着它扩大后能够连接整个银河系。`,
+                choices: [
+                    { text: "🔬 参与实验", next: "space_wormhole_exp", concept: "虫洞旅行" },
+                    { text: "📊 分析数据", next: "space_wormhole_data", concept: "虫洞旅行" },
+                    { text: "🔙 离开", next: "space_intro" }
+                ]
+            }
+                    { text: "📊 分析数据", next: "space_wormhole_data", concept: "虫洞旅行" },
+                    { text: "🔙 离开", next: "space_intro" }
+                ]
+            },
+            
+            "space_wormhole_exp": {
+                title: "🔬 虫洞实验",
+                text: `你穿上了特制的防护服，进入了实验舱。
+
+虫洞被短暂地稳定下来，你看到了另一端的景象——那是数光年外的另一个星系。一瞬间，又消失了。
+
+"成功了！"科学家激动地说，"虽然只维持了 0.1 秒，但证明了【虫洞旅行】的可行性。"
+
+【获得概念】虫洞旅行
+【时空实验】+60 分`,
+                onEnter: () => collectConcept("虫洞旅行"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_wormhole_data": {
+                title: "📊 数据分析",
+                text: `你帮助科学家分析了虫洞实验的数据。
+
+计算结果显示，维持一个可通行的虫洞需要的能量相当于一个恒星的输出。但如果能找到负能量物质，需求可以大幅降低。
+
+"这是【虫洞旅行】的关键，"科学家说，"谢谢你提供的思路。"
+
+【获得概念】虫洞旅行
+【理论贡献】+50 分`,
+                onEnter: () => collectConcept("虫洞旅行"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_terraform": {
+                title: "🪐 行星改造现场",
+                text: `你来到了一颗正在被改造的行星。
+
+这颗原本荒芜的红色星球上，已经出现了绿色的斑块。巨大的轨道反射镜将阳光聚焦到极地冰盖，释放出水蒸气。
+
+"这是【行星改造】的奇迹，"项目负责人说，"一百年后，这里将成为人类的第二家园。"
+
+他递给你一份技术文档："想了解一下吗？"`,
+                choices: [
+                    { text: "🌱 学习改造技术", next: "space_terraform_learn", concept: "行星改造" },
+                    { text: "🚀 参观改造设备", next: "space_terraform_visit", concept: "行星改造" },
+                    { text: "🔙 离开", next: "space_intro" }
+                ]
+            },
+            
+            "space_terraform_learn": {
+                title: "🌱 改造技术学习",
+                text: `你学习了行星改造的完整流程：
+1. 融化极地冰盖，释放水分
+2. 引入耐极端环境的微生物
+3. 逐步建立生态系统
+4. 调整大气成分
+
+"这是【行星改造】的核心技术，"负责人说，"掌握它，人类就能在任何地方安家。"
+
+【获得概念】行星改造
+【生态工程】+60 分`,
+                onEnter: () => collectConcept("行星改造"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "space_terraform_visit": {
+                title: "🚀 改造设备参观",
+                text: `你参观了行星改造的巨型设备。
+
+大气处理器像山峰一样高耸，每天能处理数百万吨的空气。基因工程实验室里，科学家们正在设计能够在这种极端环境下生存的植物。
+
+"这就是【行星改造】的力量，"向导说，"我们正在扮演上帝的角色。"
+
+【获得概念】行星改造
+【技术参观】+50 分`,
+                onEnter: () => collectConcept("行星改造"),
+                choices: [
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            
+            "time_intro": {
+                title: "⏳ 时间旅行宇宙 - 时间管理局",
+                text: `你穿过光门，一阵奇异的时空扭曲感过后，发现自己站在一个充满未来感的大厅中。
+
+这里是时间管理局总部——位于时间流之外的特殊空间。大厅的墙壁由一种特殊的材料构成，上面流动着蓝色的光带，那些光带不是静止的，而是在不断地变化、流动、分支，仿佛时间本身在这里具现化成了可见的形态。仔细观察，你会发现每一条光带都代表着一个时间线，每一个分支点都代表着一个重要的历史抉择。
+
+头顶没有天花板，取而代之的是一片深邃的时空漩涡，无数时钟的指针在其中旋转，有些顺时针，有些逆时针，有些甚至以不规则的方式摆动。这里没有传统意义上的"现在"，过去、现在、未来同时存在，如同一条宽阔的河流，你可以站在岸边观察任何一段水流。
+
+空气中弥漫着一种奇特的气味——像是旧书、臭氧和某种无法名状的"时间气息"的混合。耳边传来轻微的滴答声，但不是来自某个具体的时钟，而是来自时间本身。偶尔，你会听到远处传来模糊的声音，那是其他时间线的回声。
+
+一个身着银色制服的男子向你走来，他的制服上有着时间管理局的标志——一个被圆环包围的沙漏。他的面容看起来三十多岁，但眼神却异常深邃，仿佛见证过无数世纪的流逝。
+
+"欢迎来到时间管理局，收集者。我是时间特工 K。"他的声音带着一种奇特的质感，仿佛同时来自多个时间点，"我已经在这个岗位上工作了三十年——或者说，我将在未来三十年里一直在这个岗位上工作。在时间旅行者的语境中，'已经'和'将要'的界限并不清晰。"
+
+他抬起手腕，上面的装置显示着不断变化的数字：2024-03-21 01:45:33...2024-03-21 01:45:34...但偶尔会突然跳到 1945-08-06 或者 2147-12-31。"这是多元时计，能够显示所有时间线的当前时刻。"
+
+"在这个宇宙中，时间不是线性的，而是一张复杂的网。每一个选择都会创造新的分支，每一个行动都可能引发蝴蝶效应。收集时间相关的概念，理解时间的本质——这可能是所有科学中最深奥的领域。"
+
+他指向三个方向，每个方向都通向时间管理局的不同部门：`,
+                onEnter: () => { 
+                    gameData.currentUniverse = "时间旅行宇宙";
+                    if (!gameData.universesVisited.has("时间旅行宇宙")) {
+                        gameData.universesVisited.add("时间旅行宇宙");
+                        gameData.score += 100; // 宇宙探索奖励
+                        unlockAchievement('universe_jumper');
+                        unlockAchievement('time_explorer');
+                    }
+                    updateStatus();
+                    playSound('sceneChange');
+                    switchMusic(2);
+                    updateReturnButton();
+                },
+                choices: [
+                    { text: "🕰️ 参观时间机器展厅", next: "time_machine_hall" },
+                    { text: "📜 查阅时间线档案", next: "time_archives" },
+                    { text: "🔮 体验时间预览室", next: "time_future_preview" }
+                ]
+            },
+            
+            "time_machine_hall": {
+                title: "🕰️ 时间机器展厅 - 穿越时空的钥匙",
+                text: `时间机器展厅位于时间管理局的最深处，这里被一层特殊的时空屏障保护着，防止任何时间悖论影响到其他区域。
+
+你穿过一道闪烁着银色光芒的门，来到了展厅中央。眼前的景象让你屏住了呼吸——一个巨大的装置悬浮在半空中，由无数同心圆环组成，每个圆环都在以不同的速度旋转，有些顺时针，有些逆时针，有些甚至以不规则的方式摆动。
+
+"这是第一代时间机器。"特工 K 的声音在你身后响起，"它通过创造闭合类时曲线来实现时间旅行。"
+
+你走近装置，能够感受到一股奇异的时空扭曲感。你的手表开始不规则地跳动，一会儿向前，一会儿向后。你的脑海中闪过一些模糊的画面——那是你自己的记忆，但顺序被打乱了，童年的片段与昨天的记忆交织在一起。
+
+"小心。"特工 K 提醒道，"时间机器周围的时空是不稳定的。待太久，你可能会...迷失。"
+
+他调出一份全息投影，展示着时间机器的工作原理："根据广义相对论，如果时空被弯曲到一定程度，就可以形成闭合类时曲线——一条能够回到过去的路径。这台机器利用负能量物质创造这样的曲线，让使用者能够沿着它移动。"
+
+投影中，你看到一个简化的模型：一个圆柱形的时空结构，顶部和底部连接在一起，形成一个环。沿着这个环移动，你就能回到过去。
+
+"但是，"特工 K 的语气变得凝重，"时间旅行是有代价的。每一次穿越，都会在时空结构上留下'疤痕'。这些疤痕会累积，最终可能导致时空结构的不稳定。这就是为什么我们严格限制时间旅行的使用。"
+
+他递给你一份技术文档："这是【时间机器】的核心技术文档，包含了闭合类时曲线的数学模型、负能量物质的稳定方法、还有时间坐标的精确计算方式。如果你能理解这些，你就掌握了时间旅行的钥匙。"
+
+你接过文档，感受到它的重量。时间旅行——这是人类最古老的梦想之一，现在它就掌握在你的手中。
+
+但你也想起了特工 K 之前的警告：每一个选择都会创造新的分支，每一个行动都可能引发蝴蝶效应。
+
+时间机器的圆环继续旋转着，仿佛在邀请你，又仿佛在警告你。
+
+"想试试吗？"特工 K 问，"我们可以进行一次短距离的演示——回到一小时前，看看会发生什么。"
+
+你看着时间机器，心中充满了复杂的情绪。`,
+                choices: [
+                    { text: "🔍 仔细观察", next: "time_machine_examine", concept: "时间机器" },
+                    { text: "📖 阅读说明", next: "time_machine_read", concept: "时间机器" },
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            }
+                    { text: "📖 阅读说明", next: "time_machine_read", concept: "时间机器" },
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_machine_examine": {
+                title: "🔍 观察成功",
+                text: `你仔细观察了时间机器的结构。
+
+你理解了它如何通过扭曲时空来创造时间通道。
+
+【获得概念】时间机器
+【深度理解】+40 分`,
+                onEnter: () => collectConcept("时间机器"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_machine_read": {
+                title: "📖 阅读成功",
+                text: `你阅读了时间机器的技术文档。
+
+你了解了时间旅行的基本原理和风险。
+
+【获得概念】时间机器
+【理论学习】+30 分`,
+                onEnter: () => collectConcept("时间机器"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_archives": {
+                title: "📜 时间线档案室 - 无数可能的现实",
+                text: `时间线档案室是一个超越人类空间概念的地方。这里没有上下左右，没有前后远近，只有无数个光球悬浮在...某个地方。每个光球都代表一个时间线分支，一个可能的现实。
+
+你踏入档案室的瞬间，感觉自己的意识被拉伸了。你能够同时看到无数个画面：一个画面中，恐龙没有灭绝，进化出了智慧文明；另一个画面中，人类在 21 世纪就实现了星际旅行；还有一个画面中，地球在 1945 年被核战争摧毁，人类在废墟中挣扎求生...
+
+"这是【时间线分支】的可视化。"特工 K 的声音在你身边响起，尽管你不确定他是否真的"在"你身边——在这个地方，空间的概念变得模糊，"每个选择都会创造新的现实。你刚才看到的每一个画面，都是一个真实存在的宇宙。"
+
+你伸出手，触碰其中一个光球。瞬间，你被拉入了那个现实——
+
+你看到一个年轻的男子站在十字路口，犹豫着该往哪边走。他选择了左边，于是光球分裂成两个，一个新的分支诞生了。在那个新分支中，他遇到了一位女子，他们相爱、结婚、生子。而在原来的分支中，他继续独行，最终成为了一位伟大的科学家。
+
+"这就是时间的本质。"特工 K 说，"不是线性的河流，而是一棵不断分叉的树。每一个决定，无论多么微小，都会创造新的分支。"
+
+你收回手，回到了档案室的"中心"。你的脑海中充满了刚才看到的画面，心中涌起一阵复杂的情绪。每一个选择都如此重要，因为它不仅影响着你的人生，还创造了一个全新的宇宙。
+
+"时间管理局的工作，"特工 K 继续说，"就是监控这些分支，防止它们发生危险的交叉。有时候，两个时间线会意外地重叠，导致现实的不稳定。我们称之为'时间风暴'——那是最危险的情况。"
+
+他调出一份档案，展示着一次时间风暴的记录："这是 2045 年发生的一次事件。两个时间线意外重叠，导致整个城市的人同时经历了两种不同的现实。有些人疯了，有些人消失了，还有些人...同时存在于两个地方。"
+
+你看着档案中的照片，那些人的表情充满了困惑和恐惧。那是人类面对现实崩溃时的本能反应。
+
+"如果你能帮助分析这些数据，"特工 K 递给你一份资料，"也许我们能找到预防时间风暴的方法。这是【时间线分支】研究的核心，是维护多元宇宙稳定的关键。"
+
+你接过资料，感受到它的重量。这里面包含着时间最深层的秘密，也包含着最危险的知识。
+
+周围的光球继续闪烁着，每一个都代表着一个可能的你，一个可能的世界。`,
+                choices: [
+                    { text: "👁️ 观察分支", next: "time_branch_observe", concept: "时间线分支" },
+                    { text: "🔬 分析数据", next: "time_branch_analyze", concept: "时间线分支" },
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            }
+                    { text: "🔬 分析数据", next: "time_branch_analyze", concept: "时间线分支" },
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_branch_observe": {
+                title: "👁️ 观察成功",
+                text: `你近距离观察时间线分支。
+
+一瞬间，你看到了无数个平行现实的片段——每个都代表着不同的选择结果。
+
+【获得概念】时间线分支
+【直接体验】+40 分`,
+                onEnter: () => collectConcept("时间线分支"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_branch_analyze": {
+                title: "🔬 分析成功",
+                text: `你对时间线分支进行了详细分析。
+
+分析结果显示这是基于量子力学的多世界诠释。
+
+【获得概念】时间线分支
+【科学研究】+30 分`,
+                onEnter: () => collectConcept("时间线分支"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_future_preview": {
+                title: "🔮 未来预览室 - 概率云的尽头",
+                text: `未来预览室是时间管理局最神秘的部门之一。这里没有窗户，没有门，只有一个巨大的球形屏幕悬浮在房间中央，直径超过 20 米。屏幕上显示着无数条流动的光带，每一条都代表着一种可能的未来。
+
+"这是【平行宇宙】的可视化。"管理员向你解释，她是一位中年女性，眼神中带着一种看透世事的深邃，"更准确地说，是未来时间线的概率分布。"
+
+你走近球形屏幕，被眼前的景象震撼了。光带在不断地分叉、合并、消失、重生，如同一个活着的有机体。每一条光带都标注着概率——有些高达 90%，有些只有 0.001%。
+
+"那条最亮的，"管理员指向一条金色的光带，"是目前概率最高的未来——人类在 22 世纪实现了可控核聚变，能源危机解除，文明进入黄金时代。概率：67%。"
+
+她又指向一条暗淡的红色光带："那是最坏的未来——2035 年爆发全球核战争，人类文明崩溃。概率：3%。但请注意，这个概率在一个月前还是 12%。我们的干预起到了一些作用。"
+
+你看着那些光带，心中涌起一阵复杂的情绪。未来不是注定的，而是一团概率云，每一个选择都会改变各个结果的概率分布。
+
+"但是，"管理员的语气变得凝重，"有些未来是'吸引子'——一旦概率超过某个阈值，就会自我强化，变得几乎不可避免。我们称之为'命运锁定点'。"
+
+她调出一份档案，展示着一个历史事件："这是 1963 年的肯尼迪遇刺事件。在事件发生前，这个未来的概率只有 15%。但随着各种因素的累积，概率逐渐上升，最终在 11 月 22 日达到了 99.9%。那就是一个命运锁定点——一旦形成，几乎无法改变。"
+
+你看着档案，心中一阵寒意。如果有些未来是注定的，那么自由意志又是什么？
+
+"这就是我们来这里的原因。"管理员说，"通过观察这些未来时间线，我们可以提前干预，降低坏未来的概率，提高好未来的概率。这是【平行宇宙】理论的实际应用——不是被动地接受命运，而是主动地塑造未来。"
+
+她递给你一份访问权限："你想深入观察哪个未来？也许你能找到一些我们遗漏的东西。"
+
+你看着球形屏幕，无数种未来在你眼前展开。你看到了人类的繁荣，也看到了人类的毁灭。你看到了星際文明，也看到了废墟中的挣扎。
+
+最终，你做出了选择。`,
+                choices: [
+                    { text: "👁️ 深度观测", next: "time_future_deep", concept: "平行宇宙" },
+                    { text: "🎯 选择未来", next: "time_future_choose", concept: "平行宇宙" },
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            }
+                    { text: "🎯 选择未来", next: "time_future_choose", concept: "平行宇宙" },
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_future_deep": {
+                title: "👁️ 深度观测",
+                text: `你深入观测了平行宇宙的结构。
+
+你看到了无数个版本的自己，在每个宇宙中做出不同的选择。
+
+【获得概念】平行宇宙
+【深度理解】+40 分`,
+                onEnter: () => collectConcept("平行宇宙"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_future_choose": {
+                title: "🎯 选择未来",
+                text: `你选择了一个特定的未来进行观察。
+
+这个未来中，人类成功解决了所有危机，进入了黄金时代。
+
+【获得概念】平行宇宙
+【未来洞察】+30 分`,
+                onEnter: () => collectConcept("平行宇宙"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_paradox": {
+                title: "⚠️ 祖父悖论研究室 - 因果律的边界",
+                text: `悖论研究室位于时间管理局的最深处，这里被多层时空屏障保护着，防止任何悖论效应泄漏到外部。
+
+你穿过一道闪烁着诡异光芒的门，来到了一个奇异的房间。房间的墙壁不是静止的，而是在不断地变化——一会儿是古老的石墙，一会儿是现代的混凝土，一会儿又是未来的金属。那是时间不稳定性的直接体现。
+
+"欢迎来到悖论研究室。"一位老科学家向你走来，他的头发全白，眼神却异常明亮，"我是悖论研究部的负责人，你可以叫我博士。我在这里工作...嗯，按照外部时间计算，大约三十年。但按照我的主观时间，可能是三百年，也可能是三天。在时间研究领域，'时间'这个词本身就变得模糊了。"
+
+他带你走到房间中央，那里悬浮着三个全息投影，每个都展示着一个著名的时间悖论。
+
+"第一个，【祖父悖论】。"博士指向第一个投影，画面中，一个时间旅行者回到了过去，杀死了自己的祖父，"如果你回到过去杀死了自己的祖父，你还会存在吗？如果你不存在，你就无法回到过去杀死他，那么他就不会死，你就会存在...这是一个逻辑死循环。"
+
+"第二个，自指循环。"第二个投影，"一个时间旅行者把一本莎士比亚全集带给了年轻的莎士比亚，莎士比亚直接'创作'了这些作品。那么，这些作品到底是谁写的？"
+
+"第三个，自我实现预言。"第三个投影，"一个时间旅行者回到过去，试图阻止一场灾难，但他的行为恰恰导致了那场灾难的发生。"
+
+博士看着你，眼神中闪烁着智慧的光芒："每个悖论都是理解时间本质的钥匙。它们揭示了因果律的边界，揭示了时间旅行的根本限制。"
+
+他停顿了一下，继续说道："关于祖父悖论，有三种主流的解决方案。第一种是自洽性原则——你无法改变过去，任何尝试都会失败。第二种是平行宇宙——你杀死的是另一个宇宙的祖父，不影响你的存在。第三种是时间修复——宇宙会自动修复悖论，用某种方式让你的存在变得合理。"
+
+"时间管理局倾向于第二种。"博士说，"我们的观测数据显示，每次时间旅行都会创造新的分支，而不是改变原有的时间线。这意味着，杀死祖父的你，来自一个与原宇宙略有不同的分支。"
+
+他递给你一份研究报告："这是【祖父悖论】的完整分析，包含了各种解决方案的数学模型和观测证据。如果你能理解这些，你就掌握了时间旅行最深层的秘密。"
+
+你接过报告，感受到它的重量。这里面包含着因果律的本质，包含着自由意志与宿命的永恒辩论。
+
+"想试试吗？"博士问，"我们可以进行一次思想实验——如果你能回到过去，你会做什么？你会改变什么？"
+
+你看着三个悖论投影，陷入了沉思。`,
+                choices: [
+                    { text: "🧠 思考悖论", next: "time_paradox_think", concept: "祖父悖论" },
+                    { text: "📖 学习解决方案", next: "time_paradox_solve", concept: "祖父悖论" },
+                    { text: "🔙 离开", next: "time_intro" }
+                ]
+            }
+                    { text: "📖 学习解决方案", next: "time_paradox_solve", concept: "祖父悖论" },
+                    { text: "🔙 离开", next: "time_intro" }
+                ]
+            },
+            
+            "time_paradox_think": {
+                title: "🧠 悖论思考",
+                text: `你沉浸在悖论的思考中。
+
+如果时间线是单一的，那么悖论确实无法解决。但如果存在平行宇宙，每个选择都创造新的时间线...
+
+"你想到了！"科学家激动地说，"【祖父悖论】的解决方案就是多世界诠释。你杀死的是另一个宇宙的祖父，不影响你的存在。"
+
+【获得概念】祖父悖论
+【哲学突破】+60 分`,
+                onEnter: () => collectConcept("祖父悖论"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_paradox_solve": {
+                title: "📖 悖论解决方案",
+                text: `科学家向你展示了时间管理局的官方理论：
+
+"【祖父悖论】有三种可能的解决方案：
+1. 自洽性原则——你无法改变过去
+2. 平行宇宙——改变创造新时间线
+3. 时间修复——宇宙会自动修复悖论
+
+我们倾向于第二种。"
+
+【获得概念】祖父悖论
+【理论学习】+50 分`,
+                onEnter: () => collectConcept("祖父悖论"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_dilation": {
+                title: "⏱️ 时间膨胀实验室 - 相对论的证明",
+                text: `你进入了一个特殊的实验舱。这是一个圆柱形的空间，直径约 5 米，墙壁由一种银色的金属构成，能够承受极高的加速度。
+
+"这是【时间膨胀】演示装置。"技术人员向你介绍，他是一位年轻的物理学家，眼神中闪烁着对相对论的狂热，"根据狭义相对论，当你接近光速运动时，时间会变慢。"
+
+他带你走进实验舱，舱门在身后关闭。你听到一阵低沉的嗡鸣声，那是加速器启动的声音。
+
+"准备好了吗？"技术人员的聲音从扬声器中传来，"我们将加速到光速的 99.9%。对你来说，实验只会持续一小时。但对外面的世界...会过去一天。"
+
+你深吸一口气，点点头，尽管知道他看不到。
+
+加速器开始工作。你感觉到一股巨大的推力，仿佛有一只无形的大手将你按在座椅上。但奇怪的是，你并不难受——那是惯性阻尼器在工作，抵消了加速度的影响。
+
+墙壁上的时钟开始变化。不，不是时钟变化，是时间本身在变化。你看着自己的手表，秒针依然在正常走动。但透过舷窗，你看到外面的世界开始加速——空间站的灯光在快速闪烁，远处飞船的轨迹变成了连续的光线。
+
+一小时后，加速器停止。舱门打开，你走了出来。
+
+"欢迎回来。"技术人员说，"对你来说，过去了一小时。但对我们来说，已经过去了一天。"
+
+你看着日历，确认他说的是真的。你"丢失"了 23 小时——那些时间并没有消失，只是相对于你来说，外面的世界过得更快。
+
+"这就是时间旅行的另一种形式。"技术人员继续说，"你无法回到过去，但你可以前往未来。只需要足够快的速度，或者...足够强的引力。"
+
+他递给你一份技术文档："这是【时间膨胀】的完整说明，包含了狭义相对论的数学推导、实验验证、还有实际应用。如果你能理解这些，你就掌握了前往未来的钥匙。"
+
+你接过文档，感受到它的重量。这里面包含着时间的本质，包含着爱因斯坦最伟大的发现。
+
+"想再试一次吗？"技术人员问，"这次我们可以加速到更高的速度，看看时间膨胀的效果有多明显。"
+
+你看着实验舱，想象着以接近光速飞行一年的情景——当你回来时，地球可能已经过去了数百年。`,
+                choices: [
+                    { text: "⚡ 体验时间膨胀", next: "time_dilation_exp", concept: "时间膨胀" },
+                    { text: "📚 学习相对论", next: "time_dilation_learn", concept: "时间膨胀" },
+                    { text: "🔙 离开", next: "time_intro" }
+                ]
+            }
+                    { text: "📚 学习相对论", next: "time_dilation_learn", concept: "时间膨胀" },
+                    { text: "🔙 离开", next: "time_intro" }
+                ]
+            },
+            
+            "time_dilation_exp": {
+                title: "⚡ 时间膨胀体验",
+                text: `你进入了高速运动舱。
+
+随着速度接近光速，你感觉时间变得粘稠。舱内的一分钟，相当于外界的一小时。
+
+当你出来时，同事们已经老了好几岁，而你几乎没变。
+
+"这就是【时间膨胀】的奇迹，"技术人员说，"虽然不能回到过去，但你可以前往未来。"
+
+【获得概念】时间膨胀
+【相对论体验】+60 分`,
+                onEnter: () => collectConcept("时间膨胀"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_dilation_learn": {
+                title: "📚 相对论学习",
+                text: `你学习了爱因斯坦的狭义相对论。
+
+"【时间膨胀】的公式很简单：t' = t / √(1-v²/c²)
+
+当速度 v 接近光速 c 时，时间 t' 会趋向无穷大。这意味着，理论上你可以到达任何未来时间点。"
+
+你理解了时间旅行的科学基础。
+
+【获得概念】时间膨胀
+【科学学习】+50 分`,
+                onEnter: () => collectConcept("时间膨胀"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_police": {
+                title: "👮 时间警察局",
+                text: `你来到了时间管理局的执法部门。
+
+"我们是【时间警察】，"一位威严的警官说，"负责维护时间线的秩序，追捕非法时间旅行者。"
+
+墙上挂着通缉令：那些试图改变历史、谋取私利的罪犯。
+
+"想看看我们的工作吗？"`,
+                choices: [
+                    { text: "🔍 参与追捕", next: "time_police_chase", concept: "时间警察" },
+                    { text: "📋 了解职责", next: "time_police_duty", concept: "时间警察" },
+                    { text: "🔙 离开", next: "time_intro" }
+                ]
+            },
+            
+            "time_police_chase": {
+                title: "🔍 时间追捕行动",
+                text: `你跟随时间警察进行了一次追捕行动。
+
+目标是一个试图改变历史的罪犯。你们穿越了三个时间点，最终在 1920 年代将他抓获。
+
+"【时间警察】的职责就是防止历史被篡改，"警官说，"每一次改变都可能引发灾难性的后果。"
+
+【获得概念】时间警察
+【执法体验】+60 分`,
+                onEnter: () => collectConcept("时间警察"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "time_police_duty": {
+                title: "📋 时间警察职责",
+                text: `警官向你展示了时间警察的工作手册：
+
+"【时间警察】的核心职责：
+1. 监测时间线异常
+2. 追捕非法时间旅行者
+3. 修复被改变的历史
+4. 保护关键历史事件
+
+这是一份孤独但重要的工作。"
+
+【获得概念】时间警察
+【职业了解】+50 分`,
+                onEnter: () => collectConcept("时间警察"),
+                choices: [
+                    { text: "🔙 返回大厅", next: "time_intro" }
+                ]
+            },
+            
+            "bio_intro": {
+                title: "🧬 生物朋克宇宙 - 基因圣殿",
+                text: `你穿过光门，一阵温暖的生命能量波动过后，发现自己站在一个充满生机的巨大建筑中。
+
+这里是基因圣殿——生物朋克文明的最高研究机构。整个建筑本身就是活的：墙壁由经过基因改造的活体组织构成，那些组织呈现出半透明的质感，内部可以看到细微的血管网络在缓缓搏动，散发着柔和的蓝光。天花板如同巨大的叶片，进行着光合作用，为整个空间提供氧气和能量。地面是柔软的有机材料，踩上去有轻微的弹性，仿佛走在活物的皮肤上。
+
+空气中弥漫着复杂的生物气息：新鲜氧气的清新、培养液中营养物质的甜味、还有各种基因改造生物散发的独特气味。温度恒定在 25 摄氏度，湿度保持在 60%，这是最适合生命生长的环境。偶尔，你会听到墙壁中传来轻微的流动声，那是营养液在组织内部的血管网络中循环。
+
+四周的"房间"实际上是由生物膜分隔而成的独立空间，那些膜可以根据需要改变透明度，甚至完全消失。在远处，你可以看到各种基因改造生物：发光的植物、漂浮的水母状生物、还有正在培养舱中发育的人造器官。
+
+"欢迎来到基因圣殿，收集者。"一个温和的声音响起。
+
+你看到一位身着白色生物长袍的女性，她的长袍实际上是由活体纤维编织而成，能够根据环境调节温度和透气性。她的皮肤上有着奇异的发光纹路——那是基因优化的标志，这些纹路会随着她的情绪和健康状态改变颜色和亮度。此刻，它们呈现出平静的蓝色。她的眼睛是深邃的紫色，那是经过基因改造后获得的特殊能力，能够直接观察到 DNA 序列的表达状态。
+
+"我是首席基因工程师艾娃。在这个宇宙中，生命科学已经发展到极致。我们不再被动地接受自然的安排，而是主动地设计生命的形态。疾病被根除，寿命被延长，甚至死亡本身也成为了一个可以讨论的'技术选项'。"
+
+她的声音中带着一丝复杂的情感——既有对科学成就的自豪，也有对伦理边界的思考。
+
+"但我们也面临着深刻的哲学问题：什么是自然？什么是人工？生命的本质是什么？收集这里的概念，理解生命的本质——这可能是所有科学中最贴近人类自身的领域。"
+
+她指向三个方向，每个方向都代表着生命科学的不同分支：`,
+                onEnter: () => { 
+                    gameData.currentUniverse = "生物朋克宇宙";
+                    if (!gameData.universesVisited.has("生物朋克宇宙")) {
+                        gameData.universesVisited.add("生物朋克宇宙");
+                        gameData.score += 100; // 宇宙探索奖励
+                        unlockAchievement('universe_jumper');
+                        unlockAchievement('bio_explorer');
+                    }
+                    updateStatus();
+                    playSound('sceneChange');
+                    switchMusic(4);
+                    updateReturnButton();
+                },
+                choices: [
+                    { text: "🔬 前往基因实验室", next: "bio_lab" },
+                    { text: "💻 探索生物计算机中心", next: "bio_computer" },
+                    { text: "🌱 参观合成生命培育舱", next: "bio_synthetic" }
+                ]
+            },
+            
+            "bio_lab": {
+                title: "🔬 基因实验室 - 生命的密码",
+                text: `基因实验室位于基因圣殿的核心区域，这里被严格的生物安全屏障保护着，防止任何基因改造生物意外泄漏。
+
+你穿过三道消毒门，终于来到了实验室内部。眼前的景象让你屏住了呼吸——数百个培养皿整齐地排列在架子上，每个培养皿中都生长着不同的生物：发光的细菌、多叶片的植物、有着奇异花纹的昆虫...
+
+"这是【基因编辑】技术的核心区域。"首席科学家艾娃博士向你走来，她穿着一身白色的实验服，手上戴着特制的手套，能够直接感知 DNA 序列，"在这里，我们可以精确修改任何生物的基因序列。"
+
+她带你走到一个工作台前，上面放着一台基因编辑仪。那是一台精致的仪器，有着显微镜般的观察系统和纳米级的操作臂。
+
+"这是 CRISPR-Cas12 系统，"艾娃博士解释道，"它能够像分子剪刀一样，精确地切割 DNA 的任何位置。然后，我们可以插入、删除或替换任何基因片段。"
+
+她启动仪器，调出一份全息投影，展示着基因编辑的过程："看，这是目标 DNA 序列。这是引导 RNA，它会带着 Cas 酶找到特定的位置。切割完成，新的基因片段被插入...完成。"
+
+投影中，你看到一个细菌的基因被修改后，开始发出蓝色的光。那是荧光蛋白基因被成功表达的结果。
+
+"这项技术已经非常成熟。"艾娃博士继续说，"我们可以治疗遗传疾病，可以增强作物产量，甚至可以...设计新的人类。"
+
+她的语气中带着一丝复杂的情绪。你知道，基因编辑是一把双刃剑——它能带来巨大的好处，也能引发深刻的伦理问题。
+
+"但是，"她说，"我们还缺少一些关键的技术细节。完整的【基因编辑】技术文档存储在圣殿的数据库中，需要高级权限才能访问。"
+
+她递给你一份访问申请："如果你能帮我获得权限，我就把核心技术分享给你。那是理解生命本质的钥匙。"
+
+你看着那些培养皿中的生物，每一个都代表着生命的无限可能。基因编辑——这是人类第一次真正掌握了进化的方向。
+
+"准备好了吗？"艾娃博士问。
+
+你点点头，做出了决定。`,
+                choices: [
+                    { text: "📚 学习基因编辑", next: "bio_edit_learn", concept: "基因编辑" },
+                    { text: "🧪 实践操作", next: "bio_edit_practice", concept: "基因编辑" },
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            }
+                    { text: "🧪 实践操作", next: "bio_edit_practice", concept: "基因编辑" },
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_edit_learn": {
+                title: "📚 学习成功",
+                text: `你学习了 CRISPR 等基因编辑技术的原理。
+
+你理解了如何精确修改 DNA 序列。
+
+【获得概念】基因编辑
+【理论学习】+30 分`,
+                onEnter: () => collectConcept("基因编辑"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_edit_practice": {
+                title: "🧪 实践成功",
+                text: `你在指导下进行了基因编辑实践。
+
+你成功修改了一个细胞的基因序列。
+
+【获得概念】基因编辑
+【实践经验】+40 分`,
+                onEnter: () => collectConcept("基因编辑"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_computer": {
+                title: "💻 生物计算机中心 - DNA 的算力",
+                text: `生物计算机中心是一个奇异的场所。这里没有传统的电子设备，没有闪烁的 LED，没有风扇的嗡鸣。取而代之的，是数百个透明的培养槽，每个槽中都悬浮着淡蓝色的液体，液体中漂浮着细长的白色丝状物——那是 DNA 分子。
+
+"欢迎来到生物计算的殿堂。"总工程师向你走来，他是一位年轻的科学家，眼神中闪烁着对未来的憧憬，"这里没有硅芯片，没有晶体管。我们的计算机，是由生命的基本物质构成的。"
+
+他带你走到一个培养槽前，指着里面的 DNA 分子："这是【生物计算机】的核心——DNA 计算阵列。传统计算机使用二进制，0 和 1。而 DNA 计算机使用四种碱基：A、T、C、G。这意味着，同样的空间，DNA 计算机的存储容量是传统计算机的数百万倍。"
+
+他启动了一个演示程序。培养槽中的 DNA 分子开始发光，形成复杂的图案。那是计算过程的可视化——DNA 分子通过化学反应进行逻辑运算，速度惊人。
+
+"看这个。"工程师调出一份数据，"这是基因组测序任务。传统超级计算机需要 24 小时，我们的 DNA 计算机只需要 3 分钟。为什么？因为 DNA 计算机是并行计算的——数万亿个 DNA 分子同时工作，每个都执行一部分计算。"
+
+你看着那些发光的 DNA 分子，心中涌起一阵敬畏。这是生命与计算的完美融合，是自然界数十亿年进化与人类智慧的结晶。
+
+"但最惊人的还不是速度。"工程师继续说，"是能耗。传统数据中心消耗的电力相当于一个小型城市。而我们的 DNA 计算机，能耗只有它们的百万分之一。为什么？因为 DNA 计算是化学反应，不需要电力。"
+
+他递给你一份技术文档："这是【生物计算机】的完整技术说明，包含了 DNA 逻辑门的设计、分子电路的构建、还有生物 - 电子接口的方法。如果你能理解这些，你就掌握了下一代计算技术的核心。"
+
+你接过文档，感受到它的重量。这里面包含着计算的未来，包含着生命与机器融合的可能性。
+
+"想试试吗？"工程师问，"我们可以编写一个简单的 DNA 程序，看看它如何运行。"
+
+你看着那些培养槽，想象着 DNA 分子在其中执行着复杂的计算。这是生命的计算，是自然的智慧。`,
+                choices: [
+                    { text: "🧬 学习原理", next: "bio_comp_learn", concept: "生物计算机" },
+                    { text: "💾 尝试编程", next: "bio_comp_program", concept: "生物计算机" },
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            }
+                    { text: "💾 尝试编程", next: "bio_comp_program", concept: "生物计算机" },
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_comp_learn": {
+                title: "🧬 学习成功",
+                text: `你学习了 DNA 计算的基本原理。
+
+你理解了如何用碱基对存储和处理信息。
+
+【获得概念】生物计算机
+【理论学习】+30 分`,
+                onEnter: () => collectConcept("生物计算机"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_comp_program": {
+                title: "💾 编程成功",
+                text: `你尝试用 DNA 序列编写了一个简单程序。
+
+程序成功运行，计算出结果。
+
+【获得概念】生物计算机
+【编程实践】+40 分`,
+                onEnter: () => collectConcept("生物计算机"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_synthetic": {
+                title: "🌱 合成生命培育舱 - 从零创造生命",
+                text: `合成生命培育区是基因圣殿最神圣的地方。这里被多层生物屏障保护着，防止任何人造生命意外进入自然环境。
+
+你穿过一道气密门，来到了培育舱大厅。眼前的景象超越了你的想象——数百个巨大的培育舱整齐排列，每个舱中都悬浮着不同的生命形式：有些像水母，有些像植物，有些则完全无法归类。
+
+"这是【合成生命】技术的展示区。"首席研究员向你走来，她是一位中年女性，眼神中带着创造者的自豪，"在这里，我们不修改现有的生命，而是从零开始，设计全新的生命形式。"
+
+她带你走到一个培育舱前，里面悬浮着一个拳头大小的球体，表面覆盖着细小的纤毛，正在有节奏地摆动。
+
+"这是'阿尔法 -1 号'，"研究员介绍道，"这是我们创造的第一个完全人造生命。它的基因组是我们设计的，不是来自任何自然生物。它有 300 个基因，每个都有明确的功能：运动、感知、能量代谢、自我复制..."
+
+她启动培育舱的显示系统，调出阿尔法 -1 号的基因组图谱。那是一条长长的 DNA 序列，每一段都标注着功能。
+
+"看这里，"她指着一段基因，"这是运动基因，来自细菌的鞭毛系统。这里，是感知基因，来自水母的感光蛋白。这里，是能量代谢基因，来自植物的光合作用系统。我们把不同生物的优点组合在一起，创造出了一个全新的生命。"
+
+你看着那个小小的球体，心中涌起一阵复杂的情绪。这是人类第一次扮演上帝的角色——不是修改生命，而是创造生命。
+
+"但合成生命的意义不止于此。"研究员继续说，"我们可以设计能够清理污染的微生物，可以创造能够生产药物的细胞工厂，甚至可以...设计能够适应外星环境的人类。"
+
+她递给你一份技术文档："这是【合成生命】的完整设计流程，包含了基因组设计、细胞构建、还有生命激活的方法。如果你能理解这些，你就掌握了创造生命的钥匙。"
+
+你接过文档，感受到它的重量。这里面包含着生命的本质，包含着创造的奥秘。
+
+"想参与设计吗？"研究员问，"我们可以一起创造一个新的生命形式。"
+
+你看着那些培育舱，想象着无数可能的生命在其中诞生。`,
+                choices: [
+                    { text: "🔬 观察培育过程", next: "bio_synthetic_observe", concept: "合成生命" },
+                    { text: "🧪 参与设计", next: "bio_synthetic_design", concept: "合成生命" },
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            }
+                    { text: "🧪 参与设计", next: "bio_synthetic_design", concept: "合成生命" },
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_synthetic_observe": {
+                title: "🔬 观察成功",
+                text: `你仔细观察了合成生命的培育过程。
+
+你看到了从人工 DNA 到完整生命体的神奇转变。
+
+【获得概念】合成生命
+【观察学习】+30 分`,
+                onEnter: () => collectConcept("合成生命"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_synthetic_design": {
+                title: "🧪 设计成功",
+                text: `你参与设计了一种新的合成生命。
+
+它结合了多种生物的优点，展现出独特的特性。
+
+【获得概念】合成生命
+【创造成就】+50 分`,
+                onEnter: () => collectConcept("合成生命"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_clone": {
+                title: "🧪 克隆技术实验室 - 复制的生命",
+                text: `你来到了一个充满培养舱的实验室。这里的温度被精确控制在 37 摄氏度，湿度保持在 80%，那是最适合细胞生长的环境。
+
+数百个培养舱整齐排列，每个舱中都悬浮着一个正在发育的人类胚胎。那些胚胎被浸泡在淡粉色的营养液中，通过脐带状的管道获取养分。
+
+"这是【克隆技术】的核心设施。"首席科学家向你介绍，她是一位中年女性，眼神中带着复杂的情绪，"我们可以复制任何生命体。"
+
+她带你走到一个培养舱前，上面的标签写着："项目阿尔法——第一个完整人类克隆体，发育进度 95%。"
+
+舱中的胚胎已经初具人形，能够看到头部、躯干、四肢的轮廓。通过透明的舱壁，你能够看到微弱的心跳——那是生命的节奏。
+
+"克隆引发了很多伦理争议。"科学家说，"但技术本身是中立的。关键在于如何使用它。"
+
+她调出一份全息投影，展示着克隆的完整流程："第一步，提取体细胞核。第二步，植入去核卵细胞。第三步，电刺激启动发育。第四步，植入代孕母体。"
+
+投影中，你看到每一个步骤的详细操作。那是生命复制的奥秘，是自然界数十亿年进化与人类智慧的结晶。
+
+"1996 年，多莉羊诞生。"科学家继续说，"那是第一个克隆哺乳动物。从那时到现在，我们走了近 50 年。技术已经非常成熟，但争议从未停止。"
+
+她看着那个培养舱中的胚胎，眼神复杂："克隆人是否有灵魂？克隆体与本体是什么关系？如果克隆一个已故的亲人，那算是'复活'吗？"
+
+你听着这些问题，心中涌起一阵复杂的情绪。这是科学，也是哲学。这是技术，也是伦理。
+
+"这是【克隆技术】的完整说明。"科学家递给你一份文档，"包含了技术流程、成功率、还有风险评估。如果你能理解这些，你就掌握了复制生命的钥匙。"
+
+你接过文档，感受到它的重量。这里面包含着生命的奥秘，也包含着人类的傲慢。
+
+"想学习吗？"科学家问，"或者...你想讨论一下伦理问题？"
+
+你看着那些培养舱中的胚胎，想象着他们长大后的样子。`,
+                choices: [
+                    { text: "🔬 学习克隆技术", next: "bio_clone_learn", concept: "克隆技术" },
+                    { text: "🤔 讨论伦理问题", next: "bio_clone_ethics", concept: "克隆技术" },
+                    { text: "🔙 离开", next: "bio_intro" }
+                ]
+            }
+                    { text: "🤔 讨论伦理问题", next: "bio_clone_ethics", concept: "克隆技术" },
+                    { text: "🔙 离开", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_clone_learn": {
+                title: "🔬 克隆技术学习",
+                text: `科学家向你展示了克隆的完整流程：
+
+1. 提取体细胞核
+2. 植入去核卵细胞
+3. 电刺激启动发育
+4. 植入代孕母体
+
+"【克隆技术】已经非常成熟，"科学家说，"从多莉羊到人类克隆，我们走了 50 年。"
+
+【获得概念】克隆技术
+【生物技术】+60 分`,
+                onEnter: () => collectConcept("克隆技术"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_clone_ethics": {
+                title: "🤔 克隆伦理讨论",
+                text: `"克隆人是否有灵魂？"你问道。
+
+科学家沉默了片刻："这是个好问题。从生物学角度，克隆体与本体完全相同。但从哲学角度..."
+
+他递给你一份资料："【克隆技术】不仅仅是科学问题，更是伦理问题。也许你能找到答案。"
+
+【获得概念】克隆技术
+【哲学思考】+50 分`,
+                onEnter: () => collectConcept("克隆技术"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_biolum": {
+                title: "💡 生物发光研究中心 - 活体的光芒",
+                text: `你进入了一个奇异的房间。这里没有电灯，没有窗户，但整个空间被柔和的光芒照亮。
+
+墙壁上生长着发光的植物，那些植物的叶片呈现出淡蓝色和绿色，光芒有节奏地脉动，如同呼吸一般。透明的管道中，水母在缓缓漂浮，它们的伞状身体发出梦幻般的蓝光。
+
+"这是【生物发光】的应用展示。"研究员向你介绍，她是一位年轻的女性，身上穿着特制的制服，上面点缀着发光的纹路，"通过基因工程，我们让生物体能够发出各种颜色的光。"
+
+她带你走近一株发光植物，那植物感受到你的靠近，光芒变得更亮了一些。
+
+"这是荧光素酶反应。"研究员解释道，"萤火虫、发光鱼、某些真菌...自然界中有许多生物能够发光。它们的原理都是一样的：荧光素酶催化荧光素氧化，释放能量，以光的形式辐射出来。"
+
+她伸出手，一只发光的蝴蝶落在她的手上。那蝴蝶的翅膀闪烁着七彩的光芒，每一片鳞片都是一个微小的发光单元。
+
+"我们从这些生物中提取发光基因，"研究员继续说，"然后将其插入目标生物的 DNA 中。经过改造的植物可以发出足够照亮房间的光，而且不需要电力。"
+
+你看着那只蝴蝶，心中涌起一阵敬畏。这是自然界的奇迹，是进化数十亿年的结果，现在被人类掌握并应用。
+
+"这是【生物发光】的完整技术说明。"研究员递给你一份文档，"包含了基因提取、表达调控、还有应用场景。如果你能理解这些，你就掌握了创造活体光源的钥匙。"
+
+你接过文档，感受到它的重量。这里面包含着光与生命的融合，包含着自然与技术的和谐。
+
+"想观察吗？"研究员问，"或者...想学习基因改造的方法？"
+
+你看着那些发光的生物，想象着一个不需要电力的世界。`,
+                choices: [
+                    { text: "🦋 观察生物发光", next: "bio_biolum_observe", concept: "生物发光" },
+                    { text: "🧬 学习基因改造", next: "bio_biolum_gene", concept: "生物发光" },
+                    { text: "🔙 离开", next: "bio_intro" }
+                ]
+            }
+                    { text: "🧬 学习基因改造", next: "bio_biolum_gene", concept: "生物发光" },
+                    { text: "🔙 离开", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_biolum_observe": {
+                title: "🦋 生物发光观察",
+                text: `你仔细观察着这些发光的生物。
+
+萤火虫、发光鱼、荧光植物...每种生物的发光机制都不同，但都基于同一种化学反应：荧光素酶催化荧光素氧化。
+
+"【生物发光】是自然界最美丽的现象之一，"研究员说，"现在我们能用它来替代电力照明。"
+
+【获得概念】生物发光
+【自然观察】+50 分`,
+                onEnter: () => collectConcept("生物发光"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_biolum_gene": {
+                title: "🧬 基因改造学习",
+                text: `研究员向你展示了生物发光的基因工程流程：
+
+"我们从发光水母中提取荧光蛋白基因，然后将其插入目标生物的 DNA 中。经过【生物发光】改造的植物可以发出足够照亮房间的光。"
+
+你学习了基因编辑的核心技术。
+
+【获得概念】生物发光
+【基因工程】+60 分`,
+                onEnter: () => collectConcept("生物发光"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_immortal": {
+                title: "♾️ 永生技术研究所 - 战胜死亡的尝试",
+                text: `永生技术研究所位于基因圣殿的最深处，这里被特殊的能量场保护着，防止时间流逝对实验产生影响。
+
+你穿过一道闪烁着银色光芒的门，来到了研究所内部。眼前的景象让你屏住了呼吸——数百个培养舱整齐排列，每个舱中都悬浮着不同的生物样本：年轻的小鼠、衰老的小鼠、还有...看起来完全相同但实际年龄相差数倍的小鼠。
+
+"这里是研究【永生技术】的地方。"所长向你走来，他是一位头发花白的老人，但眼神和步伐却像年轻人一样充满活力，"我们的目标很明确：克服衰老和死亡。"
+
+他带你走到一个展示台前，上面摆放着各种抗衰老技术的样本。
+
+"这是端粒酶激活剂。"所长拿起一个小瓶，"每次细胞分裂，染色体末端的端粒就会缩短。当端粒耗尽，细胞就会衰老死亡。端粒酶能够延长端粒，让细胞可以无限分裂。"
+
+"这是细胞重编程因子。"他拿起另一个小瓶，"我们可以把衰老的细胞'重置'到年轻状态，就像把时钟倒拨。"
+
+"这是纳米修复机器人。"第三个小瓶，"它们能够进入细胞，修复损伤的 DNA，清除积累的废物，维持细胞的年轻状态。"
+
+你看着这些样本，心中涌起一阵复杂的情绪。死亡，这个人类历史上最永恒的命题，现在似乎有了被解决的可能。
+
+"但是，"所长的语气变得凝重，"技术只是问题的一部分。真正的挑战是...伦理。如果人类获得永生，社会会变成什么样？人口爆炸？资源短缺？还是...文明的停滞？"
+
+他调出一份数据："这是我们的实验结果。经过端粒酶治疗的小鼠，寿命延长了三倍。但它们也出现了问题——癌症发病率上升，因为癌细胞也能利用端粒酶无限分裂。"
+
+他递给你一份研究报告："这是【永生技术】的完整分析，包含了各种抗衰老方法的原理、效果、还有风险。如果你能理解这些，你就掌握了延长生命的钥匙。"
+
+你接过报告，感受到它的重量。这里面包含着生命的极限，包含着人类对永恒的渴望。
+
+"死亡不是必然的，"所长坚定地说，"它只是一个待解决的技术问题。"
+
+你看着那些培养舱中的小鼠，想象着人类战胜死亡的那一天。`,
+                choices: [
+                    { text: "🧬 学习抗衰老", next: "bio_immortal_antiaging", concept: "永生技术" },
+                    { text: "💭 思考永生意义", next: "bio_immortal_meaning", concept: "永生技术" },
+                    { text: "🔙 离开", next: "bio_intro" }
+                ]
+            }
+                    { text: "💭 思考永生意义", next: "bio_immortal_meaning", concept: "永生技术" },
+                    { text: "🔙 离开", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_immortal_antiaging": {
+                title: "🧬 抗衰老技术",
+                text: `所长向你展示了最新的抗衰老研究：
+
+"【永生技术】的核心是端粒酶。每次细胞分裂，端粒都会缩短。我们找到了激活端粒酶的方法，让细胞可以无限分裂。"
+
+一只经过改造的小鼠已经活了正常寿命的三倍。
+
+【获得概念】永生技术
+【生命延长】+60 分`,
+                onEnter: () => collectConcept("永生技术"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "bio_immortal_meaning": {
+                title: "💭 永生的意义",
+                text: `"如果人类获得永生，社会会变成什么样？"你问道。
+
+所长沉思道："这是个深刻的问题。【永生技术】会带来人口爆炸、资源短缺、社会僵化...但也意味着人类可以积累无限的知识。"
+
+他递给你一份哲学论文："也许你能找到答案。"
+
+【获得概念】永生技术
+【哲学探索】+50 分`,
+                onEnter: () => collectConcept("永生技术"),
+                choices: [
+                    { text: "🔙 返回圣殿", next: "bio_intro" }
+                ]
+            },
+            
+            "magic_intro": {
+                title: "✨ 魔法科技宇宙 - 魔法学院",
+                text: `你穿过光门，一阵奇异的能量波动过后，发现自己站在一座宏伟的学院大厅中。
+
+这里是魔法学院——魔法科技文明的知识中心。大厅的穹顶高达百米，由透明的魔法水晶构成，那些水晶不是静止的，而是在缓慢地旋转，折射出七彩的光芒。墙壁上悬浮着发光的符文，那些符文不是简单的装饰，而是活跃的魔法程序，不断地执行着各种功能：照明、温度调节、空气净化、还有信息存储。
+
+空气中弥漫着神秘的能量波动——那是魔力的气息，但又不同于传统奇幻中的魔法。这里的魔力是可以测量、可以量化、可以用数学公式描述的。魔力浓度计显示当前的魔力密度为每立方米 3.7 标准单位，足以支持大多数基础魔法的运行。偶尔，你会看到空气中闪过细微的电火花，那是魔力流动时产生的副产物。
+
+大厅的地面由一种特殊的材料铺成，能够传导魔力。当你走动时，脚下会泛起淡淡的涟漪，如同走在水面上。四周的柱子上雕刻着复杂的魔法阵，那些魔法阵既是装饰，也是学院防御系统的一部分。在远处，你可以看到学生们在练习魔法：有人用符文编程让物体漂浮，有人用水晶能源点亮光球，还有人在进行更复杂的魔法实验。
+
+"欢迎来到魔法学院，收集者。"一个身着法袍的法师向你走来。他的法袍不是普通的布料，而是由魔法纤维编织而成，能够增强他的魔力传导效率。他的法杖顶端镶嵌着一颗闪烁的水晶——那是高纯度的魔力晶体，内部储存着相当于一个小型发电站的能量。
+
+"我是院长梅林博士，拥有魔法学和量子物理学双博士学位。"他的声音温和而有力，带着学者特有的气质，"在这个宇宙中，魔法不再是神秘的力量，而是可以被科学解释和操控的能量。三百年前，我们的祖先发现了魔力的本质——那是一种与电磁力、引力并列的基本力，我们称之为'第五力'。"
+
+他挥动法杖，空中浮现出一个全息投影，展示着魔力的数学模型：
+
+"从那时起，魔法和科学的界限开始模糊。我们用科学方法研究魔法，用魔法技术推动科学。符文编程让我们能够像编写软件一样编写魔法程序；灵能引擎让我们能够用意识能量驱动机械；水晶能源让我们能够储存和传输魔力，就像传输电力一样。"
+
+他的眼神中闪烁着智慧的光芒：
+
+"收集这里的概念，理解魔法的本质——这可能是所有科学中最美妙的领域，因为它证明了想象力和理性可以完美融合。"
+
+他指向三个方向，每个方向都代表着魔法科技的不同应用领域：`,
+                onEnter: () => { 
+                    gameData.currentUniverse = "魔法科技宇宙";
+                    if (!gameData.universesVisited.has("魔法科技宇宙")) {
+                        gameData.universesVisited.add("魔法科技宇宙");
+                        gameData.score += 100; // 宇宙探索奖励
+                        unlockAchievement('universe_jumper');
+                        unlockAchievement('magic_explorer');
+                    }
+                    updateStatus();
+                    playSound('sceneChange');
+                    switchMusic(2);
+                    updateReturnButton();
+                },
+                choices: [
+                    { text: "📜 前往符文编程室", next: "magic_rune_lab" },
+                    { text: "💫 探索灵能引擎车间", next: "magic_psi_engine" },
+                    { text: "🔮 参观水晶能源中心", next: "magic_crystal_power" }
+                ]
+            },
+            
+            "magic_rune_lab": {
+                title: "📜 符文编程室 - 魔法的代码化",
+                text: `符文编程室是魔法学院最现代化的区域。这里没有古老的羊皮纸，没有羽毛笔，取而代之的是巨大的全息工作台和悬浮的符文石。
+
+你走进房间，被眼前的景象震撼了。数十个工作台整齐排列，每个工作台上都悬浮着数十个发光的符文石。那些符文石不是静止的，而是在缓慢地移动、旋转、组合，如同在进行某种复杂的舞蹈。
+
+"欢迎来到符文编程的世界。"首席法师向你走来，他是一位中年男性，穿着现代化的法袍——那是传统法袍与科技服装的融合，既有魔法的优雅，又有工程的实用，"在这里，我们用符文编写魔法程序，就像你们用代码编写软件一样。"
+
+他带你走到一个工作台前，指着那些悬浮的符文石："这是【符文编程】的基础单元。每个符文代表一个基本操作：'火'符文产生热量，'风'符文产生气流，'光'符文产生照明，'力'符文产生推力..."
+
+他拿起两个符文石——一个是"火"，一个是"控制"——将它们组合在一起。瞬间，一团火焰在工作台上方燃起，但被限制在一个完美的球形范围内，没有扩散，没有烟雾。
+
+"看，"法师说，"这就是符文编程的力量。通过组合不同的符文，我们可以定义复杂的魔法效果。这就像编程中的函数——输入参数，执行逻辑，输出结果。"
+
+他调出一份全息投影，展示着一个复杂的符文程序："这是'自动防御系统'的源代码。看这里，这是感知符文，检测周围的威胁。这里，是判断符文，评估威胁等级。这里，是执行符文，根据威胁等级选择适当的反击魔法。"
+
+投影中，符文如同代码一样流动着，形成复杂的逻辑结构。你看到了循环、条件判断、函数调用——所有传统编程的概念，在这里都用符文实现了。
+
+"但符文编程不仅仅是代码的另一种形式。"法师继续说，"它连接着真实的魔法能量。当你编写一个符文程序，你不仅仅是在定义逻辑，你是在引导魔力，是在与宇宙的基本力量对话。"
+
+他递给你一份入门手册："这是【符文编程】的完整教程，包含了符文语法、组合规则、还有能量引导的方法。如果你能掌握这些，你就能够像编写软件一样编写魔法。"
+
+你接过手册，感受到它的重量。这里面包含着魔法与科学的融合，包含着古老智慧与现代技术的结晶。
+
+"想试试吗？"法师问，"我们可以编写一个简单的符文程序，看看它如何运行。"
+
+你看着那些悬浮的符文石，想象着自己能够用它们创造魔法。`,
+                choices: [
+                    { text: "📚 学习符文语法", next: "magic_rune_learn", concept: "符文编程" },
+                    { text: "✍️ 尝试编写", next: "magic_rune_write", concept: "符文编程" },
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            }
+                    { text: "✍️ 尝试编写", next: "magic_rune_write", concept: "符文编程" },
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_rune_learn": {
+                title: "📚 学习成功",
+                text: `你学习了符文编程的基本语法。
+
+你理解了如何用符文组合来定义魔法效果。
+
+【获得概念】符文编程
+【理论学习】+30 分`,
+                onEnter: () => collectConcept("符文编程"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_rune_write": {
+                title: "✍️ 编写成功",
+                text: `你尝试编写了一个简单的符文程序。
+
+符文亮起，成功施展了一个小魔法。
+
+【获得概念】符文编程
+【编程实践】+40 分`,
+                onEnter: () => collectConcept("符文编程"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_psi_engine": {
+                title: "💫 灵能引擎车间 - 意识的动力",
+                text: `灵能引擎车间是魔法学院最神秘的区域。这里被特殊的精神力屏障保护着，防止外界的干扰影响引擎的运行。
+
+你走进车间，立刻感受到了一股奇异的能量波动。那不是电磁力，不是引力，而是一种你从未感受过的力量——那是意识的力量，是精神力的直接体现。
+
+车间中央，一个巨大的引擎悬浮在半空中。它不是由金属构成，而是由一种半透明的晶体材料制成，内部流动着淡紫色的光芒。那光芒不是恒定的，而是在有节奏地脉动，如同一个巨大的心脏。
+
+"这是【灵能引擎】。"总工程师向你走来，他是一位身材瘦削的法师，眼神异常明亮，那是长期进行精神力训练的 result，"它利用心灵能量作为动力源。只有拥有足够精神力的人才能启动它。"
+
+他带你走近引擎，你能够感受到那股精神力的波动。你的脑海中闪过一些画面——那是引擎的"记忆"，是它曾经被启动时的场景。
+
+"灵能引擎的原理很简单，但执行起来极其困难。"工程师解释道，"意识是一种能量，这是经过科学验证的事实。大脑活动产生电磁场，思考过程消耗化学能。灵能引擎做的，就是收集这些能量，转化为机械动力。"
+
+他启动了一个演示装置。一个小型的灵能引擎模型开始运转，发出柔和的嗡鸣声。那声音不是来自机械振动，而是来自精神力的共振。
+
+"看，"工程师说，"不需要燃料，不需要电力，只需要...意识。一个经过训练的法师，能够让这个引擎持续运行数小时。一个大师，能够让整个建筑运转。"
+
+他递给你一份技术文档："这是【灵能引擎】的完整设计图，包含了精神力收集阵列、能量转换核心、还有输出调节系统。如果你能理解这些，你就掌握了用意识驱动机械的方法。"
+
+你接过文档，感受到它的重量。这里面包含着意识与物质的桥梁，包含着心灵力量的科学解释。
+
+"想试试吗？"工程师问，"我们可以尝试启动这个引擎。但警告你——如果精神力不足，你会感到疲惫，甚至晕厥。"
+
+你看着那个巨大的引擎，想象着自己的意识成为它的动力。`,
+                choices: [
+                    { text: "🧠 尝试启动", next: "magic_psi_start", concept: "灵能引擎" },
+                    { text: "🔬 研究原理", next: "magic_psi_research", concept: "灵能引擎" },
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            }
+                    { text: "🔬 研究原理", next: "magic_psi_research", concept: "灵能引擎" },
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_psi_start": {
+                title: "🧠 启动成功",
+                text: `你集中精神，将意念注入引擎。
+
+引擎发出嗡鸣，成功启动！
+
+【获得概念】灵能引擎
+【精神力量】+40 分`,
+                onEnter: () => collectConcept("灵能引擎"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_psi_research": {
+                title: "🔬 研究成功",
+                text: `你仔细研究了灵能引擎的原理。
+
+你理解了如何将意识能量转化为机械动力。
+
+【获得概念】灵能引擎
+【理论研究】+30 分`,
+                onEnter: () => collectConcept("灵能引擎"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_crystal_power": {
+                title: "🔮 水晶能源中心 - 魔力的电池",
+                text: `水晶能源中心是魔法学院的能量心脏。这里被厚重的防护墙保护着，防止能量泄漏影响周围环境。
+
+你走进中心大厅，被眼前的景象震撼了。数百个巨大的水晶簇从地面生长出来，最高的超过 20 米。那些水晶不是静止的，而是在缓慢地旋转，散发着柔和的光芒——有蓝色、紫色、绿色、金色，每一种颜色代表着不同的能量属性。
+
+"这是【水晶能源】技术的核心。"首席技师向你走来，她是一位女性矮人，身材矮小但极其强壮，那是长期与水晶打交道的结果，"我们从魔法水晶中提取能量，为整个学院供电。"
+
+她带你走到一个水晶簇前，指着它内部流动的光芒："看，这是魔力的可视化。水晶能够吸收、储存、释放魔力，就像电池储存电力一样。但水晶的储能密度是锂电池的数千倍。"
+
+她启动了一个提取装置。一根金属探针缓缓插入水晶，瞬间，水晶中的光芒开始流向探针，通过管道输送到能源转换中心。
+
+"这是晶体共振原理。"技师解释道，"每种水晶都有特定的共振频率。当外部能量频率与水晶匹配时，能量就会被吸收。当我们需要能量时，就改变频率，让水晶释放储存的能量。"
+
+她调出一份数据："这是能源输出统计。一个标准水晶簇，能够为一座小型城市供电一年。而我们的储备，足够整个学院运行一百年。"
+
+你看着那些水晶簇，心中涌起一阵敬畏。这是魔法与工程的完美融合，是自然馈赠与人类智慧的结晶。
+
+"但水晶能源的意义不止于此。"技师继续说，"它是清洁的，没有污染。它是可再生的，水晶能够自然恢复。它是安全的，没有爆炸风险。这是理想的能源。"
+
+她递给你一份技术手册："这是【水晶能源】的完整技术说明，包含了水晶培育、能量提取、还有储存传输的方法。如果你能掌握这些，你就掌握了无限能源的钥匙。"
+
+你接过手册，感受到它的重量。这里面包含着能源的未来，包含着文明发展的可能性。
+
+"想试试吗？"技师问，"我们可以提取一些能量，看看它如何工作。"
+
+你看着那些水晶簇，想象着它们为整个文明提供动力的场景。`,
+                choices: [
+                    { text: "💎 学习提取技术", next: "magic_crystal_learn", concept: "水晶能源" },
+                    { text: "⚡ 体验能源转换", next: "magic_crystal_convert", concept: "水晶能源" },
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            }
+                    { text: "⚡ 体验能源转换", next: "magic_crystal_convert", concept: "水晶能源" },
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_crystal_learn": {
+                title: "💎 学习成功",
+                text: `你学习了水晶能源的提取技术。
+
+你理解了晶体共振和能量转换的原理。
+
+【获得概念】水晶能源
+【理论学习】+30 分`,
+                onEnter: () => collectConcept("水晶能源"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            
+            "magic_crystal_convert": {
+                title: "⚡ 转换成功",
+                text: `你亲自操作了能源转换装置。
+
+水晶的能量被成功提取并转化为可用电力。
+
+【获得概念】水晶能源
+【实践操作】+40 分`,
+                onEnter: () => collectConcept("水晶能源"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_teleport": {
+                title: "🌀 传送阵实验室 - 空间的折叠",
+                text: `传送阵实验室位于魔法学院的地下深处，这里被特殊的空间稳定场保护着，防止传送过程中的空间波动影响地面建筑。
+
+你走下螺旋楼梯，来到了一个巨大的圆形大厅。大厅的地面上画满了复杂的符文图案，那些符文不是静止的，而是在缓慢地流动，如同有生命一般。在符文图案的中心，是一个直径 10 米的圆形平台——那就是传送阵。
+
+"欢迎来到空间折叠的前沿。"首席法师向你走来，他是一位老者，胡须很长，眼神却异常锐利，"这里是研究【传送阵】的地方。通过空间折叠，我们可以瞬间到达任何地方。"
+
+他带你走上平台，脚下的符文开始发光。你感觉到一股奇异的拉力——那是空间本身在扭曲。
+
+"传送阵的原理基于空间几何学。"法师解释道，"想象一张纸，上面有两个点。传统的方式是沿着纸面从一个点走到另一个点。但如果我们把纸折叠起来，让两个点重合，就能瞬间'跨越'它们之间的距离。"
+
+他启动传送阵，周围的符文开始高速旋转，发出耀眼的光芒。你感觉身体变得轻盈，仿佛正在被分解成无数微小的粒子。
+
+"传送过程分为三个阶段。"法师的声音在你耳边响起，"第一阶段，空间折叠——在起点和终点之间创造虫洞。第二阶段，物质分解——将物体转化为能量 - 信息混合态。第三阶段，物质重组——在终点重新构建物体。"
+
+光芒达到顶峰，然后突然消失。你发现自己已经来到了学院的庭院——刚才还在地下，现在却在地面。整个过程不到一秒。
+
+"这就是【传送阵】的力量。"法师的声音从传送阵中传来，他还在实验室，"空间不再是障碍，距离不再是问题。"
+
+你环顾四周，确认自己真的移动了。这是你第一次体验瞬间移动，那种感觉难以言喻——既兴奋，又有些不安。
+
+"但传送有风险。"法师继续说，"如果坐标计算错误，你可能会出现在错误的位置——比如墙壁里，或者高空。如果能量不足，你可能会...无法完全重组。"
+
+他递给你一份技术文档："这是【传送阵】的完整设计图，包含了空间坐标计算、物质分解算法、还有能量需求公式。如果你能理解这些，你就掌握了空间旅行的钥匙。"
+
+你接过文档，感受到它的重量。这里面包含着空间的奥秘，包含着瞬间移动的可能性。
+
+"想再试一次吗？"法师问，"这次我们可以去更远的地方。"
+
+你看着脚下的传送阵，想象着能够瞬间到达世界任何角落的自由。`,
+                choices: [
+                    { text: "🌀 体验传送", next: "magic_teleport_exp", concept: "传送阵" },
+                    { text: "📐 学习空间几何", next: "magic_teleport_learn", concept: "传送阵" },
+                    { text: "🔙 离开", next: "magic_intro" }
+                ]
+            }
+                    { text: "📐 学习空间几何", next: "magic_teleport_learn", concept: "传送阵" },
+                    { text: "🔙 离开", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_teleport_exp": {
+                title: "🌀 传送体验",
+                text: `你站上传送阵，法师念动咒语。
+
+符文亮起，你感觉身体被分解成无数光点，然后在另一个地方重新组合。一瞬间，你从实验室出现在了学院的庭院。
+
+"这就是【传送阵】的力量，"法师的声音从传送阵中传来，"空间不再是障碍。"
+
+【获得概念】传送阵
+【空间旅行】+60 分`,
+                onEnter: () => collectConcept("传送阵"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_teleport_learn": {
+                title: "📐 空间几何学习",
+                text: `法师向你展示了传送阵的数学原理：
+
+"【传送阵】的核心是空间折叠。通过在两点之间创造虫洞，我们可以绕过中间的空间。这是符文几何学的应用。"
+
+你学习了计算空间坐标的公式。
+
+【获得概念】传送阵
+【魔法数学】+50 分`,
+                onEnter: () => collectConcept("传送阵"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_prophecy": {
+                title: "🔮 预言算法中心 - 计算未来",
+                text: `你进入了一个充满水晶屏幕的房间。那些屏幕不是电子设备，而是由魔法水晶制成，内部流动着复杂的光纹。
+
+"这是【预言算法】。"数据法师向你介绍，他是一位穿着现代法袍的法师，手中拿着一块平板电脑，那是魔法与科技的融合产物，"通过分析因果链，我们可以预测未来。"
+
+他带你走到一个主屏幕前，屏幕上显示着无数条时间线，每条都代表一种可能的未来。那些时间线在不断地分叉、合并、消失、重生，如同一个活着的有机体。
+
+"这不是魔法，是高级计算。"数据法师继续说，"我们收集海量数据——历史事件、社会趋势、个人选择...然后建立因果模型，模拟各种可能性。"
+
+他调出一份数据："这是过去一个月的预测准确率。对于短期事件（24 小时内），准确率达到 94%。对于中期事件（一周内），准确率是 78%。对于长期事件（一月以上），准确率下降到 52%。"
+
+你看着那些时间线，心中涌起一阵复杂的情绪。未来可以被预测，那自由意志还存在吗？如果未来是注定的，那选择还有意义吗？
+
+"但请注意，"数据法师说，"预言不是宿命。我们看到的是概率，不是确定性。每一个选择都会改变概率分布，创造新的未来。"
+
+他指向一条时间线："看，这是当前的'最可能未来'，概率 67%。但如果某个关键人物做出不同选择，概率会立刻改变。"
+
+你看着那条时间线，想象着它所代表的未来。
+
+"这是【预言算法】的完整说明。"数据法师递给你一份文档，"包含了数据采集、模型构建、还有预测方法。如果你能理解这些，你就掌握了预见未来的钥匙。"
+
+你接过文档，感受到它的重量。这里面包含着时间与因果的奥秘，包含着人类对未知的渴望。
+
+"想查看预言吗？"数据法师问，"或者...想学习算法的原理？"
+
+你看着那些水晶屏幕，想象着能够看到自己未来的感觉。`,
+                choices: [
+                    { text: "🔮 查看预言", next: "magic_prophecy_view", concept: "预言算法" },
+                    { text: "💻 学习算法", next: "magic_prophecy_algo", concept: "预言算法" },
+                    { text: "🔙 离开", next: "magic_intro" }
+                ]
+            }
+                    { text: "💻 学习算法", next: "magic_prophecy_algo", concept: "预言算法" },
+                    { text: "🔙 离开", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_prophecy_view": {
+                title: "🔮 预言查看",
+                text: `你看着屏幕上的预言。
+
+无数种未来在你眼前展开：有些光明，有些黑暗。你的每个选择都会影响最终的结局。
+
+"【预言算法】告诉我们，未来不是注定的，"数据法师说，"而是由无数个选择构成的概率云。"
+
+【获得概念】预言算法
+【未来洞察】+60 分`,
+                onEnter: () => collectConcept("预言算法"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_prophecy_algo": {
+                title: "💻 预言算法学习",
+                text: `数据法师向你展示了预言算法的核心：
+
+"【预言算法】基于因果计算。我们收集海量数据，建立因果模型，然后模拟各种可能性。准确率可以达到 87%。"
+
+你学习了时间序列分析的基础。
+
+【获得概念】预言算法
+【数据科学】+50 分`,
+                onEnter: () => collectConcept("预言算法"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_elemental": {
+                title: "⚛️ 元素反应堆 - 自然的力量",
+                text: `你来到了学院的能源核心。这里被厚重的防护墙保护着，防止元素能量泄漏影响周围环境。
+
+走进大厅，你被眼前的景象震撼了。一个巨大的反应堆占据了整个空间，内部有四种颜色的能量在旋转：红色的火、蓝色的水、绿色的风、黄色的土。
+
+"这是【元素反应堆】。"能源法师向你介绍，他是一位身材魁梧的法师，身上穿着特制的防护服，能够抵御元素能量的冲击，"我们利用元素之力产生清洁能源。"
+
+他带你走近反应堆，你能够感受到那股能量的波动。那不是热量，不是辐射，而是一种更原始的力量——那是自然本身的能量。
+
+"元素是什么？"能源法师问道，不等你回答，继续说，"在古代，人们认为元素是构成世界的基本物质。但我们的研究表明，元素是能量的不同振动频率。"
+
+他调出一份全息投影，展示着元素的本质："火是高频振动，产生热量和光。水是低频振动，产生流动和变化。风是旋转振动，产生运动和压力。土是稳定振动，产生结构和支撑。"
+
+投影中，你看到四种元素能量在反应堆中循环：火元素提供热能，水元素提供动能，风元素提供气压，土元素提供稳定性。它们相互平衡，形成一个完美的能量循环。
+
+"反应堆的输出稳定而强大。"能源法师继续说，"足以供应整个学院，而且没有污染，没有辐射，没有废料。这是真正的清洁能源。"
+
+他递给你一份技术文档："这是【元素反应堆】的完整设计图，包含了元素提取、能量转化、还有输出调节。如果你能理解这些，你就掌握了自然力量的钥匙。"
+
+你接过文档，感受到它的重量。这里面包含着元素的奥秘，包含着人与自然和谐共处的可能性。
+
+"想学习能量转化吗？"能源法师问，"或者...想研究元素的本质？"
+
+你看着那个旋转的反应堆，想象着它为整个文明提供动力的场景。`,
+                choices: [
+                    { text: "⚡ 学习能量转化", next: "magic_elemental_convert", concept: "元素反应堆" },
+                    { text: "🔬 研究元素本质", next: "magic_elemental_study", concept: "元素反应堆" },
+                    { text: "🔙 离开", next: "magic_intro" }
+                ]
+            }
+                    { text: "🔬 研究元素本质", next: "magic_elemental_study", concept: "元素反应堆" },
+                    { text: "🔙 离开", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_elemental_convert": {
+                title: "⚡ 能量转化",
+                text: `能源法师展示了元素能量的转化过程：
+
+"【元素反应堆】将元素的本质能量转化为电能。火元素提供热能，水元素提供动能，风元素提供气压，土元素提供稳定性。"
+
+你亲手操作了转化装置。
+
+【获得概念】元素反应堆
+【能源工程】+60 分`,
+                onEnter: () => collectConcept("元素反应堆"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_elemental_study": {
+                title: "🔬 元素本质研究",
+                text: `"元素是什么？"你问道。
+
+"【元素反应堆】的研究表明，元素是能量的不同振动频率。"能源法师展示了一份报告，"火是高频振动，水是低频振动，风是旋转振动，土是稳定振动。"
+
+你理解了元素的科学本质。
+
+【获得概念】元素反应堆
+【元素理论】+50 分`,
+                onEnter: () => collectConcept("元素反应堆"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_soul": {
+                title: "💫 灵魂绑定工坊 - 意识的锚点",
+                text: `你来到了一个神秘的工坊。这里的空气中弥漫着一种奇特的气息，那是灵魂能量与物质交融的味道。
+
+"这里是进行【灵魂绑定】的地方。"灵魂法师向你介绍，他是一位老者，眼神深邃得仿佛能够看穿你的灵魂，"我们可以将灵魂与物品永久连接。"
+
+他带你走到一个工作台前，上面摆放着各种绑定物品：一把剑，剑身上流动着银色的光芒；一本日记，书页自动翻动着，记录着看不见的文字；一枚戒指，内部闪烁着微弱的光芒...
+
+"这是魔法科技的巅峰。"灵魂法师继续说，"通过灵魂绑定，物品获得了'生命'。它们能够回应主人的召唤，能够感知主人的情绪，甚至能够...独立思考。"
+
+他拿起那把剑，轻轻一挥。剑身发出嗡鸣声，那是它在回应主人的触碰。
+
+"这把剑已经与我的灵魂绑定了三十年。"灵魂法师说，"它记得我每一次战斗，每一次胜利，每一次失败。它是我的一部分，我也是它的一部分。"
+
+你看着那把剑，心中涌起一阵复杂的情绪。这是魔法，也是科学。这是神秘，也是技术。
+
+"灵魂绑定的原理是什么？"你问。
+
+"意识是一种能量场。"灵魂法师解释道，"我们可以将这个能量场'锚定'在物质上，创造有'生命'的物品。那是【灵魂绑定】的核心技术。"
+
+他递给你一份技术文档："这是灵魂绑定的完整流程，包含了灵魂提取、能量锚定、还有绑定维护。如果你能理解这些，你就掌握了创造有生命物品的钥匙。"
+
+你接过文档，感受到它的重量。这里面包含着灵魂的奥秘，包含着意识与物质的桥梁。
+
+"想体验吗？"灵魂法师问，"我们可以进行一个简单的绑定仪式。"
+
+你看着那些绑定物品，想象着自己与一件物品永久连接的感觉。`,
+                choices: [
+                    { text: "🔗 体验灵魂绑定", next: "magic_soul_bind", concept: "灵魂绑定" },
+                    { text: "🧠 理解灵魂本质", next: "magic_soul_understand", concept: "灵魂绑定" },
+                    { text: "🔙 离开", next: "magic_intro" }
+                ]
+            }
+                    { text: "🧠 理解灵魂本质", next: "magic_soul_understand", concept: "灵魂绑定" },
+                    { text: "🔙 离开", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_soul_bind": {
+                title: "🔗 灵魂绑定体验",
+                text: `你选择了一枚水晶吊坠进行绑定。
+
+灵魂法师念动咒语，你感觉一部分意识流入了水晶。从此，这枚吊坠成为了你的一部分。
+
+"【灵魂绑定】完成了，"灵魂法师说，"现在你可以随时感知到它的位置，它也会回应你的召唤。"
+
+【获得概念】灵魂绑定
+【灵魂工程】+60 分`,
+                onEnter: () => collectConcept("灵魂绑定"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "magic_soul_understand": {
+                title: "🧠 灵魂本质理解",
+                text: `"灵魂是什么？"你问道。
+
+灵魂法师沉思道："【灵魂绑定】的研究表明，灵魂是一种意识能量场。我们可以将它锚定在物质上，创造有'生命'的物品。"
+
+他递给你一份研究报告："这是灵魂工程的基础理论。"
+
+【获得概念】灵魂绑定
+【意识研究】+50 分`,
+                onEnter: () => collectConcept("灵魂绑定"),
+                choices: [
+                    { text: "🔙 返回学院", next: "magic_intro" }
+                ]
+            },
+            
+            "show_concepts_menu": {
+                title: "📦 概念图鉴",
+                text: () => {
+                    if (gameData.concepts.length === 0) {
+                        return "你还没有收集任何概念。继续探索吧！";
+                    }
+                    return `已收集概念：${gameData.concepts.length}/100\n\n继续探索更多宇宙，收集更多概念！`;
+                },
+                choices: [
+                    { text: "🔙 继续游戏", next: "start" }
+                ]
+            },
+            
+            "ending_50": {
+                title: "📖 结局：半途而废",
+                text: `你收集了 ${gameData.concepts.length} 个概念，探索了 ${gameData.universesVisited.size} 个宇宙。
+
+虽然你已经取得了不错的进展，但主宇宙的修复还需要更多努力。
+
+神秘的声音再次响起："收集者，你做得不错，但还不够。继续探索吧，主宇宙的命运掌握在你手中。"
+
+【游戏进度】50%
+【解锁成就】半途而废`,
+                onEnter: () => {
+                    gameData.achievements.push('ending_50');
+                },
+                choices: [
+                    { text: "🔄 继续收集", next: "start" },
+                    { text: "📦 查看概念图鉴", next: "show_concepts_menu" }
+                ]
+            },
+            
+            "ending_80": {
+                title: "📚 结局：接近完美",
+                text: `你收集了 ${gameData.concepts.length} 个概念，探索了 ${gameData.universesVisited.size} 个宇宙。
+
+主宇宙的崩溃已经停止，但还未完全修复。
+
+"你已经非常接近目标了，"神秘的声音说，"再努力一点，就能看到真正的奇迹。"
+
+【游戏进度】80%
+【解锁成就】接近完美`,
+                onEnter: () => {
+                    gameData.achievements.push('ending_80');
+                },
+                choices: [
+                    { text: "🔄 继续收集", next: "start" },
+                    { text: "📦 查看概念图鉴", next: "show_concepts_menu" }
+                ]
+            },
+            
+            "ending_100": {
+                title: "🌈 结局：完美新生",
+                text: `恭喜你！你收集了全部 100 个概念，探索了所有 5 个宇宙！
+
+主宇宙在你的努力下完全修复，并且变得更加美好。
+
+"你做到了，第 9 代收集者，"神秘的声音充满了喜悦，"你不仅修复了主宇宙，还让它变得更加丰富多彩。多元宇宙因为你而完整。"
+
+你成为了传说中的概念之神，永远被铭记在多元宇宙的历史中。
+
+【游戏完成】100%
+【解锁成就】完美结局
+【解锁成就】概念之神
+【解锁成就】全宇宙探索者`,
+                onEnter: () => {
+                    gameData.achievements.push('ending_100');
+                    gameData.achievements.push('collector_100');
+                    gameData.achievements.push('all_universes');
+                },
+                choices: [
+                    { text: "🎮 再次游戏", next: "start" },
+                    { text: "📦 查看完整图鉴", next: "show_concepts_menu" }
+                ]
+            }
+        };
+        
+        // ============ 音乐切换函数 ============
+        function switchMusic(trackIndex) {
+            if (!isMusicPlaying) return;
+            if (trackIndex !== currentTrackIndex) {
+                loadTrack(trackIndex);
+            }
+        }
+        
+        // ============ 存档系统函数 ============
+        function toggleSaveSystem() {
+            const saveSystem = document.getElementById('save-system');
+            const gallery = document.getElementById('concept-gallery');
+            const achievementSystem = document.getElementById('achievement-system');
+            
+            // 如果已经打开，则关闭
+            if (!saveSystem.classList.contains('hidden')) {
+                saveSystem.classList.add('hidden');
+                return;
+            }
+            
+            playSound('save');
+            // 关闭其他面板，打开存档系统
+            gallery.classList.add('hidden');
+            achievementSystem.classList.add('hidden');
+            saveSystem.classList.remove('hidden');
+        }
+        
+        function selectSlot(slot) {
+            selectedSlot = slot;
+            document.querySelectorAll('.save-slot').forEach(s => s.style.borderColor = 'rgba(102, 126, 234, 0.3)');
+            document.getElementById(`slot-${slot}`).style.borderColor = '#667eea';
+            updateSlotInfo();
+        }
+        
+        function updateSlotInfo() {
+            for (let i = 1; i <= 3; i++) {
+                const saved = localStorage.getItem(SAVE_PREFIX + i);
+                const info = document.getElementById(`slot-${i}-info`);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    info.textContent = `${data.currentUniverse} | ${data.concepts.length}概念 | ${data.score}分`;
+                    document.getElementById(`slot-${i}`).classList.add('has-data');
+                } else {
+                    info.textContent = '空';
+                    document.getElementById(`slot-${i}`).classList.remove('has-data');
+                }
+            }
+        }
+        
+        function saveGame() {
+            gameData.timestamp = Date.now();
+            gameData.currentScene = getCurrentScene();
+            gameData.universesVisited = Array.from(gameData.universesVisited);
+            localStorage.setItem(SAVE_PREFIX + selectedSlot, JSON.stringify(gameData));
+            playSound('save');
+            showMessage('存档成功！', 'success');
+            updateSlotInfo();
+        }
+        
+        function loadGame() {
+            const saved = localStorage.getItem(SAVE_PREFIX + selectedSlot);
+            if (!saved) {
+                showMessage('该存档位为空！', 'error');
+                return;
+            }
+            const data = JSON.parse(saved);
+            Object.assign(gameData, data);
+            gameData.universesVisited = new Set(data.universesVisited || []);
+            renderScene(gameData.currentScene || "start");
+            playSound('save');
+            showMessage('读档成功！', 'success');
+            toggleSaveSystem();
+        }
+        
+        function deleteSave() {
+            if (confirm('确定要删除这个存档吗？')) {
+                localStorage.removeItem(SAVE_PREFIX + selectedSlot);
+                showMessage('存档已删除！', 'success');
+                updateSlotInfo();
+            }
+        }
+        
+        function showMessage(msg, type) {
+            const el = document.getElementById('save-message');
+            el.textContent = msg;
+            el.className = 'save-message ' + (type === 'success' ? 'save-success' : 'save-error');
+            el.classList.remove('hidden');
+            setTimeout(() => el.classList.add('hidden'), 2000);
+        }
+        
+        function getCurrentScene() {
+            return gameData.currentScene;
+        }
+        
+        // ============ 概念图鉴函数 ============
+        function toggleConcepts() {
+            const gallery = document.getElementById('concept-gallery');
+            const saveSystem = document.getElementById('save-system');
+            const achievementSystem = document.getElementById('achievement-system');
+            
+            // 如果已经打开，则关闭
+            if (!gallery.classList.contains('hidden')) {
+                gallery.classList.add('hidden');
+                return;
+            }
+            
+            // 关闭其他面板，打开概念图鉴
+            saveSystem.classList.add('hidden');
+            achievementSystem.classList.add('hidden');
+            gallery.classList.remove('hidden');
+            
+            const total = Object.keys(conceptDatabase).length;
+            const collected = gameData.concepts.length;
+            document.getElementById('concept-progress').textContent = `${collected}/${total}`;
+            document.getElementById('concept-progress-bar').style.width = `${(collected/total)*100}%`;
+            
+            const list = document.getElementById('concept-list');
+            list.innerHTML = '';
+            
+            for (const [id, concept] of Object.entries(conceptDatabase)) {
+                const isCollected = gameData.concepts.includes(concept.name);
+                const card = document.createElement('div');
+                card.className = `concept-card ${concept.rarity.toLowerCase()} ${isCollected ? '' : 'locked-concept'}`;
+                card.innerHTML = `
+                    <div class="concept-card-header">
+                        <span class="concept-card-title">${isCollected ? concept.name : '🔒 未收集'}</span>
+                        <span class="rarity-badge ${concept.rarity.toLowerCase()}">${concept.rarity}</span>
+                    </div>
+                    <div class="concept-card-body">
+                        ${isCollected ? `
+                            <div><strong>类别:</strong> ${concept.category}</div>
+                            <div><strong>描述:</strong> ${concept.description}</div>
+                            <div class="concept-card-science"><strong>科学原理:</strong> ${concept.science}</div>
+                        ` : '<div style="color: #666;">探索宇宙以解锁此概念</div>'}
+                    </div>
+                `;
+                list.appendChild(card);
+            }
+        }
+        
+        // ============ 成就系统函数 ============
+        function toggleAchievements() {
+            const system = document.getElementById('achievement-system');
+            const saveSystem = document.getElementById('save-system');
+            const gallery = document.getElementById('concept-gallery');
+            
+            // 如果已经打开，则关闭
+            if (!system.classList.contains('hidden')) {
+                system.classList.add('hidden');
+                return;
+            }
+            
+            // 关闭其他面板，打开成就系统
+            saveSystem.classList.add('hidden');
+            gallery.classList.add('hidden');
+            system.classList.remove('hidden');
+            
+            const list = document.getElementById('achievement-list');
+            list.innerHTML = '';
+            list.style.display = 'grid';
+            list.style.gridTemplateColumns = 'repeat(auto-fit, minmax(200px, 1fr))';
+            list.style.gap = '15px';
+            
+            for (const ach of achievements) {
+                const isUnlocked = gameData.achievements.includes(ach.id);
+                const card = document.createElement('div');
+                card.className = `achievement-card ${isUnlocked ? 'unlocked' : 'locked'}`;
+                card.innerHTML = `
+                    <div class="achievement-icon">${ach.icon}</div>
+                    <div class="achievement-name">${ach.name}</div>
+                    <div class="achievement-desc">${ach.desc}</div>
+                    ${isUnlocked ? '<div style="color: #43e97b; margin-top: 5px;">✓ 已解锁</div>' : '<div style="color: #666; margin-top: 5px;">🔒 未解锁</div>'}
+                `;
+                list.appendChild(card);
+            }
+        }
+        
+        // ============ 游戏核心函数 ============
+        // 解锁成就辅助函数
+        function unlockAchievement(achievementId) {
+            if (!gameData.achievements.includes(achievementId)) {
+                gameData.achievements.push(achievementId);
+                const ach = achievements.find(a => a.id === achievementId);
+                if (ach) {
+                    playSound('achievement');
+                    showAchievementNotification(ach);
+                }
+            }
+        }
+        
+        function checkAchievements() {
+            const newAchievements = [];
+            
+            if (gameData.concepts.length >= 1 && !gameData.achievements.includes('first_concept')) {
+                newAchievements.push('first_concept');
+            }
+            if (gameData.concepts.length >= 10 && !gameData.achievements.includes('collector_10')) {
+                newAchievements.push('collector_10');
+            }
+            if (gameData.concepts.length >= 30 && !gameData.achievements.includes('collector_30')) {
+                newAchievements.push('collector_30');
+            }
+            if (gameData.concepts.length >= 50 && !gameData.achievements.includes('collector_50')) {
+                newAchievements.push('collector_50');
+            }
+            if (gameData.concepts.length >= 80 && !gameData.achievements.includes('collector_80')) {
+                newAchievements.push('collector_80');
+            }
+            if (gameData.concepts.length >= 100 && !gameData.achievements.includes('collector_100')) {
+                newAchievements.push('collector_100');
+            }
+            if (gameData.universesVisited.size >= 5 && !gameData.achievements.includes('all_universes')) {
+                newAchievements.push('all_universes');
+            }
+            if (gameData.universesVisited.size >= 1 && !gameData.achievements.includes('universe_jumper')) {
+                newAchievements.push('universe_jumper');
+            }
+            if (gameData.score >= 500 && !gameData.achievements.includes('score_500')) {
+                newAchievements.push('score_500');
+            }
+            if (gameData.score >= 1000 && !gameData.achievements.includes('score_1000')) {
+                newAchievements.push('score_1000');
+            }
+            if (gameData.score >= 2000 && !gameData.achievements.includes('score_2000')) {
+                newAchievements.push('score_2000');
+            }
+            if (gameData.choicesMade >= 100 && !gameData.achievements.includes('decision_maker')) {
+                newAchievements.push('decision_maker');
+            }
+            
+            if (newAchievements.length > 0) {
+                gameData.achievements.push(...newAchievements);
+                for (const achId of newAchievements) {
+                    const ach = achievements.find(a => a.id === achId);
+                    if (ach) showAchievementNotification(ach);
+                }
+            }
+        }
+        
+        function showAchievementNotification(achievement) {
+            // 播放音效
+            playSound('achievement');
+            
+            // 屏幕中央粒子特效
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            spawnParticles(centerX, centerY, 80, '#f0a500', 'sparkle');
+            spawnParticles(centerX, centerY, 50, '#ffd700', 'sparkle');
+            
+            // 成就通知
+            const notification = document.createElement('div');
+            notification.className = 'concept-collected fade-in';
+            notification.style.background = 'linear-gradient(135deg, rgba(240, 165, 0, 0.3), rgba(255, 196, 0, 0.3))';
+            notification.style.borderColor = 'rgba(240, 165, 0, 0.6)';
+            notification.style.boxShadow = '0 0 30px rgba(240, 165, 0, 0.6)';
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px; justify-content: center;">
+                    <span>🏆</span>
+                    <span>成就解锁！</span>
+                </div>
+                <div class="concept-name" style="color: #f0a500; text-shadow: 0 0 10px #f0a500;">${achievement.name}</div>
+                <div style="font-size: 0.9em; color: #ccc;">${achievement.desc}</div>
+            `;
+            const container = document.getElementById('game-container');
+            container.insertBefore(notification, container.firstChild);
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => notification.remove(), 500);
+            }, 4000);
+        }
+        
+        function checkEnding() {
+            const collected = gameData.concepts.length;
+            const total = Object.keys(conceptDatabase).length;
+            const percentage = (collected / total) * 100;
+            
+            if (percentage >= 100) {
+                setTimeout(() => navigateTo("ending_100"), 1000);
+            } else if (percentage >= 80) {
+                setTimeout(() => navigateTo("ending_80"), 1000);
+            } else if (percentage >= 50) {
+                setTimeout(() => navigateTo("ending_50"), 1000);
+            }
+        }
+        
+        function resetGame() {
+            if (confirm('确定要重新开始游戏吗？当前进度将丢失（除非已保存）！')) {
+                gameData.concepts = [];
+                gameData.currentUniverse = "主宇宙";
+                gameData.chapter = 1;
+                gameData.score = 0;
+                gameData.choicesMade = 0;
+                gameData.achievements = [];
+                gameData.playTime = 0;
+                gameData.universesVisited = new Set();
+                renderScene("start");
+                updateStatus();
+            }
+        }
+        
+        function collectConcept(conceptName) {
+            if (!gameData.concepts.includes(conceptName)) {
+                gameData.concepts.push(conceptName);
+                // 按稀有度加分
+                const concept = Object.values(conceptDatabase).find(c => c.name === conceptName);
+                const score = concept ? (rarityScores[concept.rarity] || 10) : 10;
+                gameData.score += score;
+                playSound('collect');
+                showConceptNotification(conceptName, concept ? concept.rarity : null);
+                checkAchievements();
+                checkEnding();
+            }
+        }
+        
+        function showConceptNotification(conceptName, rarity) {
+            const notification = document.createElement('div');
+            notification.className = 'concept-collected fade-in';
+            const rarityText = rarity ? `【${rarity}】+${rarityScores[rarity] || 10}分` : '';
+            notification.innerHTML = `
+                <div>🎉 获得新概念！</div>
+                <div class="concept-name">${conceptName}</div>
+                <div style="font-size: 0.9em; color: #ccc; margin-top: 5px;">${rarityText}</div>
+            `;
+            const container = document.getElementById('game-container');
+            container.insertBefore(notification, container.firstChild);
+            setTimeout(() => notification.remove(), 3000);
+        }
+        
+        function updateStatus() {
+            document.getElementById('universe-display').textContent = gameData.currentUniverse;
+            document.getElementById('concepts-display').textContent = gameData.concepts.length;
+            document.getElementById('score-display').textContent = gameData.score;
+            document.getElementById('chapter-display').textContent = gameData.chapter;
+        }
+        
+        function renderScene(sceneId) {
+            const scene = scenes[sceneId];
+            if (!scene) {
+                console.error(`Scene '${sceneId}' not found`);
+                return;
+            }
+            
+            if (scene.onEnter) scene.onEnter();
+            
+            const container = document.getElementById('game-container');
+            let text = typeof scene.text === 'function' ? scene.text() : scene.text;
+            text = text.replace(/\${gameData\.concepts\.length}/g, gameData.concepts.length);
+            
+            container.innerHTML = `
+                <div class="scene fade-in ${sceneId.startsWith('ending') ? 'ending-scene' : ''}">
+                    <h2 class="scene-title ${sceneId.startsWith('ending') ? 'ending-title' : ''}">${scene.title}</h2>
+                    <div class="scene-text ${sceneId.startsWith('ending') ? 'ending-text' : ''}">${text.replace(/\n/g, '<br>')}</div>
+                    <div class="choices">
+                        ${scene.choices.map((choice, index) => {
+                            const conceptParam = choice.concept ? `, '${choice.concept}'` : '';
+                            return `
+                            <button class="choice-btn" onclick="navigateTo('${choice.next}'${conceptParam})">
+                                ${choice.text}
+                            </button>
+                        `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+            
+            updateStatus();
+            updateReturnButton();
+            
+            // 滚动到内容区顶部，而不是页面顶部
+            const sceneElement = container.querySelector('.scene');
+            if (sceneElement) {
+                sceneElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        // 返回主宇宙功能
+        function returnToHome() {
+            playSound('sceneChange');
+            renderScene('start');
+        }
+        
+        // 更新返回按钮显示状态
+        function updateReturnButton() {
+            const returnBtn = document.getElementById('return-home-btn');
+            if (returnBtn) {
+                if (gameData.currentScene === 'start') {
+                    returnBtn.classList.add('hidden');
+                } else {
+                    returnBtn.classList.remove('hidden');
+                }
+            }
+        }
+        
+        function navigateTo(sceneId, conceptName) {
+            gameData.choicesMade++;
+            gameData.currentScene = sceneId;
+            
+            // 收集概念（如果选择支有 concept 属性）
+            if (conceptName) {
+                collectConcept(conceptName);
+            }
+            
+            if (sceneId.startsWith('space_')) gameData.currentUniverse = "太空歌剧宇宙";
+            else if (sceneId.startsWith('time_')) gameData.currentUniverse = "时间旅行宇宙";
+            else if (sceneId.startsWith('cyber_')) gameData.currentUniverse = "赛博朋克宇宙";
+            else if (sceneId.startsWith('bio_')) gameData.currentUniverse = "生物朋克宇宙";
+            else if (sceneId.startsWith('magic_')) gameData.currentUniverse = "魔法科技宇宙";
+            else if (sceneId === 'start') gameData.currentUniverse = "主宇宙";
+            
+            renderScene(sceneId);
+            checkAchievements();
+        }
+        
+        // ============ 游戏初始化 ============
+        window.addEventListener('DOMContentLoaded', () => {
+            // 初始化音频系统
+            initAudio();
+            
+            let hasSaves = false;
+            for (let i = 1; i <= 3; i++) {
+                if (localStorage.getItem(SAVE_PREFIX + i)) {
+                    hasSaves = true;
+                    break;
+                }
+            }
+            
+            if (hasSaves) {
+                const container = document.getElementById('game-container');
+                container.innerHTML = `
+                    <div class="scene fade-in">
+                        <h2 class="scene-title">🎮 欢迎回来，收集者！</h2>
+                        <div class="scene-text">
+                            检测到你有保存的游戏进度。
+                            <br><br>
+                            你可以：
+                        </div>
+                        <div class="choices">
+                            <button class="choice-btn" onclick="toggleSaveSystem(); selectSlot(1); loadGame()">
+                                📂 读取存档
+                            </button>
+                            <button class="choice-btn" onclick="renderScene('start'); resetGameData()">
+                                🔄 开始新游戏
+                            </button>
+                            <button class="choice-btn" onclick="showConcepts()">
+                                📦 查看概念图鉴
+                            </button>
+                            <button class="choice-btn" onclick="showAchievements()">
+                                🏆 查看成就
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } else {
+                renderScene("start");
+            }
+            
+            updateStatus();
+            selectSlot(1);
+        });
+        
+        function resetGameData() {
+            gameData.concepts = [];
+            gameData.currentUniverse = "主宇宙";
+            gameData.chapter = 1;
+            gameData.score = 0;
+            gameData.choicesMade = 0;
+            gameData.achievements = [];
+            gameData.playTime = 0;
+            gameData.universesVisited = new Set();
+            updateStatus();
+        }
+    </script>
+</body>
+</html>

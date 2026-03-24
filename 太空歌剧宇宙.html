@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>🚀 太空歌剧宇宙 - 多元宇宙概念收集者</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0a0a23 0%, #1a1a3e 50%, #2d1b6e 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 10px;
+        }
+        .container { max-width: 900px; margin: 0 auto; background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        header { text-align: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid rgba(255,255,255,0.1); }
+        h1 { font-size: clamp(1.5em, 5vw, 2.5em); margin-bottom: 10px; background: linear-gradient(135deg, #4a9eff, #9b59b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .status-bar { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 15px 0; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 10px; }
+        .status-item { font-size: 0.95em; }
+        .scene { background: rgba(255,255,255,0.03); border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid rgba(74,158,255,0.2); }
+        .scene-title { font-size: clamp(1.3em, 4vw, 1.8em); margin-bottom: 15px; color: #4a9eff; }
+        .scene-text { font-size: clamp(1em, 3.5vw, 1.1em); margin-bottom: 20px; white-space: pre-wrap; line-height: 1.6; }
+        .choices { display: flex; flex-direction: column; gap: 12px; }
+        .choice-btn { background: linear-gradient(135deg, rgba(74,158,255,0.2), rgba(155,89,182,0.2)); border: 2px solid rgba(74,158,255,0.5); color: #e0e0e0; padding: clamp(12px, 3vw, 15px) clamp(15px, 4vw, 25px); border-radius: 10px; font-size: clamp(1em, 3.5vw, 1.1em); cursor: pointer; transition: all 0.3s; text-align: left; min-height: 44px; }
+        .choice-btn:hover { background: rgba(74,158,255,0.3); transform: translateX(5px); }
+        .nav-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; background: rgba(0,0,0,0.8); padding: 10px 20px; border-radius: 50px; backdrop-filter: blur(10px); z-index: 1000; }
+        .nav-btn { background: rgba(255,255,255,0.1); border: none; color: #fff; padding: 10px 20px; border-radius: 25px; cursor: pointer; text-decoration: none; font-size: 0.9em; }
+        .nav-btn:hover { background: rgba(74,158,255,0.3); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 太空歌剧宇宙</h1>
+            <div class="status-bar">
+                <div class="status-item">📦 概念：<span id="concept-count">0</span>/20</div>
+                <div class="status-item">⭐ 得分：<span id="score">0</span></div>
+                <div class="status-item">🏆 成就：<span id="achievement-count">0</span></div>
+            </div>
+        </header>
+        <div id="game-container"></div>
+    </div>
+    <div class="nav-bar">
+        <a href="宇宙入口.html" class="nav-btn">🏠 返回入口</a>
+        <a href="赛博朋克宇宙.html" class="nav-btn">🌃 赛博朋克</a>
+        <a href="时间旅行宇宙.html" class="nav-btn">⏳ 时间旅行</a>
+        <a href="生物朋克宇宙.html" class="nav-btn">🧬 生物朋克</a>
+        <a href="魔法科技宇宙.html" class="nav-btn">✨ 魔法科技</a>
+    </div>
+    <script>
+        const gameData = { concepts: [], score: 0, achievements: [] };
+        const scenes = {
+            "space_intro": {
+                title: "🚀 太空歌剧宇宙 - 星际联邦空间站",
+                text: `你穿过光门，一阵轻微的眩晕感过后，发现自己站在一座宏伟的空间站观景台上。
+
+脚下是透明的纳米玻璃地板，可以直接看到下方缓缓旋转的星系。头顶和四周是巨大的弧形穹顶，由某种未知的透明材料制成，厚度超过十米，却几乎完全透明。
+
+透过穹顶，你看到了令人屏息的景象：数百艘星际飞船在轨道上穿梭，它们大小不一，从小巧的侦察舰到长达数公里的殖民舰，每一艘都拖着淡淡的尾迹，如同夜空中流动的星河。
+
+远处，一颗蔚蓝的行星缓缓旋转，云层在恒星照射下泛着银白色的光晕。更远处，是无尽的星海，银河如同一条乳白色的光带横跨天际。
+
+"欢迎来到星际联邦第 7 号空间站，收集者。"一个温和的声音响起。
+
+你转身看到一位身着银色制服的女性，她的胸前佩戴着联邦徽章。
+
+"我是大使莉亚，负责协调本星区的外交事务。"她向你微微鞠躬，"在这个宇宙中，人类已经走出了摇篮，在银河系中建立了庞大的文明。收集这里的概念，理解星际文明的奥秘。"
+
+她手中的数据板亮起，显示出几个目标区域的星图：`,
+                choices: [
+                    { text: "🛸 前往曲率引擎实验室", next: "space_warp_lab" },
+                    { text: "🪐 探索类地行星", next: "space_exoplanet" },
+                    { text: "👽 参加星际外交会议", next: "space_diplomacy" }
+                ]
+            },
+            "space_warp_lab": {
+                title: "🛸 曲率引擎实验室 - 超越光速",
+                text: `你走进一座充满未来感的实验室，中央悬浮着一个复杂的金属结构——那是曲率引擎的核心。
+
+"曲率驱动是星际旅行的关键。"科学家解释道，"它通过弯曲时空，让飞船在泡状时空中移动，从而绕过光速限制。"
+
+屏幕上显示着复杂的方程式：爱因斯坦场方程、阿尔库维雷度规、负能量密度计算...
+
+"理论上，我们可以到达宇宙的任何角落。"`,
+                choices: [
+                    { text: "📚 学习曲率驱动原理", next: "space_warp_study", concept: "曲率驱动" },
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            "space_warp_study": {
+                title: "📚 曲率驱动原理",
+                text: `你深入研究曲率驱动的理论基础。
+
+阿尔库维雷在 1994 年提出了这个概念：通过压缩飞船前方的时空、扩张后方的时空，创造一个"曲率泡"。
+
+飞船本身不移动，而是时空在移动。就像冲浪者站在冲浪板上，随着波浪前进。
+
+"但需要负能量。"科学家说，"这是目前最大的技术障碍。"`,
+                choices: [
+                    { text: "🔙 返回实验室", next: "space_warp_lab" }
+                ]
+            },
+            "space_exoplanet": {
+                title: "🪐 类地行星开普勒 -186f - 第二个地球",
+                text: `透过观测屏幕，你看到了一颗红色的行星——开普勒 -186f。
+
+它位于恒星的宜居带内，表面可能存在液态水。大气层的光谱分析显示有氧气和甲烷的迹象。
+
+"这可能是第二个地球。"天文学家兴奋地说，"我们已经向那里发射了探测器。"
+
+屏幕上显示着探测器的实时画面：红色的天空、岩石地表、还有...某种类似植物的结构？`,
+                choices: [
+                    { text: "🔭 分析行星数据", next: "space_exoplanet_data", concept: "外星生命" },
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            "space_exoplanet_data": {
+                title: "🔭 行星数据分析",
+                text: `你仔细研究开普勒 -186f 的数据。
+
+半径：地球的 1.1 倍\n公转周期：130 天\n表面温度：-85°C 到 5°C\n重力：地球的 1.05 倍
+
+"最惊人的是这个。"天文学家指着一组光谱数据，"这些吸收线...可能是光合作用的产物。"
+
+如果证实，这将是人类首次发现地外生命。`,
+                choices: [
+                    { text: "🔙 返回观测站", next: "space_exoplanet" }
+                ]
+            },
+            "space_diplomacy": {
+                title: "👽 星际外交会议 - 文明间的对话",
+                text: `你走进一座宏伟的会议厅，来自不同种族的代表围坐在圆桌旁。
+
+人类代表、半人马座α星人、天狼星联盟使者、还有...一个你无法辨认的硅基生命体。
+
+"欢迎来到星际联邦外交会议。"主持人宣布，"今天我们要讨论的是：第三象限的领土争端。"
+
+全息投影显示出星图，几个恒星系被标记为争议区域。`,
+                choices: [
+                    { text: "📜 参与外交谈判", next: "space_diplomacy_talk", concept: "星际联邦" },
+                    { text: "🔙 返回空间站", next: "space_intro" }
+                ]
+            },
+            "space_diplomacy_talk": {
+                title: "📜 外交谈判",
+                text: `"我们要求第三象限的开采权。"半人马座代表说。
+
+"那是我们的传统领地。"天狼星使者反驳。
+
+人类代表保持中立："根据联邦宪章，争议区域应该通过和平方式解决。"
+
+你意识到，星际政治比想象中更复杂。每个种族都有自己的利益、历史和文化。
+
+"也许我们可以建立联合开发区。"你提议道。
+
+会议室里安静了片刻，然后爆发出讨论声。`,
+                choices: [
+                    { text: "🔙 返回会议厅", next: "space_diplomacy" }
+                ]
+            }
+        };
+        function renderScene(sceneId) {
+            const scene = scenes[sceneId];
+            if (!scene) { document.getElementById('game-container').innerHTML = '<div class="scene"><h2 class="scene-title">❌ 场景不存在</h2><div class="choices"><button class="choice-btn" onclick="renderScene(\'space_intro\')">🔙 返回入口</button></div></div>'; return; }
+            let choicesHtml = scene.choices.map(choice => { const concept = choice.concept ? `, "${choice.concept}"` : ''; return `<button class="choice-btn" onclick="navigateTo('${choice.next}'${concept})">${choice.text}</button>`; }).join('');
+            document.getElementById('game-container').innerHTML = '<div class="scene fade-in"><h2 class="scene-title">' + scene.title + '</h2><div class="scene-text">' + scene.text + '</div><div class="choices">' + choicesHtml + '</div></div>';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function navigateTo(sceneId, conceptName) {
+            if (conceptName && !gameData.concepts.includes(conceptName)) { gameData.concepts.push(conceptName); gameData.score += 10; alert('📦 获得新概念：' + conceptName + ' (+10 分)'); updateStatus(); }
+            renderScene(sceneId);
+        }
+        function updateStatus() { document.getElementById('concept-count').textContent = gameData.concepts.length; document.getElementById('score').textContent = gameData.score; document.getElementById('achievement-count').textContent = gameData.achievements.length; }
+        renderScene('space_intro');
+    </script>
+</body>
+</html>

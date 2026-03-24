@@ -1,0 +1,87 @@
+=====================================
+  多元宇宙概念收集者 - 音乐下载指南
+=====================================
+
+由于网络音频链接经常失效，建议使用本地音频文件。
+
+【步骤1：创建音频文件夹】
+在 game.html 同级目录下创建 "audio" 文件夹
+
+【步骤2：下载音乐文件】
+
+以下是推荐的免费音乐下载地址（均为 CC0 或 CC-BY 授权）：
+
+1. 赛博朋克 (cyberpunk.mp3)
+   推荐：在 freesound.org 搜索 "cyberpunk ambient"
+   或：在 incompetech.com 搜索 "Digital Native"
+
+2. 太空探索 (space.mp3)
+   推荐：在 freesound.org 搜索 "space ambient"
+   或：在 incompetech.com 搜索 "Floating Cities"
+
+3. 神秘魔法 (magic.mp3)
+   推荐：在 freesound.org 搜索 "fantasy magic"
+   或：在 incompetech.com 搜索 "Enchanted Journey"
+
+4. 时间旅行 (time.mp3)
+   推荐：在 freesound.org 搜索 "time travel"
+   或：在 incompetech.com 搜索 "Oppressive Gloom"
+
+5. 生物科技 (bio.mp3)
+   推荐：在 freesound.org 搜索 "biotech"
+   或：在 incompetech.com 搜索 "Mystery Sax"
+
+6. 史诗冒险 (epic.mp3)
+   推荐：在 freesound.org 搜索 "epic adventure"
+   或：在 incompetech.com 搜索 "Epic Hook"
+
+【推荐网站】
+
+1. Incompetech (https://incompetech.com/music/royalty-free/music.html)
+   - Kevin MacLeod 的作品
+   - 免费使用，需署名
+   - 科幻/游戏音乐丰富
+
+2. FreeSound (https://freesound.org/)
+   - 用户上传的音效和音乐
+   - 需要注册账号
+   - 搜索关键词使用英文
+
+3. Pixabay Music (https://pixabay.com/music/)
+   - 完全免费，无需署名
+   - 可直接下载
+
+4. Free Music Archive (https://freemusicarchive.org/)
+   - 各种风格的音乐
+   - 注意查看授权协议
+
+【步骤3：放置文件】
+将下载的音乐文件重命名为：
+- cyberpunk.mp3
+- space.mp3
+- magic.mp3
+- time.mp3
+- bio.mp3
+- epic.mp3
+
+然后放入 audio 文件夹中。
+
+【备选方案：使用单首音乐】
+如果你只想用一首音乐循环播放，可以：
+1. 只下载一首喜欢的音乐
+2. 重命名为 cyberpunk.mp3
+3. 其他5个文件可以复制同一首音乐，或者删除其他配置
+
+【文件结构示例】
+完善/
+├── twine_version_v18_expanded.html
+├── audio/
+│   ├── cyberpunk.mp3
+│   ├── space.mp3
+│   ├── magic.mp3
+│   ├── time.mp3
+│   ├── bio.mp3
+│   └── epic.mp3
+└── ...
+
+=====================================

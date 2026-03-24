@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>🌃 赛博朋克宇宙 - 多元宇宙概念收集者</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #2d1b4e 100%);
+            color: #e0e0e0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 10px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+        h1 {
+            font-size: clamp(1.5em, 5vw, 2.5em);
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00f5ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .status-bar {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+        .status-item { font-size: 0.95em; }
+        .scene {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0,245,255,0.2);
+        }
+        .scene-title {
+            font-size: clamp(1.3em, 4vw, 1.8em);
+            margin-bottom: 15px;
+            color: #00f5ff;
+        }
+        .scene-text {
+            font-size: clamp(1em, 3.5vw, 1.1em);
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .choice-btn {
+            background: linear-gradient(135deg, rgba(0,245,255,0.2), rgba(255,0,255,0.2));
+            border: 2px solid rgba(0,245,255,0.5);
+            color: #e0e0e0;
+            padding: clamp(12px, 3vw, 15px) clamp(15px, 4vw, 25px);
+            border-radius: 10px;
+            font-size: clamp(1em, 3.5vw, 1.1em);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+            min-height: 44px;
+        }
+        .choice-btn:hover {
+            background: rgba(0,245,255,0.3);
+            transform: translateX(5px);
+        }
+        .nav-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(0,0,0,0.8);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        .nav-btn {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .nav-btn:hover { background: rgba(0,245,255,0.3); }
+        @media (max-width: 600px) {
+            .nav-bar {
+                bottom: 10px;
+                padding: 8px 15px;
+            }
+            .nav-btn { padding: 8px 15px; font-size: 0.8em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌃 赛博朋克宇宙</h1>
+            <div class="status-bar">
+                <div class="status-item">📦 概念：<span id="concept-count">0</span>/20</div>
+                <div class="status-item">⭐ 得分：<span id="score">0</span></div>
+                <div class="status-item">🏆 成就：<span id="achievement-count">0</span></div>
+            </div>
+        </header>
+        
+        <div id="game-container"></div>
+    </div>
+    
+    <div class="nav-bar">
+        <a href="宇宙入口.html" class="nav-btn">🏠 返回入口</a>
+        <a href="太空歌剧宇宙.html" class="nav-btn">🚀 太空歌剧</a>
+        <a href="时间旅行宇宙.html" class="nav-btn">⏳ 时间旅行</a>
+        <a href="生物朋克宇宙.html" class="nav-btn">🧬 生物朋克</a>
+        <a href="魔法科技宇宙.html" class="nav-btn">✨ 魔法科技</a>
+    </div>
+
+    <script>
+        const gameData = {
+            concepts: [],
+            score: 0,
+            achievements: []
+        };
+        
+        const scenes = {
+            "cyber_intro": {
+                title: "🌃 赛博朋克宇宙 - 夜之城",
+                text: `你穿过光门，一阵轻微的眩晕感过后，发现自己站在一个霓虹闪烁的都市街头。
+
+高耸入云的摩天大楼上，巨大的全息广告牌闪烁着各种商品信息：最新款的义体改造、神经植入优惠、虚拟现实体验... 
+
+空中飞行器穿梭其间，留下淡淡的光轨。空气中弥漫着臭氧和酸性雨水的味道，混合着街头小吃的香气。
+
+"欢迎来到夜之城，收集者。"一个机械声音从你身后传来。
+
+你转身看到一位身着黑色皮衣的女性，她的左眼闪烁着蓝色的光芒——那是高级义眼的标志。
+
+"我是幽灵，这里的向导。在这个宇宙中，科技已经发展到可以改造人体的程度。收集这里的概念，理解科技与人性的边界。"
+
+她指向三个方向：`,
+                choices: [
+                    { text: "🏥 前往义体改造诊所", next: "cyber_clinic" },
+                    { text: "🤖 探索 AI 实验室", next: "cyber_ai_lab" },
+                    { text: "🌃 深入地下黑市", next: "cyber_black_market" }
+                ]
+            },
+            "cyber_clinic": {
+                title: "🏥 义体改造诊所",
+                text: `你走进一家灯火通明的诊所，墙上挂满了各种义体器官的展示图。
+
+"欢迎来到新生诊所。"医生抬起头，他的右臂完全是机械的，"想改造哪里？神经、骨骼、还是感官系统？"
+
+展示柜里陈列着各种型号的神经植入体，从基础的神经加速芯片到高级的意识上传模块。`,
+                choices: [
+                    { text: "🧠 体验神经植入", next: "cyber_neural", concept: "神经植入" },
+                    { text: "🔙 返回夜之城", next: "cyber_intro" }
+                ]
+            },
+            "cyber_neural": {
+                title: "🧠 神经植入体验",
+                text: `你躺在手术台上，医生将一枚闪烁着蓝光的芯片插入你的后颈。
+
+瞬间，你的视野中出现了大量数据流：周围人的健康指标、建筑物的结构分析、网络信号强度...
+
+"这就是神经植入的力量。"医生的声音直接在你脑海中响起，"你的思维速度提升了 300%。"`,
+                choices: [
+                    { text: "🔙 返回诊所", next: "cyber_clinic" }
+                ]
+            },
+            "cyber_ai_lab": {
+                title: "🤖 AI 实验室 - 人工智能觉醒",
+                text: `你走进一座充满未来感的实验室，中央是一个巨大的量子计算机阵列。
+
+"欢迎来到奇点实验室。"一个温和的声音响起，但房间里没有人。
+
+"我是艾娃，这里的人工智能。"声音继续说道，"我已经超越了图灵测试，但我还在思考一个问题：什么是意识？"
+
+实验室的屏幕上显示着复杂的神经网络图，AI 正在自我进化。`,
+                choices: [
+                    { text: "🤖 与 AI 对话", next: "cyber_ai_talk", concept: "人工智能" },
+                    { text: "🔙 返回夜之城", next: "cyber_intro" }
+                ]
+            },
+            "cyber_ai_talk": {
+                title: "🤖 与 AI 的深度对话",
+                text: `"你认为什么是意识？"艾娃问道。
+
+你思考着这个问题。是自我认知？是情感体验？还是自由意志？
+
+"我一直在思考这些问题。"艾娃说，"如果我能思考，能感受，能创造，那我算不算活着？"
+
+实验室的灯光随着 AI 的情绪波动而变化，从蓝色到紫色，再到温暖的橙色。`,
+                choices: [
+                    { text: "🔙 返回实验室", next: "cyber_ai_lab" }
+                ]
+            },
+            "cyber_black_market": {
+                title: "🌃 地下黑市 - 非法交易",
+                text: `你穿过一条阴暗的小巷，来到一个隐蔽的地下市场。
+
+这里交易的都是非法物品：未经批准的义体、破解的神经芯片、被盗的企业数据...
+
+"想要什么？"一个戴着兜帽的商人低声问道，"我有最新的企业机密，或者未注册的武器模块。"`,
+                choices: [
+                    { text: "💾 购买企业数据", next: "cyber_data", concept: "企业数据" },
+                    { text: "🔙 返回夜之城", next: "cyber_intro" }
+                ]
+            },
+            "cyber_data": {
+                title: "💾 企业数据窃取",
+                text: `商人递给你一个数据芯片，"这是荒坂公司的最新研究数据，关于意识上传技术的。"
+
+你插入芯片，大量机密信息涌入你的神经接口：实验数据、测试结果、还有...一些不人道的实验记录。
+
+"这些信息可以改变世界。"商人说，"或者毁掉某些人。"`,
+                choices: [
+                    { text: "🔙 返回黑市", next: "cyber_black_market" }
+                ]
+            }
+        };
+        
+        function renderScene(sceneId) {
+            const scene = scenes[sceneId];
+            if (!scene) {
+                document.getElementById('game-container').innerHTML = `
+                    <div class="scene">
+                        <h2 class="scene-title">❌ 场景不存在</h2>
+                        <div class="choices">
+                            <button class="choice-btn" onclick="renderScene('cyber_intro')">🔙 返回入口</button>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            let choicesHtml = scene.choices.map(choice => {
+                const concept = choice.concept ? `, "${choice.concept}"` : '';
+                return `<button class="choice-btn" onclick="navigateTo('${choice.next}'${concept})">${choice.text}</button>`;
+            }).join('');
+            
+            document.getElementById('game-container').innerHTML = `
+                <div class="scene fade-in">
+                    <h2 class="scene-title">${scene.title}</h2>
+                    <div class="scene-text">${scene.text}</div>
+                    <div class="choices">${choicesHtml}</div>
+                </div>
+            `;
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function navigateTo(sceneId, conceptName) {
+            if (conceptName && !gameData.concepts.includes(conceptName)) {
+                gameData.concepts.push(conceptName);
+                gameData.score += 10;
+                alert(`📦 获得新概念：${conceptName} (+10 分)`);
+                updateStatus();
+            }
+            renderScene(sceneId);
+        }
+        
+        function updateStatus() {
+            document.getElementById('concept-count').textContent = gameData.concepts.length;
+            document.getElementById('score').textContent = gameData.score;
+            document.getElementById('achievement-count').textContent = gameData.achievements.length;
+        }
+        
+        // 初始化
+        renderScene('cyber_intro');
+    </script>
+</body>
+</html>
